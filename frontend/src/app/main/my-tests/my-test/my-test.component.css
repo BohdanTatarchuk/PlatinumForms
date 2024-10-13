@@ -1,0 +1,25 @@
+.test {
+  width: 390px;
+  height: 55px;
+  margin: 25px;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.name, .code {
+  color: #FFE100;
+  vertical-align: middle;
+  font-family: Montserrat, sans-serif;
+}
+
+.name {
+  padding: 15px;
+}
+
+.code {
+  padding-left: 140px
+}

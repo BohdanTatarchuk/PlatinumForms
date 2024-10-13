@@ -1,0 +1,16 @@
+.rectangle {
+  position: absolute;
+  top: 130px;
+  left: 55px;
+  width: 440px;
+  height: 700px;
+  background-color: #FFE100;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px;
+  color: white;
+  font-family: Montserrat, sans-serif;
+}
