@@ -1,0 +1,24 @@
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+}
+
+.dot {
+  width: 150px;
+  height: 150px;
+  background-color: #FFE100;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  color: #FFE100;
+  font-family: Montserrat, sans-serif;
+  margin: 10px 0;
+}
+
