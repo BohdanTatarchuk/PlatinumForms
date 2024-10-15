@@ -1,0 +1,100 @@
+.rectangle {
+  position: absolute;
+  top: 130px;
+  left: 560px;
+  width: 420px;
+  height: 160px;
+  background-color: #FFE100;
+  box-shadow: 2px 2px 7px #000000;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+h2, h4 {
+  margin: 20px;
+  color: white;
+  font-family: Montserrat, sans-serif;
+}
+
+.otc {
+  position: relative;
+  width: 320px;
+  margin: 0 auto;
+}
+
+.otc fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.otc fieldset div {
+  display: flex;
+  align-items: center;
+  justify-content: center
+}
+
+.otc legend {
+  margin: 0 auto 1em;
+  color: #fff;
+  font-weight: bold;
+}
+
+input[type="number"] {
+  width: .86em;
+  line-height: 1;
+  margin: .1em;
+  padding: 8px 0 4px;
+  font-size: 2.65em;
+  text-align: center;
+  appearance: textfield;
+  -webkit-appearance: textfield;
+  border: 0;
+  color: #073A39;
+  border-radius: 6px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"]:nth-child(n+4) {
+  order: 2;
+}
+.otc div::before {
+  content: '';
+  height: 2px;
+  width: 12px;
+  margin: 0 .25em;
+  order: 1;
+  background: #fff;
+  border-radius: 2px;
+  opacity: .4;
+}
+
+.otc label {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important;
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important;
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important;
+}
+
+body, html {
+  height: 100%;
+}
+body {
+  display: flex;
+  align-items: center;
+  justif-content: center;
+  background: #073A39;
+  color: white;
+}

@@ -18,6 +18,8 @@ html, body {
   left: 0;
   background-color: #593391;
   color: white;
+  box-shadow: 0 0 10px #000000;
+
 }
 
 h1 {

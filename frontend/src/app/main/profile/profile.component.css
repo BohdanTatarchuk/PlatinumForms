@@ -1,0 +1,11 @@
+.dot {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  top: 155px;
+  right: 20px;
+  background-color: #FFE100;
+  box-shadow: 2px 2px 5px #000000;
+  border-radius: 50%;
+  display: inline-block;
+}

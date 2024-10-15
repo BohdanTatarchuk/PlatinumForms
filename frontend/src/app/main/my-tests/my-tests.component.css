@@ -7,10 +7,16 @@
   background-color: #FFE100;
   margin: 20px;
   border-radius: 10px;
+  box-shadow: 2px 2px 7px #000000;
 }
 
 h1, h2, h3, h4, h5, h6 {
   margin: 20px;
   color: white;
   font-family: Montserrat, sans-serif;
+}
+
+
+.button {
+  margin: 25px;
 }
