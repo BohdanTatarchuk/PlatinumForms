@@ -1,0 +1,14 @@
+.square{
+  margin-top: 9%;
+  width: 800px;
+  height: 120px;
+  margin-left:auto;
+  margin-right:auto;
+  position: relative;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  background-color: #FFE100;
+  color: white;
+  font-family: Montserrat, sans-serif;
+}
