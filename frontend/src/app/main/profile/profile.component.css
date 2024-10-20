@@ -5,7 +5,7 @@
   top: 155px;
   right: 20px;
   background-color: #FFE100;
-  box-shadow: 2px 2px 5px #000000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   display: inline-block;
 }
