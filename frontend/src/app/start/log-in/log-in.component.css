@@ -73,6 +73,7 @@ form a {
 
 #sing_up_text {
   color: white;
+  cursor: pointer;
 }
 
 #or {
@@ -81,8 +82,10 @@ form a {
 
 input[type="submit"]:hover {
   background-color: #bb0c0c;
+  cursor: pointer;
 }
 
 #login_button:hover {
   background-color: #bb0c0c;
+  cursor: pointer;
 }

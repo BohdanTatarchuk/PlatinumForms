@@ -5,9 +5,10 @@
     <input type="text" id="email" name="email" [(ngModel)]="user.email" required>
     <label for="password">Password</label>
     <input type="text" id="password" name="password" [(ngModel)]="user.password" required>
-    <input type="submit" id="login_button" value="Login" [disabled]="!loginForm.valid"><br>
+    <input type="submit" id="login_button" value="Login" (click)="navigate_to_main()" [disabled]="!loginForm.valid"><br>
     <label id="or">Or</label>
     <input type="submit" value="login via google">
-    <p id="sing_up_text">Do not have an account yet? <a href="?????????????????">Sign up</a></p>
+    <p id="sing_up_text" (click)="navigate_to_registration()">Do not have an account yet?<a>Sign up</a></p>
   </form>
+
 </div>

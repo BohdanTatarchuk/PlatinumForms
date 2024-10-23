@@ -18,6 +18,7 @@ html, body {
   left: 0;
   background-color: #593391;
   color: white;
+  cursor: pointer;
 }
 
 h1 {
