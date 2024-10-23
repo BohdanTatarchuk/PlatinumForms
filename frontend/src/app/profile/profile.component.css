@@ -14,11 +14,17 @@
   border-radius: 50%;
   margin-bottom: 20px;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  position: relative;
+  background-size: cover;
+  background-position: center;
 }
 
-h1 {
-  color: #FFE100;
-  font-family: Montserrat, sans-serif;
-  margin: 10px 0;
+input[type="file"] {
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  cursor: pointer;
 }
-

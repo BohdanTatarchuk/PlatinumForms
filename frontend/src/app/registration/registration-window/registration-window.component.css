@@ -49,6 +49,7 @@ input[type="text"] {
 }
 #sign_up_button:hover{
   background-color: #bb0c0c;
+  cursor: pointer;
 }
 
 form label {

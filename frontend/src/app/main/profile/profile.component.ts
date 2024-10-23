@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,4 +10,9 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent {
 
+  router = inject(Router)
+
+  navigate_to_profile(){
+    this.router.navigate(['/profile'])
+  }
 }

@@ -9,6 +9,8 @@
     <input type="text" id="password" name="password" [(ngModel)]="info.password" required>
     <label for="repeated_password">Repeat Password</label>
     <input type="text" id="repeated_password" name="repeated_password" [(ngModel)]="info.repeated_password" required>
-    <input type="submit" id="sign_up_button" value="Sign up" [disabled]="!registrationForm.valid"><br>
+    <input type="submit" id="sign_up_button" value="Sign up"
+           (click)="password_validation(); password_repetition(); email_validation(); navigate_to_main()"
+           [disabled]="!registrationForm.valid"><br>
   </form>
 </div>
