@@ -1,3 +1,13 @@
+@font-face {
+  font-family: montserratFont;
+  src: url(../../fonts/Montserrat-Bold.ttf);
+  font-weight: bold;
+}
+
+* {
+  font-family: montserratFont;
+}
+
 .rectangle {
   width: 800px;
   height: 120px;
@@ -15,7 +25,6 @@
 h2, label {
   color: white;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  font-family: Montserrat, sans-serif;
   margin-right: 15px;
   margin-top: 0;
 }
@@ -49,7 +58,6 @@ h2, label {
 }
 
 h1 {
-  font-family: Montserrat, sans-serif;
   font-size: 50px;
   margin: 0;
   color: white;

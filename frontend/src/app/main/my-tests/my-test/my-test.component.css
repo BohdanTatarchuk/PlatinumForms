@@ -1,25 +1,43 @@
+@font-face {
+  font-family: montserratFont;
+  src: url(../../../fonts/Montserrat-Medium.ttf);
+  font-weight: bold;
+}
+
+* {
+  font-family: montserratFont;
+}
+
 .test {
   width: 390px;
   height: 55px;
-  margin: 25px;
+  margin-top: 11px;
+  margin-left: 20px;
   border-radius: 10px;
   background-color: white;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
 }
 
 .name, .code {
   color: #FFE100;
-  vertical-align: middle;
-  font-family: Montserrat, sans-serif;
 }
 
 .name {
-  padding: 15px;
+  padding-left: 15px;
 }
 
 .code {
-  padding-left: 140px
+  padding-left: 20px;
 }
+
+
+button {
+  display: flex;
+  horiz-align: left;
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+}
+

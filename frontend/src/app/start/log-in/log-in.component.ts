@@ -28,11 +28,11 @@ export class LogInComponent {
 
   protected readonly navigator = navigator;
 
-  navigate_to_main() {
+  navigateToMain() {
     this.router.navigate(['/main']);
   }
 
-  navigate_to_registration() {
+  navigateToRegistration() {
     this.router.navigate(['/registration']);
   }
 }

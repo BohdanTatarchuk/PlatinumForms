@@ -1,3 +1,13 @@
+@font-face {
+  font-family: montserratFont;
+  src: url(../../fonts/Montserrat-Bold.ttf);
+  font-weight: bold;
+}
+
+* {
+  font-family: montserratFont;
+}
+
 .rectangle {
   position: absolute;
   top: 130px;
@@ -13,7 +23,6 @@
 h1, h2, h3, h4, h5, h6 {
   margin: 20px;
   color: white;
-  font-family: Montserrat, sans-serif;
 }
 
 .button {

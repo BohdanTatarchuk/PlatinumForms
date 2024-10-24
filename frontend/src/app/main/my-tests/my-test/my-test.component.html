@@ -1,8 +1,6 @@
 <div class="test" >
-  <div class="name">
-    <h3>Geography</h3>
-  </div>
-  <div class="code">
-    <h3 >2 3 1 5 4 7</h3>
-  </div>
+  <button (click)="onSelectedTest()">
+    <h3 class="name">{{ selectedTest.name }}</h3>
+    <h3 class="code">{{ selectedTest.code }}</h3>
+  </button>
 </div>
