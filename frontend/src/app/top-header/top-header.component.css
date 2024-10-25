@@ -20,8 +20,8 @@ html, body {
 }
 
 .square1 {
-  width: 300vh;
-  height: 80px;
+  width: 100vw;
+  height: 12vh;
   position: absolute;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   top: 0;
