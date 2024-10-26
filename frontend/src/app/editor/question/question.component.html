@@ -1,21 +1,17 @@
 <div class="rectangle">
-  <h2 id="question_name">Question</h2>
+  <input type="text" id="question-name" name="question-name" placeholder="Question" [(ngModel)]="questionName" required>
 
-  <div class="form-elements">
-    <label for="type">Type</label>
-    <select id="type">
-      <option value="single_choice">Single Choice</option>
-      <option value="multiple_choice">Multiple Choice</option>
-      <option value="free_answer">Free Answer</option>
-    </select> <br>
+  <button id="bin" (click)="onDeleteQuestion(getQID())">
+    <img src="bin.svg" alt="bin" width="25px">
+  </button>
 
-    <label for="obligatory">Obligatory</label>
-    <input type="checkbox" name="obligatory" id="obligatory" value="obligatory" />
-  </div>
+  <select id="type" [(ngModel)]="questionType" (select)="onSelectedType(questionType)">
+    <option value="single_choice" ngValue="1">Single Choice</option>
+    <option value="multiple_choice" ngValue="2">Multiple Choice</option>
+    <option value="free_answer" ngValue="3">Free Answer</option>
+  </select>
 
-  <img src="bin.svg" id="bin" alt="trash">
+  <label for="obligatory">Obligatory</label>
+  <input type="checkbox" name="obligatory" id="obligatory" value="obligatory" [(ngModel)]="obligatory"/>
 
-  <span class="dot">
-    <h1>+</h1>
-  </span>
 </div>
