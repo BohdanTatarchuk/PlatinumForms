@@ -33,7 +33,7 @@ h3 {
 }
 
 input[type="text"], textarea {
-  color: #000000;
+  color: rgba(0, 0, 0, 0.65);
   width: 325px;
   padding: 10px;
   border-radius: 10px;
@@ -43,6 +43,14 @@ input[type="text"], textarea {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   resize: none;
   scrollbar-width: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background: none;
+  position: absolute;
+  left: 840px;
 }
 
 

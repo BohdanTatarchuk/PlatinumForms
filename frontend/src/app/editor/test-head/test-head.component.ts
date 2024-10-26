@@ -1,5 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
+import {Test} from '../test.model';
+import {TestService} from '../../services/TestService';
+import { Question} from '../question/question.model';
 
 @Component({
   selector: 'app-test-head',
@@ -11,26 +14,31 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './test-head.component.css'
 })
 
-
-
-
 export class TestHeadComponent {
-  @Input() testName: string = "Test's name";
-  @Input() testDescription: string = "Test's description";
+  constructor(private testService: TestService ) {}
 
-  getTestName(): string {
-    return this.testName;
+  test!: Test;
+
+  ngOnInit() {
+    this.test = this.testService.getTest();
+
+    console.log(
+      "Received test in TestHeadComponent with the following data: "
+      + this.test.id + ", "
+      + this.test.name + ", "
+      + this.test.description + ", "
+      + this.test.code
+    );
   }
 
-  setTestName(name: string): void {
-    this.testName = name;
+  emptyQuestion: Question = {
+    name : "Question",
+    id : "3j4h9zfdiuvs",
+    obligatory : true,
+    type : 1
   }
 
-  getTestDescription(): string {
-    return this.testDescription;
-  }
-
-  setTestDescription(description: string): void {
-    this.testDescription = description;
+  onAddQuestion() {
+    this.test.questions.push(this.emptyQuestion);
   }
 }

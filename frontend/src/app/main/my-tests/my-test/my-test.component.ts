@@ -1,5 +1,7 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { Router } from '@angular/router';
+import { TestService } from '../../../services/TestService';
+import { Test } from '../../../editor/test.model';
 
 @Component({
   selector: 'app-my-test',
@@ -11,17 +13,14 @@ import { Router } from '@angular/router';
 
 export class MyTestComponent {
   router = inject(Router);
+  constructor(private testService: TestService) {}
 
-  @Input({ required: true }) test!: {
-    id: string;
-    code: string;
-    name: string;
-  }
-
+  @Input({ required: true }) test!: Test;
   @Output() select = new EventEmitter<string>();
 
   onSelectedTest(): void {
+    this.testService.setTest(this.test);
     this.select.emit(this.test.id);
-    //this.router.navigate(['/editor']);
+    this.router.navigate(['/editor']);
   }
 }
