@@ -1,8 +1,5 @@
-import { Component, inject } from '@angular/core';
+import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { Router } from '@angular/router';
-import { DUMMY_TESTS} from './dummy-data';
-
-const randomIndex = Math.floor(Math.random() * 5);
 
 @Component({
   selector: 'app-my-test',
@@ -15,10 +12,16 @@ const randomIndex = Math.floor(Math.random() * 5);
 export class MyTestComponent {
   router = inject(Router);
 
-  selectedTest = DUMMY_TESTS[randomIndex];
+  @Input({ required: true }) test!: {
+    id: string;
+    code: string;
+    name: string;
+  }
+
+  @Output() select = new EventEmitter<string>();
 
   onSelectedTest(): void {
-    console.log(DUMMY_TESTS[randomIndex].name + ' was selected');
-    this.router.navigate(['/editor']);
+    this.select.emit(this.test.id);
+    //this.router.navigate(['/editor']);
   }
 }

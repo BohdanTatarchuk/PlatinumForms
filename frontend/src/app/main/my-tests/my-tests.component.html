@@ -2,24 +2,35 @@
   <h2>My tests</h2>
   <nav>
     <ul>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
+      <app-my-test
+        [test]="tests[0]"
+        (select)="onSelectTest($event)"
+      />
+      <app-my-test
+        [test]="tests[1]"
+        (select)="onSelectTest($event)"
+      />
+      <app-my-test
+        [test]="tests[2]"
+        (select)="onSelectTest($event)"
+      />
+      <app-my-test
+        [test]="tests[3]"
+        (select)="onSelectTest($event)"
+      />
+      <app-my-test
+        [test]="tests[4]"
+        (select)="onSelectTest($event)"
+      />
+      <app-my-test
+        [test]="tests[5]"
+        (select)="onSelectTest($event)"
+      />
     </ul>
   </nav>
 </div>
 
-<!-- <img class="button" src="button.svg" alt="add new test"> -->
+<button (click)="onSelectNewTest()">
+  <img class="button" src="button.svg" alt="add new test">
+</button>
+

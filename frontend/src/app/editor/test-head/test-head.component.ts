@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 
 @Component({
@@ -15,8 +15,8 @@ import {FormsModule} from '@angular/forms';
 
 
 export class TestHeadComponent {
-  testName: string = '';
-  testDescription: string = '';
+  @Input() testName: string = "Test's name";
+  @Input() testDescription: string = "Test's description";
 
   getTestName(): string {
     return this.testName;
