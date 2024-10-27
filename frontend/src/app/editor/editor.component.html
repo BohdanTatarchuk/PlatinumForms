@@ -1,3 +1,6 @@
 <app-top-header></app-top-header>
 <app-test-head></app-test-head>
-<app-question></app-question>
+@for (question of test.questions; track question.id) {
+  <app-question></app-question>
+}
+

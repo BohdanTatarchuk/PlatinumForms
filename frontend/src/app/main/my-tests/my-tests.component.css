@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 nav ul {
-  height: 600px;
+  height: 537px;
   width: 100%;
   padding: 0;
 }
@@ -38,5 +38,13 @@ nav ul {
 nav ul {
   overflow-y: scroll;
   scrollbar-width: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  position: absolute;
+  top: 600px;
 }
 

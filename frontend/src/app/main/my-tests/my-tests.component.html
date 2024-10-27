@@ -2,25 +2,14 @@
   <h2>My tests</h2>
   <nav>
     <ul>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
-      <app-my-test/>
+      @for (test of tests; track test.id) {
+        <app-my-test [test]="test" (select)="onSelectTest($event)"/>
+      }
     </ul>
   </nav>
-</div>
 
-<img class="button" src="button.svg" alt="add new test">
+  <button (click)="onSelectNewTest()">
+    <img class="button" src="button.svg" alt="add new test">
+  </button>
+</div>
 

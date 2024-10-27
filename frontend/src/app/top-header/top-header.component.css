@@ -20,8 +20,8 @@ html, body {
 }
 
 .square1 {
-  width: 300vh;
-  height: 80px;
+  width: 100vw;
+  height: 10vh;
   position: absolute;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   top: 0;
@@ -32,6 +32,7 @@ html, body {
 }
 
 h1 {
+  font-size: 4vh;
   vertical-align: middle;
   padding-left: 20px;
 }
