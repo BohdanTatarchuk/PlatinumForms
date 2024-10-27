@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 import {TopHeaderComponent} from '../top-header/top-header.component';
+import {FAKE_DATA} from '../registration/registration-window/fake-data';
+import {GlobalService} from '../services/global.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,8 +14,18 @@ import {TopHeaderComponent} from '../top-header/top-header.component';
 })
 export class ProfileComponent {
 
-  imageUrl: string = '';
 
+
+  users = FAKE_DATA;
+  constructor(public globalSercive: GlobalService) {}
+  imageUrl: string = "";
+  username: string | undefined ;
+  email: string = "";
+
+  ngOnInit(){
+    this.email = this.globalSercive.email;
+    this.username = this.users.find(user => user.email ==this.email )?.username
+  }
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
