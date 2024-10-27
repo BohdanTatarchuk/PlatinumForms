@@ -1,12 +1,15 @@
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
+import {GlobalService} from '../../global.service';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-registration-window',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   templateUrl: './registration-window.component.html',
   styleUrl: './registration-window.component.css'
@@ -21,6 +24,12 @@ export class RegistrationWindowComponent {
     password: '',
     repeated_password: ''
   }
+  public correct_email: boolean = false;
+  public correct_password: boolean = false;
+  public correctly_repeated: boolean = false;
+  public email_message: string = "● Nonexistent email";
+  public password_message: string = "";
+  public repeated_password_message: string = "● Passwords do not match";
 
   password_validation() {
     let hasLowerChars = false;
@@ -38,48 +47,58 @@ export class RegistrationWindowComponent {
     }
 
     if (hasLowerChars && hasUpperChars && hasNumbers && hasSpecialChars) {
-      console.log("Password saved");
+      this.correct_password = false;
       return true;
     }
-
+    this.correct_password = true;
     if (!hasLowerChars) {
-      console.log("No lowercase characters");
+      this.password_message = "● No lowercase characters"
     }
     if (!hasUpperChars) {
-      console.log("No uppercase characters");
+      this.password_message = "● No uppercase characters"
     }
     if (!hasNumbers) {
-      console.log("No numbers");
+      this.password_message = "● No numbers"
     }
     if (!hasSpecialChars) {
-      console.log("No special characters");
+      this.password_message = "● No special characters"
     }
-
     return false;
   }
 
   password_repetition() {
     if (this.info.password != this.info.repeated_password) {
-      console.log("Mistake in repeated password");
+      this.correctly_repeated = true;
+      return false;
     }
+    this.correctly_repeated = false
+    return true;
   }
 
   email_validation() {
     let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\.[a-zA-Z0-9._%+-]/;
     if (!emailPattern.test(this.info.email)) {
-      console.log("Wrong email!")
+      this.correct_email = true;
+      return false;
     }
-  }
-
-  onSubmit() {
-    console.log('Email:', this.info.email);
-    console.log('Username:', this.info.username);
-    console.log('Password:', this.info.password);
-    console.log('Repeated password:', this.info.repeated_password);
+    this.correct_email = false;
+    return true;
   }
 
   navigate_to_main() {
     this.router.navigate(['/main']);
   }
 
+  constructor(public globalService: GlobalService) {
+  }
+
+  user_validation() {
+    if (this.email_validation() && this.password_validation() && this.password_repetition()) {
+      this.globalService.is_logged = true;
+    }
+    console.log(this.globalService.is_logged)
+    if (this.globalService.is_logged) {
+      this.navigate_to_main();
+    }
+  }
 }

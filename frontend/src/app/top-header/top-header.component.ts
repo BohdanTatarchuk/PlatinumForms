@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
+import {GlobalService} from '../global.service';
 
 @Component({
   selector: 'app-top-header',
@@ -12,7 +13,12 @@ export class TopHeaderComponent {
 
   router = inject(Router)
 
-  navigate_to_main(){
-    this.router.navigate(['/main'])
+  constructor(public globalService: GlobalService) {
+  }
+
+  navigate_to_main() {
+    if (this.globalService.is_logged) {
+      this.router.navigate(['/main'])
+    }
   }
 }

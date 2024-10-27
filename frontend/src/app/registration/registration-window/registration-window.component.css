@@ -75,3 +75,10 @@ form a {
   font-weight: bold;
 }
 
+#email_invalid,
+#password_invalid,
+#repeated_password_invalid {
+  margin-left: 20px;
+  color: darkred;
+  font-size: small;
+}

@@ -1,5 +1,5 @@
 <div class="square2">
-  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+  <form #loginForm="ngForm">
     <p id="login_text">Login</p>
     <label for="email">Email</label>
     <input type="text" id="email" name="email" [(ngModel)]="user.email" required>
@@ -10,5 +10,4 @@
     <input type="submit" value="login via google">
     <p id="sing_up_text" (click)="navigateToRegistration()">Do not have an account yet?<a>Sign up</a></p>
   </form>
-
 </div>

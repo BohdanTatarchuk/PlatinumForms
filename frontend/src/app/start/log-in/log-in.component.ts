@@ -1,6 +1,7 @@
 import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router, RouterOutlet} from '@angular/router';
+import {GlobalService} from '../../global.service';
 
 @Component({
   selector: 'app-log-in',
@@ -16,20 +17,16 @@ export class LogInComponent {
 
   router = inject(Router)
 
+  constructor(public globalService: GlobalService) {}
+
   user = {
     email: '',
     password: ''
   }
 
-  onSubmit() {
-    console.log('Email:', this.user.email);
-    console.log('Password:', this.user.password);
-  }
-
-  protected readonly navigator = navigator;
-
   navigateToMain() {
     this.router.navigate(['/main']);
+    this.globalService.is_logged = true;
   }
 
   navigateToRegistration() {
