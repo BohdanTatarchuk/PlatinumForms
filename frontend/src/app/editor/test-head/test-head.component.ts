@@ -32,10 +32,11 @@ export class TestHeadComponent {
   }
 
   emptyQuestion: Question = {
-    name : "Question",
-    id : "3j4h9zfdiuvs",
-    obligatory : true,
-    type : 1
+    name: '',
+    id: '',
+    obligatory: false,
+    type: 0,
+    options: []
   }
 
   onAddQuestion() {

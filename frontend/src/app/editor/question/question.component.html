@@ -1,17 +1,39 @@
 <div class="rectangle">
-  <input type="text" id="question-name" name="question-name" placeholder="Question" required>
+  <input type="text" id="question-name" name="question-name" placeholder="{{ question.name }}" required>
 
   <button id="bin">
     <img src="bin.svg" alt="bin" width="25px">
   </button>
 
-  <select id="type">
-    <option value="single_choice" ngValue="1">Single Choice</option>
-    <option value="multiple_choice" ngValue="2">Multiple Choice</option>
-    <option value="free_answer" ngValue="3">Free Answer</option>
+  <select id="type" [selectedIndex]="question.type">
+    <option value="single_choice" ngValue="0">Single Choice</option>
+    <option value="multiple_choice" ngValue="1">Multiple Choice</option>
+    <option value="free_answer" ngValue="2">Free Answer</option>
   </select>
 
   <label for="obligatory">Obligatory</label>
-  <input type="checkbox" name="obligatory" id="obligatory" value="obligatory"/>
+  <input type="checkbox" name="obligatory" id="obligatory" value="obligatory" [checked]="question.obligatory"/><br>
+
+  @if (question.type == 0) {
+    @for (option of question.options; track option.name) {
+      <input type="radio"  name="radio-button" id="radio-button">
+      <input type="text" class="radio-button"  placeholder="{{ option.name }}">
+      <br>
+    }
+    <input type="submit" value="Add option" (click)="onAddNewOption()"><br>
+  }
+  @else if (question.type == 1) {
+    @for (option of question.options; track option.name) {
+      <input type="checkbox" name="radiobutton" id="checkbox">
+      <input type="text" class="checkbox-text" placeholder="{{ option.name }}">
+      <br>
+    }
+    <input type="submit" value="Add option" (click)="onAddNewOption()"><br>
+  }
+  @else if (question.type == 2) {
+    <input type="text" placeholder="{{ question.options[0].name }}">
+    <br>
+    <input type="submit" id="start" value="Add answer" (click)="onAddNewAnswer()"><br>
+  }
 
 </div>

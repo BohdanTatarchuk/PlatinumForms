@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {MyTestComponent} from './my-test/my-test.component';
-import { DUMMY_TESTS} from './my-test/dummy-data';
+import { DUMMY_TESTS } from './my-test/dummy-data';
 import {Router} from '@angular/router';
 
 @Component({

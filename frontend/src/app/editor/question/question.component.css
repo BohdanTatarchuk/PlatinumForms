@@ -10,7 +10,6 @@
 
 .rectangle {
   width: 800px;
-  height: 120px;
   background-color: #FFE100;
   margin-left: auto;
   margin-right: auto;
@@ -59,3 +58,23 @@ select {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
+
+input[type="submit"] {
+  background-color: #ffffff;
+  color: #FFE100;
+  border: none;
+  width: 150px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"]:hover {
+  background-color: #593391;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+
+

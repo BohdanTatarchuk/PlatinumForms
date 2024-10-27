@@ -9,13 +9,41 @@ export const DUMMY_TESTS = [
         name: 'What is 2 + 2?',
         id: 'q1a2b3c4',
         obligatory: true,
-        type: 1
+        type: 0,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Calculate the value of 12 * 12.',
         id: 'q5d6e7f8',
         obligatory: false,
-        type: 1
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   },
@@ -29,13 +57,41 @@ export const DUMMY_TESTS = [
         name: 'What is the chemical symbol for water?',
         id: 'q2w3e4r5',
         obligatory: true,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Explain the process of photosynthesis.',
         id: 'q8y7t6r5',
         obligatory: false,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   },
@@ -49,13 +105,41 @@ export const DUMMY_TESTS = [
         name: 'Who was the first president of the United States?',
         id: 'a12b34c56',
         obligatory: true,
-        type: 1
+        type: 1,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Describe the causes of the Civil War.',
         id: 'd78e90f12',
         obligatory: true,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   },
@@ -69,13 +153,41 @@ export const DUMMY_TESTS = [
         name: 'What is the capital of France?',
         id: 'q98a76s54',
         obligatory: false,
-        type: 1
+        type: 1,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Name the largest desert in the world.',
         id: 'a45d67j89',
         obligatory: true,
-        type: 1
+        type: 1,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   },
@@ -89,13 +201,41 @@ export const DUMMY_TESTS = [
         name: 'What is Newton’s second law of motion?',
         id: 'r21f32d45',
         obligatory: true,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Define velocity and acceleration.',
         id: 't45y67u89',
         obligatory: false,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   },
@@ -109,13 +249,41 @@ export const DUMMY_TESTS = [
         name: 'What is the atomic number of hydrogen?',
         id: 'x12c34z45',
         obligatory: true,
-        type: 1
+        type: 1,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Explain the process of combustion.',
         id: 'z76b89n90',
         obligatory: false,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   },
@@ -129,13 +297,41 @@ export const DUMMY_TESTS = [
         name: 'What is the Big O notation for binary search?',
         id: 'f23s45d78',
         obligatory: true,
-        type: 1
+        type: 1,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Explain the concept of recursion.',
         id: 'g34h56j78',
         obligatory: true,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   },
@@ -149,13 +345,41 @@ export const DUMMY_TESTS = [
         name: 'Who is considered the father of modern philosophy?',
         id: 'b12n45m67',
         obligatory: true,
-        type: 1
+        type: 1,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Describe Plato’s Allegory of the Cave.',
         id: 't67j89u01',
         obligatory: false,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   },
@@ -169,13 +393,41 @@ export const DUMMY_TESTS = [
         name: 'Who painted the Mona Lisa?',
         id: 'h23k45l78',
         obligatory: true,
-        type: 1
+        type: 1,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Explain the characteristics of the Baroque art style.',
         id: 'm45b67n90',
         obligatory: true,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   },
@@ -189,13 +441,41 @@ export const DUMMY_TESTS = [
         name: 'What are the notes in a C major scale?',
         id: 'j34m56n78',
         obligatory: false,
-        type: 1
+        type: 1,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       },
       {
         name: 'Describe the difference between melody and harmony.',
         id: 'p12q34r56',
         obligatory: true,
-        type: 2
+        type: 2,
+        options: [
+          {
+            name: '2',
+            correct: false
+          },
+          {
+            name: '4',
+            correct: true
+          },
+          {
+            name: '5',
+            correct: false
+          }
+        ]
       }
     ]
   }
