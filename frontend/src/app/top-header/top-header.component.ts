@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
-import {GlobalService} from '../global.service';
+import {GlobalService} from '../services/global.service';
 
 @Component({
   selector: 'app-top-header',

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Test} from '../test.model';
-import {TestService} from '../../services/TestService';
+import {TestService} from '../../services/test.service';
 import { Question} from '../question/question.model';
 
 @Component({

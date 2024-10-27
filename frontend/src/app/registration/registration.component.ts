@@ -12,6 +12,7 @@ import {RegistrationWindowComponent} from './registration-window/registration-wi
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css'
 })
+
 export class RegistrationComponent {
 
 }

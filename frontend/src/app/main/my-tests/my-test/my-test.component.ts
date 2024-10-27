@@ -1,6 +1,6 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { Router } from '@angular/router';
-import { TestService } from '../../../services/TestService';
+import { TestService } from '../../../services/test.service';
 import { Test } from '../../../editor/test.model';
 
 @Component({
