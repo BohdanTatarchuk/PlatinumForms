@@ -2,6 +2,8 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router, RouterOutlet} from '@angular/router';
 import {GlobalService} from '../../services/global.service';
+import {User} from '../../registration/registration-window/user.model';
+import {FAKE_DATA} from '../../registration/registration-window/fake-data';
 
 @Component({
   selector: 'app-log-in',
@@ -17,16 +19,23 @@ export class LogInComponent {
 
   router = inject(Router)
 
-  constructor(public globalService: GlobalService) {}
+  constructor(public globalService: GlobalService) {
+  }
 
-  user = {
+  data = {
     email: '',
     password: ''
   }
 
-  navigateToMain() {
-    this.router.navigate(['/main']);
-    this.globalService.is_logged = true;
+  users = FAKE_DATA;
+
+  data_check() {
+    const info = this.users.find(user => user.email == this.data.email)
+    if (info?.email == this.data.email && info?.password == this.data.password) {
+      this.globalService.is_logged = true;
+      this.globalService.email = this.data.email;
+      this.router.navigate(['/main']);
+    }else console.log("AAAAAAAAAA")
   }
 
   navigateToRegistration() {

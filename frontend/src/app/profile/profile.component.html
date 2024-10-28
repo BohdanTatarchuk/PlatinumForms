@@ -3,7 +3,7 @@
   <div class="dot" [style.backgroundImage]="'url(' + imageUrl + ')'">
     <input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)"/>
   </div>
-  <h1 id="username">George Washington</h1>
-  <h1 id="email">alex.golovachko.gmail.com</h1>
+  <h1 id="username">{{username}}</h1>
+  <h1 id="email">{{email}}</h1>
 </div>
 
