@@ -14,7 +14,7 @@ import {Router} from '@angular/router';
 })
 
 export class MyTestsComponent {
-  tests = DUMMY_TESTS;
+  tests = DUMMY_TESTS.at(1)!.tests;
 
   router = inject(Router);
 

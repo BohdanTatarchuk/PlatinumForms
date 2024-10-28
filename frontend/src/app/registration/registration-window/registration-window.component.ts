@@ -24,6 +24,7 @@ export class RegistrationWindowComponent {
     password: '',
     repeated_password: ''
   }
+
   public correct_email: boolean = false;
   public correct_password: boolean = false;
   public correctly_repeated: boolean = false;

@@ -1,8 +1,10 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {Test} from '../test.model';
-import {TestService} from '../../services/test.service';
+import {UserService} from '../../services/user.service';
 import { Question} from '../question/question.model';
+import {User} from '../../registration/registration-window/user.model';
+import {TestService} from '../../services/test.service';
+import {Test} from '../test.model';
 
 @Component({
   selector: 'app-test-head',
@@ -23,11 +25,10 @@ export class TestHeadComponent {
     this.test = this.testService.getTest();
 
     console.log(
-      "Received test in TestHeadComponent with the following data: "
+      "Received tests in TestHeadComponent with the following data: "
       + this.test.id + ", "
       + this.test.name + ", "
-      + this.test.description + ", "
-      + this.test.code
+      + this.test.questions
     );
   }
 
@@ -39,7 +40,7 @@ export class TestHeadComponent {
     options: []
   }
 
-  onAddQuestion() {
+  onAddQuestion(): void {
     this.test.questions.push(this.emptyQuestion);
   }
 }

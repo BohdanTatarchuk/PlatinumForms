@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 import {TestHeadComponent} from './test-head/test-head.component';
 import {TopHeaderComponent} from '../top-header/top-header.component';
 import {QuestionComponent} from "./question/question.component";
-import {TestService} from '../services/test.service';
+import {UserService} from '../services/user.service';
 import {Test} from './test.model';
+import {TestService} from '../services/test.service';
 
 @Component({
   selector: 'app-editor',
