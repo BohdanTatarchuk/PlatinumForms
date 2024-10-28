@@ -247,7 +247,7 @@ export const DUMMY_TESTS = [
     ]
   },
   {
-    email: "rre@aaa.com",
+    email: "zgzgc@gmail.com",
     username: "aaaaaAAAAA",
     password: "rrRR11!!",
     tests: [

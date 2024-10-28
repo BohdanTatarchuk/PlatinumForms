@@ -2,7 +2,7 @@
   <h2>My tests</h2>
   <nav>
     <ul>
-      @for (test of user_tests; track test.id) {
+      @for (test of tests; track test.id) {
         <app-my-test [test]="test" (select)="onSelectTest($event)"/>
       }
     </ul>

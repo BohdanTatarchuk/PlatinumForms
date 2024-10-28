@@ -2,8 +2,7 @@ import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router, RouterOutlet} from '@angular/router';
 import {GlobalService} from '../../services/global.service';
-import {User} from '../../registration/registration-window/user.model';
-import {FAKE_DATA} from '../../registration/registration-window/fake-data';
+import { DUMMY_TESTS } from '../../main/my-tests/my-test/dummy-data';
 
 @Component({
   selector: 'app-log-in',
@@ -27,7 +26,7 @@ export class LogInComponent {
     password: ''
   }
 
-  users = FAKE_DATA;
+  users = DUMMY_TESTS;
 
   data_check() {
     const info = this.users.find(user => user.email == this.data.email)
