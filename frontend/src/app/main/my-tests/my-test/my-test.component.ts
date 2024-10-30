@@ -1,6 +1,5 @@
 import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../../services/user.service';
 import { TestService } from '../../../services/test.service';
 import { Test } from '../../../editor/test.model';
 
@@ -15,7 +14,7 @@ import { Test } from '../../../editor/test.model';
 export class MyTestComponent {
   router = inject(Router);
 
-  constructor(private userService: UserService, private testService: TestService) {}
+  constructor(private testService: TestService) {}
 
   @Input({ required: true }) test!: Test;
   @Output() select = new EventEmitter<string>();

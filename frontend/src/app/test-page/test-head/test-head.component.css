@@ -1,0 +1,30 @@
+@font-face {
+  font-family: montserratFont;
+  src: url(../../fonts/Montserrat-Bold.ttf);
+  font-weight: bold;
+}
+
+* {
+  font-family: montserratFont;
+}
+
+.rectangle {
+  width: 800px;
+  height: 135px;
+  background-color: #FFE100;
+  margin-left:auto;
+  margin-right:auto;
+  top: 15vh;
+  position: relative;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 16px;
+}
+

@@ -63,6 +63,8 @@ export class LogInComponent {
     if (info?.email == this.data.email && info?.password == this.data.password) {
       this.globalService.is_logged = true;
       this.globalService.email = this.data.email;
+      this.globalService.username = info.username;
+      this.globalService.tests = info.tests;
       this.router.navigate(['/main']);
     } else console.log("AAAAAAAAAA")
   }

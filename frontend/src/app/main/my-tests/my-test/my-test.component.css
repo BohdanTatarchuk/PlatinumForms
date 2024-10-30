@@ -22,14 +22,6 @@
   color: #FFE100;
 }
 
-.name {
-  padding-left: 15px;
-}
-
-.code {
-  padding-left: 20px;
-}
-
 button {
   display: flex;
   horiz-align: left;
@@ -39,6 +31,7 @@ button {
   border-radius: 10px;
   width: 100%;
   height: 100%;
+  justify-content: space-between;
 }
 
 button:hover {

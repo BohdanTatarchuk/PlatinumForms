@@ -7,7 +7,7 @@ import {ProfileComponent} from './profile/profile.component';
 import {TestPageComponent} from './test-page/test-page.component';
 
 export const routes: Routes = [
-  {path: '', component: StartComponent, title: 'Login Page'},
+  {path: '', component: StartComponent, title: 'Platinum Forms'},
   {path: 'main', component: MainComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'editor', component: EditorComponent},
