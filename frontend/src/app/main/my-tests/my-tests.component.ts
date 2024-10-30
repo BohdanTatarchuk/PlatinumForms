@@ -18,14 +18,12 @@ import {GlobalService} from '../../services/global.service';
 export class MyTestsComponent {
   constructor(public globalService: GlobalService) {}
 
-  data = DUMMY_TESTS;
   tests: any;
 
   router = inject(Router);
 
   ngOnInit() {
-    const user = this.data.find(user => user.email === this.globalService.email)
-    this.tests = user!.tests;
+    this.tests = this.globalService.tests;
     console.log("User with following test received on main: " + this.tests);
   }
 

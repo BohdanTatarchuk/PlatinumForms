@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {Router} from '@angular/router';
+import {GlobalService} from '../../services/global.service';
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,16 @@ import {Router} from '@angular/router';
 })
 export class ProfileComponent {
 
+
+  constructor(public globalSercive: GlobalService) {}
+
+  imageUrl: string = "";
+
   router = inject(Router)
+
+  ngOnInit(){
+    this.imageUrl = this.globalSercive.photo;
+  }
 
   navigate_to_profile(){
     this.router.navigate(['/profile'])

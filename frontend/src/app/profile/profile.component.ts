@@ -1,7 +1,8 @@
-import {Component} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {TopHeaderComponent} from '../top-header/top-header.component';
 import {GlobalService} from '../services/global.service';
 import {DUMMY_TESTS} from '../main/my-tests/my-test/dummy-data';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -14,6 +15,8 @@ import {DUMMY_TESTS} from '../main/my-tests/my-test/dummy-data';
 })
 export class ProfileComponent {
   constructor(public globalSercive: GlobalService) {}
+
+  router = inject(Router)
 
   imageUrl: string = "";
   username: string | undefined ;
@@ -37,5 +40,13 @@ export class ProfileComponent {
       };
       reader.readAsDataURL(file);
     }
+  }
+
+  logout() {
+    this.globalSercive.email = "";
+    this.globalSercive.photo = "";
+    this.globalSercive.username = "";
+    this.globalSercive.is_logged = false;
+    this.router.navigate(['/']);
   }
 }
