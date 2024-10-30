@@ -1,8 +1,5 @@
 import {Component} from '@angular/core';
 import {FormsModule} from '@angular/forms';
-import {UserService} from '../../services/user.service';
-import { Question} from '../question/question.model';
-import {User} from '../../registration/registration-window/user.model';
 import {TestService} from '../../services/test.service';
 import {Test} from '../test.model';
 
@@ -17,7 +14,7 @@ import {Test} from '../test.model';
 })
 
 export class TestHeadComponent {
-  constructor(private testService: TestService ) {}
+  constructor(private testService: TestService) {}
 
   test!: Test;
 
@@ -30,17 +27,28 @@ export class TestHeadComponent {
       + this.test.name + ", "
       + this.test.questions
     );
-  }
 
-  emptyQuestion: Question = {
-    name: '',
-    id: '',
-    obligatory: false,
-    type: 0,
-    options: []
+    console.log("On Init: \n");
+    for (let i = 0; i < this.test.questions.length; i++) {
+      console.log(this.test.questions[i].id + ", ");
+    }
   }
 
   onAddQuestion(): void {
-    this.test.questions.push(this.emptyQuestion);
+    const newQuestion = {
+      name: '',
+      id: '',
+      obligatory: false,
+      type: 0,
+      options: []
+    }
+
+    newQuestion.id = this.testService.generateQID();
+    this.test.questions.push(newQuestion);
+
+    console.log("On added: \n");
+    for (let i = 0; i < this.test.questions.length; i++) {
+      console.log(this.test.questions[i].id + ", ");
+    }
   }
 }

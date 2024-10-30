@@ -1,7 +1,7 @@
 <div class="rectangle">
   <input type="text" id="question-name" name="question-name" placeholder="{{ question.name }}" required>
 
-  <button id="bin">
+  <button (click)="onDeleteQuestion(question.id)" id="bin">
     <img src="bin.svg" alt="bin" width="25px">
   </button>
 

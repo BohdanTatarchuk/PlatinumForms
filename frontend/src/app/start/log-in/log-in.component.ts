@@ -43,13 +43,16 @@ export class LogInComponent {
     const auth2 = gapi.auth2.getAuthInstance();
     const googleUser = await auth2.signIn();
     const profile = googleUser.getBasicProfile();
+
     this.globalService.is_logged = true;
     this.globalService.email = profile.getEmail();
     this.globalService.username = profile.getName();
     this.globalService.photo = profile.getImageUrl();
+
     console.log(profile.getEmail());
     console.log(profile.getName());
     console.log(profile.getImageUrl());
+
     this.router.navigate(['/main']);
   }
 
