@@ -7,7 +7,7 @@
     <input type="text" id="password" name="password" [(ngModel)]="data.password" required>
     <input type="submit" id="login_button" value="Login" (click)="data_check()" [disabled]="!loginForm.valid"><br>
     <label id="or">Or</label>
-    <input type="submit" value="login via google">
+    <input type="submit" (click)="handleGoogleSignIn()" value="login via google">
     <p id="sing_up_text" (click)="navigateToRegistration()">Do not have an account yet?<a>Sign up</a></p>
   </form>
 </div>

@@ -15,14 +15,14 @@ import {DUMMY_TESTS} from '../main/my-tests/my-test/dummy-data';
 export class ProfileComponent {
   constructor(public globalSercive: GlobalService) {}
 
-  users = DUMMY_TESTS;
   imageUrl: string = "";
   username: string | undefined ;
   email: string = "";
 
   ngOnInit(){
     this.email = this.globalSercive.email;
-    this.username = this.users.find(user => user.email ==this.email)?.username
+    this.username = this.globalSercive.username;
+    this.imageUrl = this.globalSercive.photo;
   }
 
   onFileSelected(event: Event): void {
@@ -31,7 +31,9 @@ export class ProfileComponent {
       const file = input.files[0];
       const reader = new FileReader();
       reader.onload = (e: any) => {
+        this.imageUrl = this.globalSercive.photo;
         this.imageUrl = e.target.result;
+        this.globalSercive.photo = this.imageUrl;
       };
       reader.readAsDataURL(file);
     }
