@@ -1,39 +1,54 @@
 <div class="rectangle">
-  <input type="text" id="question-name" name="question-name" placeholder="{{ question.name }}" required>
+  <input type="text" id="question-name" name="question-name" placeholder="{{ question.name }}" [(ngModel)]="question.name" required>
 
   <button (click)="onDeleteQuestion(question.id)" id="bin">
     <img src="bin.svg" alt="bin" width="25px">
   </button>
 
-  <select id="type" [selectedIndex]="question.type">
-    <option value="single_choice" ngValue="0">Single Choice</option>
-    <option value="multiple_choice" ngValue="1">Multiple Choice</option>
-    <option value="free_answer" ngValue="2">Free Answer</option>
+  <select id="type" [(ngModel)]="question.type" (change)="onSelectedType()">
+    <option [ngValue]="0">Single Choice</option>
+    <option [ngValue]="1">Multiple Choice</option>
+    <option [ngValue]="2">Free Answer</option>
   </select>
 
   <label for="obligatory">Obligatory</label>
-  <input type="checkbox" name="obligatory" id="obligatory" value="obligatory" [checked]="question.obligatory"/><br>
+  <input type="checkbox" name="obligatory" id="obligatory" value="obligatory"
+         [checked]="question.obligatory" [(ngModel)]="question.obligatory"/><br>
 
   @if (question.type == 0) {
-    @for (option of question.options; track option.name) {
-      <input type="radio"  name="radio-button" id="radio-button">
-      <input type="text" class="radio-button"  placeholder="{{ option.name }}">
+    @for (option of question.options; track option.id) {
+      <input type="radio"  name="radio-button" [(ngModel)]="option.correct" [value]="option.id" id="radio-button" >
+      <input type="text" class="radio-button" [(ngModel)]="option.name" placeholder="{{ option.name }}">
+      <button (click)="onDeleteOption(option.id)" class="small_bin">
+        <img src="bin.svg" alt="bin" width="25px">
+      </button>
       <br>
     }
     <input type="submit" value="Add option" (click)="onAddNewOption()"><br>
   }
   @else if (question.type == 1) {
-    @for (option of question.options; track option.name) {
-      <input type="checkbox" name="radiobutton" id="checkbox">
-      <input type="text" class="checkbox-text" placeholder="{{ option.name }}">
+    @for (option of question.options; track option.id) {
+      <input type="checkbox" name="checkbox" [(ngModel)]="option.correct" [value]="option.id" id="checkbox">
+      <input type="text" class="checkbox-text" [(ngModel)]="option.name" placeholder="{{ option.name }}">
+      <button (click)="onDeleteOption(option.id)" class="small_bin">
+        <img src="bin.svg" alt="bin" width="25px">
+      </button>
       <br>
     }
     <input type="submit" value="Add option" (click)="onAddNewOption()"><br>
   }
   @else if (question.type == 2) {
-    <input type="text" placeholder="{{ question.options[0].name }}">
+    <input type="text" placeholder="{{ errorHint }}" [(ngModel)]="enteredOption" required>
+    <input type="submit" id="start" value="Add answer" (click)="onAddNewAnswer()">
+    @for (option of question.options; track option.id) {
+      <div class="frame">
+        {{ option.name }}
+        <button id="free-answer-bin" (click)="onDeleteOption(option.id)" class="small_bin">
+          <img src="bin.svg" alt="bin" width="20px" height="20px">
+        </button>
+      </div>
+    }
     <br>
-    <input type="submit" id="start" value="Add answer" (click)="onAddNewAnswer()"><br>
   }
 
 </div>

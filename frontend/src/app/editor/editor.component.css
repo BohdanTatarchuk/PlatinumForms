@@ -7,3 +7,32 @@
 * {
   font-family: montserratFont;
 }
+
+input[type="submit"] {
+  background-color: #FFE100;
+  color: #FFFFFF;
+  border: none;
+  width: 150px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  left: 50vh;
+}
+
+input[type="submit"]:hover {
+  background-color: #593391;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#buttons-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+input[type=submit] {
+  margin: 180px 10px 10px;
+}

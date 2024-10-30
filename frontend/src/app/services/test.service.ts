@@ -7,6 +7,7 @@ import { Test } from '../editor/test.model';
 
 export class TestService {
   private test!: Test;
+  private id!: string;
 
   setTest(test: Test) {
     this.test = test;
@@ -14,6 +15,14 @@ export class TestService {
 
   getTest() {
     return this.test;
+  }
+
+  setTestId(id: string) {
+    this.id = id;
+  }
+
+  getTestId(){
+    return this.id;
   }
 
   generateQID(): string {

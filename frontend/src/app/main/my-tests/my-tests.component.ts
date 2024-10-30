@@ -4,6 +4,7 @@ import { DUMMY_TESTS } from './my-test/dummy-data';
 import {Router} from '@angular/router';
 import {Test} from '../../editor/test.model';
 import {GlobalService} from '../../services/global.service';
+import {TestService} from '../../services/test.service';
 
 @Component({
   selector: 'app-my-tests',
@@ -16,17 +17,23 @@ import {GlobalService} from '../../services/global.service';
 })
 
 export class MyTestsComponent {
-  constructor(public globalService: GlobalService) {}
+  constructor(public globalService: GlobalService, public testService: TestService) {}
 
   data = DUMMY_TESTS;
   tests: any;
+
+  receivedTestId!: string;
 
   router = inject(Router);
 
   ngOnInit() {
     const user = this.data.find(user => user.email === this.globalService.email)
     this.tests = user!.tests;
-    console.log("User with following test received on main: " + this.tests);
+
+    this.receivedTestId = this.testService.getTestId();
+    if (!this.receivedTestId == null) {
+      user?.tests.filter(test => test.id !== this.receivedTestId);
+    }
   }
 
   onSelectTest(id: string): void {

@@ -20,6 +20,7 @@ export class JoinTestComponent {
   code: string = '';
 
   navigateToTest(): void {
+
     this.router.navigate(['/test-page']);
   }
 

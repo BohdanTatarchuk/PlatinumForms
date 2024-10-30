@@ -17,7 +17,6 @@ export class MyTestComponent {
 
   constructor(private userService: UserService, private testService: TestService) {}
 
-
   @Input({ required: true }) test!: Test;
   @Output() select = new EventEmitter<string>();
 

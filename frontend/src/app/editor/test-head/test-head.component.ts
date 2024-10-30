@@ -24,14 +24,8 @@ export class TestHeadComponent {
     console.log(
       "Received tests in TestHeadComponent with the following data: "
       + this.test.id + ", "
-      + this.test.name + ", "
-      + this.test.questions
+      + this.test.name
     );
-
-    console.log("On Init: \n");
-    for (let i = 0; i < this.test.questions.length; i++) {
-      console.log(this.test.questions[i].id + ", ");
-    }
   }
 
   onAddQuestion(): void {

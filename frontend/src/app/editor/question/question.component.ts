@@ -22,6 +22,9 @@ export class QuestionComponent {
 
   test!: Test;
 
+  enteredOption!: string;
+  errorHint: string = "Type your option here...";
+
   ngOnInit() {
     this.test = this.testService.getTest();
   }
@@ -32,8 +35,12 @@ export class QuestionComponent {
     this.test.questions = this.test.questions.filter(item => item.id !== id);
   }
 
-  onSelectedType(choice: number) {
-
+  onSelectedType() {
+    const currentQuestion = this.test.questions.find(item => item.id === this.question.id);
+    if (currentQuestion) {
+      currentQuestion.options = [];
+      this.onAddNewAnswer();
+    }
   }
 
   onAddNewOption() {
@@ -44,16 +51,48 @@ export class QuestionComponent {
     }
 
     newOption.id = this.testService.generateQID();
+
+    console.log("-------------------------------\n");
+    console.log("New option with id: " + newOption.id + "\n");
+
     this.test.questions.find(item => item.id == this.question.id)?.options.push(newOption);
   }
 
   onDeleteOption(id: string): void {
-    //this.test.questions.find(item => item.id == this.question.id)?.options
-    //  = this.test.questions.find(item => item.id == this.question.id)?.options.filter(item => item.id !== id);
+    const question = this.test.questions.find(item => item.id === this.question.id);
+
+    if (question) {
+      question.options = question.options.filter(option => option.id !== id);
+    }
   }
 
   onAddNewAnswer() {
+    const newOption = {
+      name: '',
+      id: '',
+      correct: false
+    }
 
+    if (this.enteredOption == undefined
+      || this.enteredOption.trim().length === 0) {
+      this.errorHint = "This field can not be empty!"
+    } else if (this.enteredOption.trim().length >= 80) {
+      this.errorHint = "This option is to long!"
+    } else {
+      newOption.name = this.enteredOption;
+      newOption.id = this.testService.generateQID();
+      this.test.questions.find(item => item.id == this.question.id)?.options.push(newOption);
+
+      console.log("-------------------------------\n");
+      console.log("New option with id: " + newOption.id + "\n");
+    }
   }
+
+  /*checkStats() {
+    console.log("---------------------------------------\n");
+    console.log("Question id: " + this.question.id + "\n");
+    console.log("Question name: " + this.question.name + "\n");
+    console.log("Question obligatory: " + this.question.obligatory + "\n");
+  }*/
 }
 

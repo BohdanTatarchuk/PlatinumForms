@@ -4,6 +4,7 @@
       name="test-name"
       maxlength="255"
       placeholder="{{ test.name }}"
+      [(ngModel)]="test.name"
     >
 
     <textarea
@@ -11,6 +12,7 @@
       cols="50"
       maxlength="255"
       placeholder="{{ test.description }}"
+      [(ngModel)]="test.description"
     ></textarea>
 
   <button (click)="onAddQuestion()">
