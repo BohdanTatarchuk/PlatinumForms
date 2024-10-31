@@ -1,5 +1,9 @@
 <app-top-header></app-top-header>
 <app-test-head></app-test-head>
-@for (question of test.questions;track question.id){
-  <label>1</label>
+@for (question of test.questions; track question.id) {
+  <app-test-question [question]="question"></app-test-question>
 }
+<br>
+<div id="button-container">
+  <button id="save_results" (click)="onSave()">Save results</button>
+</div>

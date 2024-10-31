@@ -1,0 +1,87 @@
+@font-face {
+  font-family: montserratFont;
+  src: url(../../fonts/Montserrat-Bold.ttf);
+  font-weight: bold;
+}
+
+* {
+  font-family: montserratFont;
+}
+
+#question {
+  width: 800px;
+  background-color: #FFE100;
+  margin-left: auto;
+  margin-right: auto;
+  top: 15vh;
+  margin-top: 15px;
+  position: relative;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="text"] {
+  width: 325px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: none;
+  resize: none;
+  scrollbar-width: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+label {
+  color: rgb(255, 255, 255);
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+select {
+  border: none;
+  color: rgba(0, 0, 0, 0.65);
+  padding: 9px;
+  margin-right: 70px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+input[type="checkbox"]{
+  margin-bottom: 7px;
+  margin-right: 10px;
+}
+input[type="radio"]{
+  margin-bottom: 7px;
+  margin-right: 10px;
+}
+#button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+button {
+  background-color: #FFE100;
+  color: #ffffff;
+  border: none;
+  width: 150px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s;
+  margin: 300px 10px 10px;
+}
+
+button:hover {
+  background-color: #593391;
+  color: #ffffff;
+  cursor: pointer;
+}
+
