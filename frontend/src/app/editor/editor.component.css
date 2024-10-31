@@ -9,8 +9,8 @@
 }
 
 input[type="submit"] {
-  background-color: #FFE100;
-  color: #FFFFFF;
+  background-color: #ffffff;
+  color: #FFE100;
   border: none;
   width: 150px;
   height: 30px;
@@ -27,12 +27,13 @@ input[type="submit"]:hover {
 }
 
 #buttons-pair {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  position: absolute;
+  top: 28vh;
+  left: 52vw;
+
 }
 
 input[type=submit] {
-  margin: 180px 10px 10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }

@@ -18,7 +18,6 @@ import {Test} from '../../editor/test.model';
 })
 
 export class JoinTestComponent {
-
   constructor(private testService: TestService ) {}
 
   router = inject(Router)
@@ -31,7 +30,7 @@ export class JoinTestComponent {
     const info = this.users.find(user => user.tests.find(test => test.id == this.code));
     const actual_info = info?.tests.find(test => test.id == this.code);
     console.log(actual_info);
-    if(actual_info){
+    if(actual_info) {
       this.testService.setTest(actual_info);
       this.router.navigate(['/test-page']);
     }

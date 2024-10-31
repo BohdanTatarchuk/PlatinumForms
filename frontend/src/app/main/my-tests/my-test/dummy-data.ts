@@ -7,7 +7,6 @@ export const DUMMY_TESTS = [
       {
         id: 'a1b2c3d4e5f6g7h8i9j0',
         name: 'Mathematics 2B',
-        code: 'mth2b345',
         description: 'basic math test',
         questions: [
           {
@@ -61,7 +60,6 @@ export const DUMMY_TESTS = [
       {
         id: '1234567890abcdef',
         name: 'Computer Science 4A',
-        code: 'cs4a678',
         description: 'introductory programming test',
         questions: [
           {
@@ -115,7 +113,6 @@ export const DUMMY_TESTS = [
       {
         id: 'abcdef1234567890',
         name: 'Philosophy 1B',
-        code: 'phi1b345',
         description: 'basic philosophy concepts',
         questions: [
           {
@@ -169,7 +166,6 @@ export const DUMMY_TESTS = [
       {
         id: '56781234abcd5678',
         name: 'Art 2D',
-        code: 'art2d901',
         description: 'art history and appreciation',
         questions: [
           {
@@ -223,7 +219,6 @@ export const DUMMY_TESTS = [
       {
         id: '91011121314151617',
         name: 'Music 3C',
-        code: 'mus3c456',
         description: 'introduction to music theory',
         questions: [
           {
@@ -284,7 +279,6 @@ export const DUMMY_TESTS = [
       {
         id: '56789abcdef01234',
         name: 'History 1A',
-        code: 'hst1a789',
         description: 'introduction to history',
         questions: [
           {
@@ -338,7 +332,6 @@ export const DUMMY_TESTS = [
       {
         id: '1122334455667788',
         name: 'Geography 4B',
-        code: 'geo4b234',
         description: 'world geography quiz',
         questions: [
           {
@@ -392,7 +385,6 @@ export const DUMMY_TESTS = [
       {
         id: '9988776655443322',
         name: 'Physics 3A',
-        code: 'phy3a001',
         description: 'introduction to physics',
         questions: [
           {
@@ -446,7 +438,6 @@ export const DUMMY_TESTS = [
       {
         id: '8765432109876543',
         name: 'Chemistry 2C',
-        code: 'chem2c345',
         description: 'basic chemistry test',
         questions: [
           {

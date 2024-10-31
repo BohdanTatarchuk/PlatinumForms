@@ -3,10 +3,10 @@
 @for (question of test.questions; track question.id) {
   <app-question [question]="question"></app-question>
 }
-<br>
 
 <div id="buttons-pair">
   <input type="submit" value="Save test" (click)="onSaveTest()">
   <input type="submit" value="Delete test" (click)="onDeleteTest()">
 </div>
+
 

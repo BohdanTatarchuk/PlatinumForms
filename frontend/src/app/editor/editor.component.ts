@@ -5,6 +5,7 @@ import {QuestionComponent} from "./question/question.component";
 import {Test} from './test.model';
 import {TestService} from '../services/test.service';
 import {Router} from '@angular/router';
+import {last} from 'rxjs';
 
 @Component({
   selector: 'app-editor',
@@ -32,8 +33,7 @@ export class EditorComponent {
       "Received test in EditorComponent with the following data: "
       + this.test.id + ", "
       + this.test.name + ", "
-      + this.test.description + ", "
-      + this.test.code
+      + this.test.description
     );
 
   }
@@ -44,6 +44,12 @@ export class EditorComponent {
 
   onDeleteTest() {
     this.testService.setTestId(this.test.id);
+
+    console.log("------------------EDITOR-------------------");
+    console.log("Test id to remove set: " + this.test.id);
+
     this.router.navigate(['/main']);
   }
+
+  protected readonly last = last;
 }
