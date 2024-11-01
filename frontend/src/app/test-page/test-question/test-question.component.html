@@ -1,20 +1,21 @@
 <div id="question">
-  <label>{{ question.name }}</label><br>
+  <label>{{ question.name }}</label>
+  <label id="mark">{{ mark }} / 1</label>
+  <br>
 
   @if (question.type == 0) {
-    @for (option of question.options; track option.name) {
+    @for (option of question.options; track option.id) {
       <input type="radio"
              [name]="'radio-' + question.id"
              [value]="option.id"
-             [checked]="selectedRadio === option.id"
-             (change)="onRadioSelect(option.id)">
+             (change)="onAnswered(option.id)">
       <label>{{ option.name }}</label>
       <br>
     }
   }
 
   @if (question.type == 1) {
-    @for (option of question.options; track option.name) {
+    @for (option of question.options; track option.id) {
       <input type="checkbox"
              [name]="'checkbox-' + question.id"
              [value]="option.id"
@@ -28,7 +29,7 @@
     <input type="text"
            name="text"
            id="answer_text"
-           [(ngModel)]="free_answer"
-           (input)="onFreeAnswerChange()">
+           [formControl]="textInputControl"
+    >
   }
 </div>

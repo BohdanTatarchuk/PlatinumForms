@@ -34,7 +34,8 @@ export class TestHeadComponent {
       id: '',
       obligatory: false,
       type: 0,
-      options: []
+      options: [],
+      answered: []
     }
 
     newQuestion.id = this.testService.generateQID();

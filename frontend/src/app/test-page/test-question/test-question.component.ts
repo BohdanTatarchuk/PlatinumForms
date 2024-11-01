@@ -1,13 +1,16 @@
-import { Component, Input } from '@angular/core';
-import { TestService } from '../../services/test.service';
-import { Question } from '../../editor/question/question.model';
-import { FormsModule } from '@angular/forms';
+import {Component, Input} from '@angular/core';
+import {Question} from '../../editor/question/question.model';
+import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {debounceTime} from 'rxjs';
+import {TestService} from '../../services/test.service';
+import {Test} from '../../editor/test.model';
 
 @Component({
   selector: 'app-test-question',
   standalone: true,
   imports: [
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   templateUrl: './test-question.component.html',
   styleUrls: ['./test-question.component.css']
@@ -15,31 +18,55 @@ import { FormsModule } from '@angular/forms';
 export class TestQuestionComponent {
   constructor(private testService: TestService) {}
 
+  textInputControl = new FormControl<string>('');
+  test!: Test;
+
   @Input() question!: Question;
+  mark: number = 0;
 
-  multiple_choice_selection: Array<string> = [];
+  ngOnInit() {
+    this.test = this.testService.getTest();
 
-  selectedRadio: string | undefined;
-
-  free_answer: string | undefined;
+    this.textInputControl.valueChanges
+      .pipe(debounceTime(1000))
+      .subscribe((value: string | null) => this.onAnswered(value!));
+  }
 
   onCheckedOption(id: string, event: Event) {
     const isChecked = (event.target as HTMLInputElement).checked;
     if (isChecked) {
-      if (!this.multiple_choice_selection.includes(id)) {
-        this.multiple_choice_selection.push(id);
+      if (!this.question.answered.includes(id)) {
+        this.question.answered.push(id);
       }
     } else {
-      this.multiple_choice_selection = this.multiple_choice_selection.filter(optionId => optionId !== id);
+      this.question.answered = this.question.answered.filter(optionId => optionId !== id);
     }
-    console.log("Checkbox Selection:", this.multiple_choice_selection);
+
+    this.test.questions.forEach(question => {
+      if (question.id === this.question.id) {
+        question.answered = this.question.answered;
+      }
+    });
+    this.testService.setTest(this.test);
+
+    console.log("Question " + this.question.id + " has the following answers " + this.question.answered)
   }
 
-  onRadioSelect(id: string) {
-    this.selectedRadio = id;
-    console.log("Radio Selection:", this.selectedRadio);
+  onAnswered(id: string) {
+    if (id) {
+      this.question.answered.splice(0, this.question.answered.length);
+      this.question.answered.push(id);
+
+      this.test.questions.forEach(question => {
+        if (question.id === this.question.id) {
+          question.answered = this.question.answered;
+        }
+      });
+      this.testService.setTest(this.test);
+    }
+
+    console.log("Question " + this.question.id + " has the following answers " + this.question.answered);
   }
-  onFreeAnswerChange() {
-    console.log("Free Answer:", this.free_answer);
-  }
+
+
 }

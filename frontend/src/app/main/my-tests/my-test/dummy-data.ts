@@ -31,8 +31,33 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt0098765'
               }
-            ]
+            ],
+            answered: []
+          },{
+            name: 'What is 2 + 3?',
+            id: 'q2a2b3c4',
+            obligatory: true,
+            type: 1,
+            options: [
+              {
+                name: '2',
+                correct: false,
+                id: 'opt0012345'
+              },
+              {
+                name: '4',
+                correct: true,
+                id: 'opt0067890'
+              },
+              {
+                name: '5',
+                correct: false,
+                id: 'opt0098765'
+              }
+            ],
+            answered: []
           },
+
           {
             name: 'Calculate the value of 12 * 12.',
             id: 'q5d6e7f8',
@@ -54,9 +79,10 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt0987123'
               }
-            ]
+            ],
+            answered: []
           }
-        ]
+        ],
       },
       {
         id: '1234567890abcdef',
@@ -85,7 +111,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt5678901'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Explain the concept of recursion.',
@@ -108,7 +135,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3456789'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -139,7 +167,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt0987651'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Describe Plato’s Allegory of the Cave.',
@@ -162,7 +191,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt2345671'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -193,7 +223,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3456780'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Explain the characteristics of the Baroque art style.',
@@ -216,7 +247,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt7654321'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -247,7 +279,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3456789'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Describe the difference between melody and harmony.',
@@ -270,7 +303,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt2345678'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       }
@@ -308,7 +342,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3333333'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Describe the causes of the Civil War.',
@@ -331,7 +366,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt6666666'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -362,7 +398,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt9999999'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Name the largest desert in the world.',
@@ -385,7 +422,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt4564567'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -416,7 +454,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt2323232'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Define velocity and acceleration.',
@@ -439,7 +478,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt5656565'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -470,7 +510,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt8989898'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Explain the process of combustion.',
@@ -493,7 +534,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3434343'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       }
