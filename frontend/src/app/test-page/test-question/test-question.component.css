@@ -48,14 +48,16 @@ select {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
   margin-bottom: 7px;
   margin-right: 10px;
 }
-input[type="radio"]{
+
+input[type="radio"] {
   margin-bottom: 7px;
   margin-right: 10px;
 }
+
 #button-container {
   display: flex;
   align-items: center;

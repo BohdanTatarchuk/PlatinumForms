@@ -3,7 +3,9 @@
 @for (question of test.questions; track question.id) {
   <app-test-question [question]="question"></app-test-question>
 }
-<label *ngIf="!obligatoryCheck()">{{obligatory_message}}</label>
+<label id="obligatory_check" *ngIf="!checked">{{obligatory_message}}</label>
+<label id="mark">{{overallMark}}</label>
 <div id="button-container">
   <button id="save_results" (click)="onSave()">Save results</button>
 </div>
+

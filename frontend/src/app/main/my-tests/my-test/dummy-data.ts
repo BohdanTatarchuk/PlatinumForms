@@ -45,7 +45,7 @@ export const DUMMY_TESTS = [
                 id: 'opt0012345'
               },
               {
-                name: '4',
+                name: '4t',
                 correct: true,
                 id: 'opt0067890'
               },
@@ -53,6 +53,21 @@ export const DUMMY_TESTS = [
                 name: '5',
                 correct: false,
                 id: 'opt0098765'
+              },
+              {
+                name: '6',
+                correct: false,
+                id: 'opt0012347'
+              },
+              {
+                name: '7t',
+                correct: true,
+                id: 'opt0067899'
+              },
+              {
+                name: '8',
+                correct: false,
+                id: 'opt0098760'
               }
             ],
             answered: []
@@ -65,19 +80,9 @@ export const DUMMY_TESTS = [
             type: 2,
             options: [
               {
-                name: '2',
-                correct: false,
-                id: 'opt0123456'
-              },
-              {
                 name: '4',
                 correct: true,
                 id: 'opt0654321'
-              },
-              {
-                name: '5',
-                correct: false,
-                id: 'opt0987123'
               }
             ],
             answered: []

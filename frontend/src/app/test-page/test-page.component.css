@@ -27,13 +27,20 @@ button:hover {
 
 #mark {
   position: absolute;
-  right: 20px;
-  width: 20px;
+  top: 23vh;
+  left: 45vw;
+  font-size: 30px;
+  color: white;
 }
- label{
-   top: 1vh;
+
+ #obligatory_check{
+   top: 24vh;
    left: 50vw;
    position: absolute;
-   color: #ffffff;
-   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+   color: red;
+   font-size: 20px;
+ }
+
+ #obligatory_sign{
+   font-size: small;
  }

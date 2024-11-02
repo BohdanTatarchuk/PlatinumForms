@@ -5,7 +5,7 @@ import {TestService} from '../services/test.service';
 import {Test} from '../editor/test.model';
 import {TestQuestionComponent} from './test-question/test-question.component';
 import {Question} from '../editor/question/question.model';
-import * as test from 'node:test';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'app-test-page',
@@ -14,6 +14,7 @@ import * as test from 'node:test';
     TopHeaderComponent,
     TestHeadComponent,
     TestQuestionComponent,
+    CommonModule
   ],
   templateUrl: './test-page.component.html',
   styleUrl: './test-page.component.css'
@@ -24,6 +25,8 @@ export class TestPageComponent {
 
   test!: Test;
   obligatory_message: string = "●All obligatory questions must be answered!";
+  overallMark: number = 0;
+  checked: boolean = true;
 
   ngOnInit() {
     this.test = this.testService.getTest();
@@ -33,22 +36,21 @@ export class TestPageComponent {
     this.test = this.testService.getTest();
 
     if (!this.obligatoryCheck()) {
-      return;
+      this.checked = false;
+      return ;
     }
 
-    let overallMark: number = 0;
-
     for (let i = 0; i < this.test.questions.length; i++) {
-      overallMark += this.calculateQuestion(this.test.questions[i]);
-    }
-
-    /*console.log("--------------------------TEST-------------------------------");
-    for (let i = 0; i < this.test.questions.length; i++) {
-      console.log("Question " + i + ": ");
-      for (let j = 0; j < this.test.questions[i].answered.length; j++) {
-        console.log(this.test.questions[i].answered[j] + ", ");
+      if (this.test.questions[i].type === 0) {
+        this.overallMark += this.calculateSingleChoice(this.test.questions[i]);
+      } else if (this.test.questions[i].type === 1) {
+        this.overallMark += this.calculateMultipleChoice(this.test.questions[i]);
+      } else {
+        this.overallMark += this.calculateFreeAnswer(this.test.questions[i]);
       }
-    }*/
+    }
+
+    console.log("Overall mark: " + this.overallMark);
   }
 
   obligatoryCheck(): boolean {
@@ -60,32 +62,46 @@ export class TestPageComponent {
     return true;
   }
 
-  calculateQuestion(question: Question): number {
-    let numberOfAnswers: number = question.answered.length;
-    let numberOfOptions: number = question.options.length;
-    let pointsPerAnswer: number = +(1 / numberOfOptions).toFixed(2);
+  calculateMultipleChoice(question: Question): number {
+    let numberOfCorrectAnswers: number = 0;
+    let numberOfIncorrectAnswers: number = 0;
 
-    let mark: number = 0;
+    let numberOfSolutions: number = 0;
 
-    //not obligatory questions are not included in overall mark
-    if (!question.obligatory) {
-      return 0;
+    for (let i = 0; i < question.options.length; i++) {
+      if (question.options[i].correct) ++numberOfSolutions;
     }
 
-    //if user has not given an answer
-    if (numberOfAnswers === 0 && question.obligatory) {
-      return 0;
-    }
+    let pointsPerCorrectAnswer = +(1 / numberOfSolutions).toFixed(2);
 
-    for (let i = 0; i < numberOfOptions; i++) {
-      for (let j = 0; j < numberOfAnswers; j++) {
-        if (question.options[i].id === question.answered[j]) {
-          mark += pointsPerAnswer;
-        }
+    for (let i = 0; i < question.answered.length; i++) {
+      if (question.options.find(item => item.id === question.answered[i])?.correct) {
+        numberOfCorrectAnswers++;
+      } else {
+        ++numberOfIncorrectAnswers;
       }
     }
 
+    let mark = (numberOfCorrectAnswers - numberOfIncorrectAnswers) * pointsPerCorrectAnswer;
+    if (mark < 0) mark = 0;
+    return mark;
+  }
 
-    return 1;
+  calculateFreeAnswer(question: Question): number {
+    if (question.options.find(item => item.name.trim() === question.answered[0].trim())) {
+      console.log("Question: " + question.name + "has mark 1");
+      return 1
+    }
+    console.log("Question: " + question.name + "has mark 0");
+    return 0;
+  }
+
+  calculateSingleChoice(question: Question): number {
+    if (question.options.find(answer => answer.id === question.answered[0])?.correct) {
+      console.log("Question: " + question.name + "has mark 1");
+      return 1;
+    }
+    console.log("Question: " + question.name + "has mark 0");
+    return 0;
   }
 }

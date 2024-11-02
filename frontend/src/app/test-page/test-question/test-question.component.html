@@ -1,6 +1,10 @@
 <div id="question">
   <label>{{ question.name }}</label>
   <label id="mark">{{ mark }} / 1</label>
+  @if (question.obligatory) {
+    <br>
+    <label id="obligatory_sign">*this question has to be answered</label>
+  }
   <br>
 
   @if (question.type == 0) {
