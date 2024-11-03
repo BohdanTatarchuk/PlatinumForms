@@ -1,0 +1,49 @@
+<div id="question">
+  <label>{{ question.name }}</label>
+
+  @if (mark != null) {
+    <label id="mark">{{ mark }} / 1</label>
+  }
+
+  @if (question.obligatory) {
+    <br>
+    <label id="obligatory_sign">*</label>
+  }
+  <br>
+
+  @if (question.type == 0) {
+    @for (option of question.options; track option.id) {
+      <input type="radio"
+             [name]="'radio-' + question.id"
+             [value]="option.id"
+             (change)="onAnswered(option.id)">
+      <label>{{ option.name }}</label>
+      <br>
+    }
+  }
+
+  @if (question.type == 1) {
+    @for (option of question.options; track option.id) {
+      <input type="checkbox"
+             [name]="'checkbox-' + question.id"
+             [value]="option.id"
+             (change)="onCheckedOption(option.id, $event)">
+      <label>{{ option.name }}</label>
+      <br>
+    }
+  }
+
+  @if (question.type == 2) {
+    <input type="text"
+           name="text"
+           id="answer_text"
+           [formControl]="textInputControl"
+    >
+  }
+  <br>
+
+  @if (mark != null) {
+    <label id="correct-answers">Correct answers: {{ toString(correctAnswers) }}</label>
+  }
+
+</div>

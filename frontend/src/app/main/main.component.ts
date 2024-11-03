@@ -4,6 +4,7 @@ import {MyTestComponent} from './my-tests/my-test/my-test.component';
 import {MyTestsComponent} from './my-tests/my-tests.component';
 import {ProfileComponent} from './profile/profile.component';
 import {TopHeaderComponent} from '../top-header/top-header.component';
+import {DUMMY_TESTS} from './my-tests/my-test/dummy-data';
 
 @Component({
   selector: 'app-main',
@@ -20,4 +21,7 @@ import {TopHeaderComponent} from '../top-header/top-header.component';
 })
 export class MainComponent {
 
+  ngOnInit(){
+    console.log(DUMMY_TESTS[0].tests[0].mark);
+  }
 }

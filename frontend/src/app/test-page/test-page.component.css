@@ -1,0 +1,65 @@
+@font-face {
+  font-family: montserratFont;
+  src: url(../fonts/Montserrat-Bold.ttf);
+  font-weight: bold;
+}
+
+* {
+  font-family: montserratFont;
+}
+
+
+#button-container {
+  top: 0vh;
+  left: 50vw;
+  position: absolute;
+}
+
+button {
+  background-color: #FFE100;
+  color: #ffffff;
+  border: none;
+  width: 150px;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 180px 10px 10px;
+}
+
+button:hover {
+  background-color: #593391;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#overallMark {
+  position: absolute;
+  top: 23vh;
+  left: 45vw;
+  font-size: 30px;
+  color: white;
+}
+
+#mark {
+  font-size: 100px;
+}
+
+#obligatory_check {
+  top: 24vh;
+  left: 50vw;
+  position: absolute;
+  color: red;
+  font-size: 20px;
+}
+
+#obligatory_sign {
+  font-size: small;
+}
+
+#correct-answers {
+
+}

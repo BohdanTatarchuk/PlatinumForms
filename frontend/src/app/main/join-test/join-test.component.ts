@@ -27,13 +27,16 @@ export class JoinTestComponent {
   test!: Test;
 
   joinTest() {
-    const info = this.users.find(user => user.tests.find(test => test.id == this.code));
-    const actual_info = info?.tests.find(test => test.id == this.code);
+    let info = this.users.find(user => user.tests.find(test => test.id == this.code));
+    let actual_info = info?.tests.find(test => test.id == this.code);
     console.log(actual_info);
-    if(actual_info) {
+    if (actual_info) {
+      actual_info.mark = null;
+      for (let i = 0; i < actual_info.questions.length; i++) {
+        actual_info.questions[i].answered.length = 0;
+      }
       this.testService.setTest(actual_info);
       this.router.navigate(['/test-page']);
     }
   }
-
 }

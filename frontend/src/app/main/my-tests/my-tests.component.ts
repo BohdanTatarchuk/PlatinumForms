@@ -47,6 +47,7 @@ export class MyTestsComponent {
       name: "empty test",
       id: this.testService.generateQID(),
       description: "",
+      mark: null,
       questions: []
     }
 

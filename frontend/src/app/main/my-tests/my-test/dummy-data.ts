@@ -8,12 +8,14 @@ export const DUMMY_TESTS = [
         id: 'a1b2c3d4e5f6g7h8i9j0',
         name: 'Mathematics 2B',
         description: 'basic math test',
+        mark: null,
         questions: [
           {
             name: 'What is 2 + 2?',
             id: 'q1a2b3c4',
             obligatory: true,
             type: 0,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -30,43 +32,80 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt0098765'
               }
-            ]
+            ],
+            answered: []
           },
+
           {
-            name: 'Calculate the value of 12 * 12.',
-            id: 'q5d6e7f8',
-            obligatory: false,
-            type: 2,
+            name: 'What is 2 + 3?',
+            id: 'q2a2b3c4',
+            obligatory: true,
+            type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
                 correct: false,
-                id: 'opt0123456'
+                id: 'opt0012345'
               },
               {
-                name: '4',
+                name: '4t',
                 correct: true,
-                id: 'opt0654321'
+                id: 'opt0067890'
               },
               {
                 name: '5',
                 correct: false,
-                id: 'opt0987123'
+                id: 'opt0098765'
+              },
+              {
+                name: '6',
+                correct: false,
+                id: 'opt0012347'
+              },
+              {
+                name: '7t',
+                correct: true,
+                id: 'opt0067899'
+              },
+              {
+                name: '8',
+                correct: false,
+                id: 'opt0098760'
               }
-            ]
+            ],
+            answered: []
+          },
+
+          {
+            name: 'Calculate the value of 12 * 12.',
+            id: 'q5d6e7f8',
+            obligatory: true,
+            type: 2,
+            mark: 0,
+            options: [
+              {
+                name: '4 4',
+                correct: true,
+                id: 'opt0654321'
+              }
+            ],
+            answered: []
           }
-        ]
+        ],
       },
       {
         id: '1234567890abcdef',
         name: 'Computer Science 4A',
         description: 'introductory programming test',
+        mark: null,
         questions: [
           {
             name: 'What is the Big O notation for binary search?',
             id: 'f23s45d78',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -83,13 +122,15 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt5678901'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Explain the concept of recursion.',
             id: 'g34h56j78',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -106,7 +147,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3456789'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -114,12 +156,14 @@ export const DUMMY_TESTS = [
         id: 'abcdef1234567890',
         name: 'Philosophy 1B',
         description: 'basic philosophy concepts',
+        mark: null,
         questions: [
           {
             name: 'Who is considered the father of modern philosophy?',
             id: 'b12n45m67',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -136,13 +180,15 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt0987651'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Describe Plato’s Allegory of the Cave.',
             id: 't67j89u01',
             obligatory: false,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -159,7 +205,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt2345671'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -167,12 +214,14 @@ export const DUMMY_TESTS = [
         id: '56781234abcd5678',
         name: 'Art 2D',
         description: 'art history and appreciation',
+        mark: null,
         questions: [
           {
             name: 'Who painted the Mona Lisa?',
             id: 'h23k45l78',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -189,13 +238,15 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3456780'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Explain the characteristics of the Baroque art style.',
             id: 'm45b67n90',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -212,7 +263,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt7654321'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -220,12 +272,14 @@ export const DUMMY_TESTS = [
         id: '91011121314151617',
         name: 'Music 3C',
         description: 'introduction to music theory',
+        mark: null,
         questions: [
           {
             name: 'What are the notes in a C major scale?',
             id: 'j34m56n78',
             obligatory: false,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -242,13 +296,15 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3456789'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Describe the difference between melody and harmony.',
             id: 'p12q34r56',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -265,7 +321,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt2345678'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       }
@@ -280,12 +337,14 @@ export const DUMMY_TESTS = [
         id: '56789abcdef01234',
         name: 'History 1A',
         description: 'introduction to history',
+        mark: null,
         questions: [
           {
             name: 'Who was the first president of the United States?',
             id: 'a12b34c56',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -302,13 +361,15 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3333333'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Describe the causes of the Civil War.',
             id: 'd78e90f12',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -325,7 +386,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt6666666'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -333,12 +395,14 @@ export const DUMMY_TESTS = [
         id: '1122334455667788',
         name: 'Geography 4B',
         description: 'world geography quiz',
+        mark: null,
         questions: [
           {
             name: 'What is the capital of France?',
             id: 'q98a76s54',
             obligatory: false,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -355,13 +419,15 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt9999999'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Name the largest desert in the world.',
             id: 'a45d67j89',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -378,7 +444,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt4564567'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -386,12 +453,14 @@ export const DUMMY_TESTS = [
         id: '9988776655443322',
         name: 'Physics 3A',
         description: 'introduction to physics',
+        mark: null,
         questions: [
           {
             name: 'What is Newton’s second law of motion?',
             id: 'r21f32d45',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -408,13 +477,15 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt2323232'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Define velocity and acceleration.',
             id: 't45y67u89',
             obligatory: false,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -431,7 +502,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt5656565'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       },
@@ -439,12 +511,14 @@ export const DUMMY_TESTS = [
         id: '8765432109876543',
         name: 'Chemistry 2C',
         description: 'basic chemistry test',
+        mark: null,
         questions: [
           {
             name: 'What is the atomic number of hydrogen?',
             id: 'x12c34z45',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -461,13 +535,15 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt8989898'
               }
-            ]
+            ],
+            answered: []
           },
           {
             name: 'Explain the process of combustion.',
             id: 'z76b89n90',
             obligatory: false,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -484,7 +560,8 @@ export const DUMMY_TESTS = [
                 correct: false,
                 id: 'opt3434343'
               }
-            ]
+            ],
+            answered: []
           }
         ]
       }

@@ -14,7 +14,6 @@ import {TestService} from '../../services/test.service';
 })
 
 export class TestHeadComponent {
-
   constructor(private testService: TestService ) {}
 
   name: string = "";
