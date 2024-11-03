@@ -4,8 +4,8 @@
   <app-test-question [question]="question" [saveTrigger]="saveTrigger"></app-test-question>
 }
 <label id="obligatory_check" *ngIf="!checked">{{obligatory_message}}</label>
-<label id="overallMark">{{overallMark}}</label>
+<label id="overallMark" *ngIf="finished">{{overallMark}}</label>
 <div id="button-container">
-  <button id="save_results" (click)="onSave()">Save results</button>
+  <button id="save_results" *ngIf="!finished" (click)="onSave()">Save results</button>
 </div>
 

@@ -31,6 +31,7 @@ export class TestPageComponent {
   obligatory_message: string = "●All obligatory questions must be answered!";
   overallMark: number = 0;
   checked: boolean = true;
+  finished: boolean = false;
 
   ngOnInit() {
     this.test = this.testService.getTest();
@@ -42,6 +43,7 @@ export class TestPageComponent {
 
     if (!this.obligatoryCheck()) {
       this.checked = false;
+      console.log("Test in not done")
       return;
     }
 
@@ -58,15 +60,18 @@ export class TestPageComponent {
         this.overallMark += this.calculateFreeAnswer(this.test.questions[i]);
       }
     }
+    this.test.mark = this.overallMark;
 
     console.log("Overall mark: " + this.overallMark);
 
     this.saveTrigger.next();
+    this.finished = true;
+    this.checked = true;
   }
 
   obligatoryCheck(): boolean {
     for (let i = 0; i < this.test.questions.length; i++) {
-      if (this.test.questions[i].obligatory && this.test.questions[i].answered.length === 0) {
+      if ((this.test.questions[i].obligatory && this.test.questions[i].answered.length === 0) || this.test.mark) {
         return false;
       }
     }
@@ -95,11 +100,12 @@ export class TestPageComponent {
 
     let mark = (numberOfCorrectAnswers - numberOfIncorrectAnswers) * pointsPerCorrectAnswer;
     if (mark < 0) mark = 0;
+    console.log("Question: " + question.name + "has mark " + mark);
     return mark;
   }
 
   calculateFreeAnswer(question: Question): number {
-    if (question.options.find(item => item.name.trim() === question.answered[0].trim())) {
+    if (question.options.find(item => item.name === question.answered[0])) {
       console.log("Question: " + question.name + "has mark 1");
       return 1
     }

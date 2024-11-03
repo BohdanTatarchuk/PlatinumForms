@@ -9,6 +9,7 @@ export const DUMMY_TESTS = [
         name: 'Mathematics 2B',
         code: 'mth2b345',
         description: 'basic math test',
+        mark: null,
         questions: [
           {
             name: 'What is 2 + 2?',
@@ -97,6 +98,7 @@ export const DUMMY_TESTS = [
         name: 'Computer Science 4A',
         code: 'cs4a678',
         description: 'introductory programming test',
+        mark: null,
         questions: [
           {
             name: 'What is the Big O notation for binary search?',
@@ -155,6 +157,7 @@ export const DUMMY_TESTS = [
         name: 'Philosophy 1B',
         code: 'phi1b345',
         description: 'basic philosophy concepts',
+        mark: null,
         questions: [
           {
             name: 'Who is considered the father of modern philosophy?',
@@ -213,6 +216,7 @@ export const DUMMY_TESTS = [
         name: 'Art 2D',
         code: 'art2d901',
         description: 'art history and appreciation',
+        mark: null,
         questions: [
           {
             name: 'Who painted the Mona Lisa?',
@@ -271,6 +275,7 @@ export const DUMMY_TESTS = [
         name: 'Music 3C',
         code: 'mus3c456',
         description: 'introduction to music theory',
+        mark: null,
         questions: [
           {
             name: 'What are the notes in a C major scale?',
@@ -336,6 +341,7 @@ export const DUMMY_TESTS = [
         name: 'History 1A',
         code: 'hst1a789',
         description: 'introduction to history',
+        mark: null,
         questions: [
           {
             name: 'Who was the first president of the United States?',
@@ -394,6 +400,7 @@ export const DUMMY_TESTS = [
         name: 'Geography 4B',
         code: 'geo4b234',
         description: 'world geography quiz',
+        mark: null,
         questions: [
           {
             name: 'What is the capital of France?',
@@ -452,6 +459,7 @@ export const DUMMY_TESTS = [
         name: 'Physics 3A',
         code: 'phy3a001',
         description: 'introduction to physics',
+        mark: null,
         questions: [
           {
             name: 'What is Newton’s second law of motion?',
@@ -510,6 +518,7 @@ export const DUMMY_TESTS = [
         name: 'Chemistry 2C',
         code: 'chem2c345',
         description: 'basic chemistry test',
+        mark: null,
         questions: [
           {
             name: 'What is the atomic number of hydrogen?',

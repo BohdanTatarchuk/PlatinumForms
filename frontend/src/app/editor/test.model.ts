@@ -5,5 +5,6 @@ export interface Test {
   id: string;
   code: string;
   description: string;
+  mark: number | null;
   questions: Array<Question>;
 }
