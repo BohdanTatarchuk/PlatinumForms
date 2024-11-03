@@ -19,26 +19,28 @@ export class TestQuestionComponent {
 
   @Input() saveTrigger!: Subject<void>;
 
-  constructor(private testService: TestService) {
-  }
+  constructor(private testService: TestService) {}
 
   textInputControl = new FormControl<string>('');
   test!: Test;
 
   @Input() question!: Question;
-  mark: number = 0;
+  mark: number | null = null;
+  correctAnswers: string[] = [];
 
   ngOnInit() {
     this.saveTrigger.subscribe(() => this.setMark());
     this.test = this.testService.getTest();
 
     this.textInputControl.valueChanges
-      .pipe(debounceTime(1000))
+      .pipe(debounceTime(250))
       .subscribe((value: string | null) => this.onAnswered(value!));
+
   }
 
   setMark() {
     this.mark = this.question.mark;
+    this.displayCorrectAnswers();
   }
 
   onCheckedOption(id: string, event: Event) {
@@ -77,5 +79,26 @@ export class TestQuestionComponent {
     console.log("Question " + this.question.id + " has the following answers " + this.question.answered);
   }
 
+  displayCorrectAnswers() {
+    if(!this.question) {
+      return;
+    }
 
+    for (let i = 0; i < this.question.options.length; i++) {
+      if (this.question.options[i].correct) {
+        this.correctAnswers.push(this.question.options[i].name);
+        console.log(this.correctAnswers);
+      }
+    }
+  }
+
+  toString(answerArray: string[]): string {
+    let answer: string = "";
+
+    for (let i = 0; i < answerArray.length; i++) {
+      answer += answerArray[i] + ", " ;
+    }
+
+    return answer.substring(0, answer.length - 2);
+  }
 }

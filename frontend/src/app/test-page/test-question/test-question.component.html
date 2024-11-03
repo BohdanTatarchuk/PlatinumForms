@@ -1,9 +1,13 @@
 <div id="question">
   <label>{{ question.name }}</label>
-  <label id="mark">{{ mark }} / 1</label>
+
+  @if (mark != null) {
+    <label id="mark">{{ mark }} / 1</label>
+  }
+
   @if (question.obligatory) {
     <br>
-    <label id="obligatory_sign">*this question has to be answered</label>
+    <label id="obligatory_sign">*</label>
   }
   <br>
 
@@ -36,4 +40,10 @@
            [formControl]="textInputControl"
     >
   }
+  <br>
+
+  @if (mark != null) {
+    <label id="correct-answers">Correct answers: {{ toString(correctAnswers) }}</label>
+  }
+
 </div>

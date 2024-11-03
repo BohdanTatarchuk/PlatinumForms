@@ -35,7 +35,9 @@ export const DUMMY_TESTS = [
               }
             ],
             answered: []
-          },{
+          },
+
+          {
             name: 'What is 2 + 3?',
             id: 'q2a2b3c4',
             obligatory: true,
@@ -79,12 +81,12 @@ export const DUMMY_TESTS = [
           {
             name: 'Calculate the value of 12 * 12.',
             id: 'q5d6e7f8',
-            obligatory: false,
+            obligatory: true,
             type: 2,
             mark: 0,
             options: [
               {
-                name: '4',
+                name: '4 4',
                 correct: true,
                 id: 'opt0654321'
               }

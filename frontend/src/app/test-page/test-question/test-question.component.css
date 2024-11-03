@@ -87,3 +87,26 @@ button:hover {
   cursor: pointer;
 }
 
+#obligatory_sign {
+  position: absolute;
+  margin: 10px;
+  top: 0;
+  right: 0;
+  font-size: 16px; /* Adjust as needed */
+  color: red; /* Optional styling for emphasis */
+}
+
+#mark {
+  position: absolute;
+  margin: 10px;
+  bottom: 0;
+  right: 0;
+  font-size: 16px; /* Adjust as needed */
+}
+
+#correct-answers {
+  bottom: 0;
+  color: #ffffff;
+  right: 0;
+  font-size: 16px; /* Adjust as needed */
+}

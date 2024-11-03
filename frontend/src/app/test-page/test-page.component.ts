@@ -20,12 +20,12 @@ import {Subject} from 'rxjs';
   templateUrl: './test-page.component.html',
   styleUrl: './test-page.component.css'
 })
+
 export class TestPageComponent {
 
   saveTrigger = new Subject<void>();
 
-  constructor(private testService: TestService) {
-  }
+  constructor(private testService: TestService) {}
 
   test!: Test;
   obligatory_message: string = "●All obligatory questions must be answered!";
@@ -38,17 +38,14 @@ export class TestPageComponent {
   }
 
   onSave() {
-
     this.test = this.testService.getTest();
 
     if (!this.obligatoryCheck()) {
       this.checked = false;
-      console.log("Test in not done")
       return;
     }
 
     for (let i = 0; i < this.test.questions.length; i++) {
-
       if (this.test.questions[i].type === 0) {
         this.test.questions[i].mark = this.calculateSingleChoice(this.test.questions[i]);
         this.overallMark += this.calculateSingleChoice(this.test.questions[i]);
@@ -100,12 +97,11 @@ export class TestPageComponent {
 
     let mark = (numberOfCorrectAnswers - numberOfIncorrectAnswers) * pointsPerCorrectAnswer;
     if (mark < 0) mark = 0;
-    console.log("Question: " + question.name + "has mark " + mark);
     return mark;
   }
 
   calculateFreeAnswer(question: Question): number {
-    if (question.options.find(item => item.name === question.answered[0])) {
+    if (question.options.find(item => item.name.trim() === question.answered[0].trim())) {
       console.log("Question: " + question.name + "has mark 1");
       return 1
     }
@@ -121,4 +117,5 @@ export class TestPageComponent {
     console.log("Question: " + question.name + "has mark 0");
     return 0;
   }
+
 }

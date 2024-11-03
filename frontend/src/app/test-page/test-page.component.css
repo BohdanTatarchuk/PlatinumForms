@@ -1,3 +1,14 @@
+@font-face {
+  font-family: montserratFont;
+  src: url(../fonts/Montserrat-Bold.ttf);
+  font-weight: bold;
+}
+
+* {
+  font-family: montserratFont;
+}
+
+
 #button-container {
   top: 0vh;
   left: 50vw;
@@ -37,7 +48,6 @@ button:hover {
   font-size: 100px;
 }
 
-
 #obligatory_check {
   top: 24vh;
   left: 50vw;
@@ -48,4 +58,8 @@ button:hover {
 
 #obligatory_sign {
   font-size: small;
+}
+
+#correct-answers {
+
 }
