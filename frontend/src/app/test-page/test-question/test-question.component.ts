@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Question} from '../../editor/question/question.model';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {debounceTime} from 'rxjs';
+import {debounceTime, Subject} from 'rxjs';
 import {TestService} from '../../services/test.service';
 import {Test} from '../../editor/test.model';
 
@@ -16,7 +16,11 @@ import {Test} from '../../editor/test.model';
   styleUrls: ['./test-question.component.css']
 })
 export class TestQuestionComponent {
-  constructor(private testService: TestService) {}
+
+  @Input() saveTrigger!: Subject<void>;
+
+  constructor(private testService: TestService) {
+  }
 
   textInputControl = new FormControl<string>('');
   test!: Test;
@@ -25,11 +29,16 @@ export class TestQuestionComponent {
   mark: number = 0;
 
   ngOnInit() {
+    this.saveTrigger.subscribe(() => this.setMark());
     this.test = this.testService.getTest();
 
     this.textInputControl.valueChanges
       .pipe(debounceTime(1000))
       .subscribe((value: string | null) => this.onAnswered(value!));
+  }
+
+  setMark() {
+    this.mark = this.question.mark;
   }
 
   onCheckedOption(id: string, event: Event) {

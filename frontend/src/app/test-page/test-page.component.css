@@ -25,7 +25,7 @@ button:hover {
   cursor: pointer;
 }
 
-#mark {
+#overallMark {
   position: absolute;
   top: 23vh;
   left: 45vw;
@@ -33,14 +33,19 @@ button:hover {
   color: white;
 }
 
- #obligatory_check{
-   top: 24vh;
-   left: 50vw;
-   position: absolute;
-   color: red;
-   font-size: 20px;
- }
+#mark {
+  font-size: 100px;
+}
 
- #obligatory_sign{
-   font-size: small;
- }
+
+#obligatory_check {
+  top: 24vh;
+  left: 50vw;
+  position: absolute;
+  color: red;
+  font-size: 20px;
+}
+
+#obligatory_sign {
+  font-size: small;
+}

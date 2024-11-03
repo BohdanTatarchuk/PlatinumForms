@@ -6,6 +6,7 @@ import {Test} from '../editor/test.model';
 import {TestQuestionComponent} from './test-question/test-question.component';
 import {Question} from '../editor/question/question.model';
 import {CommonModule} from '@angular/common';
+import {Subject} from 'rxjs';
 
 @Component({
   selector: 'app-test-page',
@@ -20,6 +21,9 @@ import {CommonModule} from '@angular/common';
   styleUrl: './test-page.component.css'
 })
 export class TestPageComponent {
+
+  saveTrigger = new Subject<void>();
+
   constructor(private testService: TestService) {
   }
 
@@ -33,24 +37,31 @@ export class TestPageComponent {
   }
 
   onSave() {
+
     this.test = this.testService.getTest();
 
     if (!this.obligatoryCheck()) {
       this.checked = false;
-      return ;
+      return;
     }
 
     for (let i = 0; i < this.test.questions.length; i++) {
+
       if (this.test.questions[i].type === 0) {
+        this.test.questions[i].mark = this.calculateSingleChoice(this.test.questions[i]);
         this.overallMark += this.calculateSingleChoice(this.test.questions[i]);
       } else if (this.test.questions[i].type === 1) {
+        this.test.questions[i].mark = this.calculateMultipleChoice(this.test.questions[i]);
         this.overallMark += this.calculateMultipleChoice(this.test.questions[i]);
       } else {
+        this.test.questions[i].mark = this.calculateFreeAnswer(this.test.questions[i]);
         this.overallMark += this.calculateFreeAnswer(this.test.questions[i]);
       }
     }
 
     console.log("Overall mark: " + this.overallMark);
+
+    this.saveTrigger.next();
   }
 
   obligatoryCheck(): boolean {

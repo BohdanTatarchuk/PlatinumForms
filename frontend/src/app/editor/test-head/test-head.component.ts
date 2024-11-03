@@ -34,6 +34,7 @@ export class TestHeadComponent {
       id: '',
       obligatory: false,
       type: 0,
+      mark: 0,
       options: [],
       answered: []
     }

@@ -15,6 +15,7 @@ export const DUMMY_TESTS = [
             id: 'q1a2b3c4',
             obligatory: true,
             type: 0,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -38,6 +39,7 @@ export const DUMMY_TESTS = [
             id: 'q2a2b3c4',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -78,6 +80,7 @@ export const DUMMY_TESTS = [
             id: 'q5d6e7f8',
             obligatory: false,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '4',
@@ -100,6 +103,7 @@ export const DUMMY_TESTS = [
             id: 'f23s45d78',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -124,6 +128,7 @@ export const DUMMY_TESTS = [
             id: 'g34h56j78',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -156,6 +161,7 @@ export const DUMMY_TESTS = [
             id: 'b12n45m67',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -180,6 +186,7 @@ export const DUMMY_TESTS = [
             id: 't67j89u01',
             obligatory: false,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -212,6 +219,7 @@ export const DUMMY_TESTS = [
             id: 'h23k45l78',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -236,6 +244,7 @@ export const DUMMY_TESTS = [
             id: 'm45b67n90',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -268,6 +277,7 @@ export const DUMMY_TESTS = [
             id: 'j34m56n78',
             obligatory: false,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -292,6 +302,7 @@ export const DUMMY_TESTS = [
             id: 'p12q34r56',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -331,6 +342,7 @@ export const DUMMY_TESTS = [
             id: 'a12b34c56',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -355,6 +367,7 @@ export const DUMMY_TESTS = [
             id: 'd78e90f12',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -387,6 +400,7 @@ export const DUMMY_TESTS = [
             id: 'q98a76s54',
             obligatory: false,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -411,6 +425,7 @@ export const DUMMY_TESTS = [
             id: 'a45d67j89',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -443,6 +458,7 @@ export const DUMMY_TESTS = [
             id: 'r21f32d45',
             obligatory: true,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -467,6 +483,7 @@ export const DUMMY_TESTS = [
             id: 't45y67u89',
             obligatory: false,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -499,6 +516,7 @@ export const DUMMY_TESTS = [
             id: 'x12c34z45',
             obligatory: true,
             type: 1,
+            mark: 0,
             options: [
               {
                 name: '2',
@@ -523,6 +541,7 @@ export const DUMMY_TESTS = [
             id: 'z76b89n90',
             obligatory: false,
             type: 2,
+            mark: 0,
             options: [
               {
                 name: '2',

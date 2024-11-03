@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { Test } from '../editor/test.model';
+import {Injectable} from '@angular/core';
+import {Test} from '../editor/test.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class TestService {
     this.id = id;
   }
 
-  getTestId(){
+  getTestId() {
     return this.id;
   }
 

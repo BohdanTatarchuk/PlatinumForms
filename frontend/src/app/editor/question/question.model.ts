@@ -5,6 +5,7 @@ export interface Question {
   id: string;
   obligatory: boolean;
   type: number;
+  mark: number;
   options: Array<Option>;
   answered: Array<string>;
 }
