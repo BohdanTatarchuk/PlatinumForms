@@ -24,7 +24,8 @@
       </button>
       <br>
     }
-    <input type="submit" value="Add option" (click)="onAddNewOption()"><br>
+    <input type="submit" value="Add option" (click)="onAddNewOption()">
+    <label class="maxNumberError"> {{ maxNumberError }} </label><br>
   }
   @else if (question.type == 1) {
     @for (option of question.options; track option.id) {
@@ -35,7 +36,8 @@
       </button>
       <br>
     }
-    <input type="submit" value="Add option" (click)="onAddNewOption()"><br>
+    <input type="submit" value="Add option" (click)="onAddNewOption()">
+    <label class="maxNumberError"> {{ maxNumberError }} </label><br>
   }
   @else if (question.type == 2) {
     <input type="text" placeholder="{{ errorHint }}" [(ngModel)]="enteredOption" required>
@@ -48,6 +50,7 @@
         </button>
       </div>
     }
+    <label class="maxNumberError"> {{ maxNumberError }} </label>
     <br>
   }
 

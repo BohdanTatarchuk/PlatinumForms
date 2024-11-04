@@ -3,6 +3,8 @@ import {FormsModule} from '@angular/forms';
 import {TestService} from '../../services/test.service';
 import {Test} from '../test.model';
 
+const MAX_NUMBER_OF_QUESTIONS: number = 2;
+
 @Component({
   selector: 'app-test-head',
   standalone: true,
@@ -17,6 +19,7 @@ export class TestHeadComponent {
   constructor(private testService: TestService) {}
 
   test!: Test;
+  maxNumberOfQuestionsError: string = "";
 
   ngOnInit() {
     this.test = this.testService.getTest();
@@ -40,11 +43,14 @@ export class TestHeadComponent {
     }
 
     newQuestion.id = this.testService.generateQID();
-    this.test.questions.push(newQuestion);
 
-    console.log("On added: \n");
-    for (let i = 0; i < this.test.questions.length; i++) {
-      console.log(this.test.questions[i].id + ", ");
+    console.log("TEST HEAD COMPONENT:");
+    if (this.test.questions.length < MAX_NUMBER_OF_QUESTIONS) {
+      this.test.questions.push(newQuestion);
+      console.log("New question with id " + newQuestion.id + " added");
+    } else {
+      console.log("New question can not be added: limit of questions is " + MAX_NUMBER_OF_QUESTIONS);
+      this.maxNumberOfQuestionsError = "Maximal number of questions is 50";
     }
   }
 }

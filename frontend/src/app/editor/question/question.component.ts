@@ -6,6 +6,8 @@ import {TestService} from '../../services/test.service';
 import {Test} from '../test.model';
 import {Option} from './option.model';
 
+const MAX_NUMBER_OF_OPTIONS: number = 20;
+
 @Component({
   selector: 'app-question',
   standalone: true,
@@ -24,6 +26,7 @@ export class QuestionComponent {
 
   enteredOption!: string;
   errorHint: string = "Type your option here...";
+  maxNumberError: string = "";
 
   ngOnInit() {
     this.test = this.testService.getTest();
@@ -49,13 +52,9 @@ export class QuestionComponent {
       id: '',
       correct: false
     }
-
     newOption.id = this.testService.generateQID();
 
-    console.log("-------------------------------\n");
-    console.log("New option with id: " + newOption.id + "\n");
-
-    this.test.questions.find(item => item.id == this.question.id)?.options.push(newOption);
+    this.checkLimit(newOption);
   }
 
   onDeleteOption(id: string): void {
@@ -81,18 +80,19 @@ export class QuestionComponent {
     } else {
       newOption.name = this.enteredOption;
       newOption.id = this.testService.generateQID();
-      this.test.questions.find(item => item.id == this.question.id)?.options.push(newOption);
-
-      console.log("-------------------------------\n");
-      console.log("New option with id: " + newOption.id + "\n");
+      this.checkLimit(newOption);
     }
   }
 
-  /*checkStats() {
-    console.log("---------------------------------------\n");
-    console.log("Question id: " + this.question.id + "\n");
-    console.log("Question name: " + this.question.name + "\n");
-    console.log("Question obligatory: " + this.question.obligatory + "\n");
-  }*/
+  checkLimit(newOption: Option) {
+    console.log("QUESTION COMPONENT:");
+    if (this.test.questions.find(item => item.id === this.question.id)!.options.length < MAX_NUMBER_OF_OPTIONS) {
+      this.test.questions.find(item => item.id == this.question.id)?.options.push(newOption);
+      console.log("New option with id " + newOption.id + " added");
+    } else {
+      console.log("New option can not be added: limit of options is " + MAX_NUMBER_OF_OPTIONS);
+      this.maxNumberError = "Maximal number of options is 20";
+    }
+  }
 }
 

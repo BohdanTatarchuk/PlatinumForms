@@ -15,6 +15,10 @@
       [(ngModel)]="test.description"
     ></textarea>
 
+  @if(maxNumberOfQuestionsError) {
+    <br> <label class="maxNumberError"> {{ maxNumberOfQuestionsError }} </label>
+  }
+
   <button (click)="onAddQuestion()">
     <img src="button1.svg" alt="">
   </button>

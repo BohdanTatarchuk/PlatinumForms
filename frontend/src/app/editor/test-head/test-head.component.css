@@ -10,7 +10,6 @@
 
 .rectangle {
   width: 800px;
-  height: 135px;
   background-color: #FFE100;
   margin-left:auto;
   margin-right:auto;
@@ -51,6 +50,10 @@ button {
   background: none;
   position: absolute;
   left: 840px;
+}
+
+.maxNumberError {
+  color: red;
 }
 
 

@@ -101,5 +101,10 @@ input[type="submit"]:hover {
   margin-left: 10px;
 }
 
+.maxNumberError {
+  color: red;
+  margin-left: 10px;
+}
+
 
 
