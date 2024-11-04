@@ -7,6 +7,7 @@ import {Test} from '../test.model';
 import {Option} from './option.model';
 
 const MAX_NUMBER_OF_OPTIONS: number = 20;
+const MAX_NAME_SIZE: number = 80;
 
 @Component({
   selector: 'app-question',
@@ -25,7 +26,7 @@ export class QuestionComponent {
   test!: Test;
 
   enteredOption!: string;
-  errorHint: string = "Type your option here...";
+  errorHint: string = "";
   maxNumberError: string = "";
 
   ngOnInit() {
@@ -74,13 +75,21 @@ export class QuestionComponent {
 
     if (this.enteredOption == undefined
       || this.enteredOption.trim().length === 0) {
-      this.errorHint = "This field can not be empty!"
-    } else if (this.enteredOption.trim().length >= 80) {
-      this.errorHint = "This option is to long!"
+      this.errorHint = "Option's name can not be empty";
+
+      console.log("QUESTION COMPONENT:");
+      console.log("New option can not be added: name is empty");
+    } else if (this.enteredOption.trim().length >= MAX_NAME_SIZE) {
+      this.errorHint = "Option's name is too long";
+
+      console.log("QUESTION COMPONENT:");
+      console.log("New option can not be added: name's length is over " + MAX_NAME_SIZE + " characters");
     } else {
       newOption.name = this.enteredOption;
       newOption.id = this.testService.generateQID();
+
       this.checkLimit(newOption);
+      this.errorHint = "";
     }
   }
 

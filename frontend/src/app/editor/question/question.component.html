@@ -1,5 +1,10 @@
 <div class="rectangle">
-  <input type="text" id="question-name" name="question-name" placeholder="{{ question.name }}" [(ngModel)]="question.name" required>
+  <input type="text"
+         id="question-name"
+         name="question-name"
+         placeholder="{{ question.name }}"
+         [(ngModel)]="question.name"
+         required>
 
   <button (click)="onDeleteQuestion(question.id)" id="bin">
     <img src="bin.svg" alt="bin" width="25px">
@@ -17,39 +22,78 @@
 
   @if (question.type == 0) {
     @for (option of question.options; track option.id) {
-      <input type="radio"  name="radio-button" [(ngModel)]="option.correct" [value]="option.id" id="radio-button" >
-      <input type="text" class="radio-button" [(ngModel)]="option.name" placeholder="{{ option.name }}">
-      <button (click)="onDeleteOption(option.id)" class="small_bin">
-        <img src="bin.svg" alt="bin" width="25px">
+      <input
+        type="radio"
+        name="radio-button"
+        [(ngModel)]="option.correct"
+        [value]="option.id"
+        id="radio-button" >
+      <input type="text"
+             class="radio-button"
+             [(ngModel)]="option.name"
+             placeholder="{{ option.name }}">
+      <button (click)="onDeleteOption(option.id)"
+              class="small_bin">
+        <img src="bin.svg"
+             alt="bin"
+             width="25px">
       </button>
       <br>
     }
-    <input type="submit" value="Add option" (click)="onAddNewOption()">
-    <label class="maxNumberError"> {{ maxNumberError }} </label><br>
+    <input type="submit"
+           value="Add option"
+           (click)="onAddNewOption()">
+    <label class="maxNumberError"> {{ maxNumberError }} </label>
+    <br>
   }
   @else if (question.type == 1) {
     @for (option of question.options; track option.id) {
-      <input type="checkbox" name="checkbox" [(ngModel)]="option.correct" [value]="option.id" id="checkbox">
-      <input type="text" class="checkbox-text" [(ngModel)]="option.name" placeholder="{{ option.name }}">
-      <button (click)="onDeleteOption(option.id)" class="small_bin">
-        <img src="bin.svg" alt="bin" width="25px">
+      <input type="checkbox"
+             name="checkbox"
+             [(ngModel)]="option.correct"
+             [value]="option.id"
+             id="checkbox">
+      <input type="text"
+             class="checkbox-text"
+             [(ngModel)]="option.name"
+             placeholder="{{ option.name }}">
+      <button (click)="onDeleteOption(option.id)"
+              class="small_bin">
+        <img src="bin.svg"
+             alt="bin"
+             width="25px">
       </button>
       <br>
     }
-    <input type="submit" value="Add option" (click)="onAddNewOption()">
-    <label class="maxNumberError"> {{ maxNumberError }} </label><br>
+    <input type="submit"
+           value="Add option"
+           (click)="onAddNewOption()">
+    <label class="maxNumberError"> {{ maxNumberError }} </label>
+    <br>
   }
   @else if (question.type == 2) {
-    <input type="text" placeholder="{{ errorHint }}" [(ngModel)]="enteredOption" required>
-    <input type="submit" id="start" value="Add answer" (click)="onAddNewAnswer()">
+    <input type="text"
+           placeholder="Type your option here..."
+           [(ngModel)]="enteredOption"
+           required>
+    <input type="submit"
+           id="start"
+           value="Add answer"
+           (click)="onAddNewAnswer()">
     @for (option of question.options; track option.id) {
       <div class="frame">
         {{ option.name }}
-        <button id="free-answer-bin" (click)="onDeleteOption(option.id)" class="small_bin">
-          <img src="bin.svg" alt="bin" width="20px" height="20px">
+        <button id="free-answer-bin"
+                (click)="onDeleteOption(option.id)"
+                class="small_bin">
+          <img src="bin.svg"
+               alt="bin"
+               width="20px"
+               height="20px">
         </button>
       </div>
     }
+    <label class="maxNumberError"> {{ errorHint }} </label>
     <label class="maxNumberError"> {{ maxNumberError }} </label>
     <br>
   }
