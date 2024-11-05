@@ -4,13 +4,15 @@ import {Router, RouterOutlet} from '@angular/router';
 import {GlobalService} from '../../services/global.service';
 import {DUMMY_TESTS} from '../../main/my-tests/my-test/dummy-data';
 import {gapi, loadGapiInsideDOM} from 'gapi-script';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-log-in',
   standalone: true,
   imports: [
     FormsModule,
-    RouterOutlet
+    RouterOutlet,
+    NgIf
   ],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.css'
@@ -21,6 +23,11 @@ export class LogInComponent {
 
   constructor(public globalService: GlobalService) {
   }
+
+  public wrong_email: boolean = false;
+  public wrong_password: boolean = false;
+  public email_message: string = "● Wrong email!";
+  public password_message: string = "● Wrong password!";
 
   data = {
     email: '',
@@ -59,6 +66,8 @@ export class LogInComponent {
   users = DUMMY_TESTS;
 
   data_check() {
+    this.wrong_email = false;
+    this.wrong_password = false;
     const info = this.users.find(user => user.email == this.data.email)
     if (info?.email == this.data.email && info?.password == this.data.password) {
       this.globalService.is_logged = true;
@@ -66,7 +75,8 @@ export class LogInComponent {
       this.globalService.username = info.username;
       this.globalService.tests = info.tests;
       this.router.navigate(['/main']);
-    } else console.log("AAAAAAAAAA")
+    } else if (info?.email == this.data.email && info?.password != this.data.password) this.wrong_password = true;
+    else this.wrong_email = true;
   }
 
   navigateToRegistration() {
