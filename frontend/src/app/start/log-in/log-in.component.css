@@ -84,13 +84,13 @@ input[type="submit"]:hover {
 }
 
 #login_button:hover {
-    background-color: #593391;
-    color: #ffffff;
-    cursor: pointer;
+  background-color: #593391;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 #password_invalid,
-#email_invalid{
+#email_invalid {
   margin-left: 20px;
   color: darkred;
   font-size: small;
