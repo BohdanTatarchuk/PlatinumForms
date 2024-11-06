@@ -37,3 +37,8 @@ input[type=submit] {
   margin-left: 10px;
   margin-right: 10px;
 }
+
+.error {
+  color: red;
+  margin: 10px;
+}

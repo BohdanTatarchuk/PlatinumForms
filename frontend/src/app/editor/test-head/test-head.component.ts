@@ -32,6 +32,10 @@ export class TestHeadComponent {
   }
 
   onAddQuestion(): void {
+    if (this.test.id == undefined) {
+      return;
+    }
+
     const newQuestion = {
       name: '',
       id: '',
