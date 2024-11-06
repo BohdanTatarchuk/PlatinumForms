@@ -3,7 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {TestService} from '../../services/test.service';
 import {Test} from '../test.model';
 
-const MAX_NUMBER_OF_QUESTIONS: number = 2;
+const MAX_NUMBER_OF_QUESTIONS: number = 50;
 
 @Component({
   selector: 'app-test-head',
