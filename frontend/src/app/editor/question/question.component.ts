@@ -67,6 +67,8 @@ export class QuestionComponent {
   }
 
   onAddNewAnswer() {
+    console.log("QUESTION COMPONENT:");
+
     const newOption = {
       name: '',
       id: '',
@@ -77,12 +79,10 @@ export class QuestionComponent {
       || this.enteredOption.trim().length === 0) {
       this.errorHint = "Option's name can not be empty";
 
-      console.log("QUESTION COMPONENT:");
       console.log("New option can not be added: name is empty");
     } else if (this.enteredOption.trim().length >= MAX_NAME_SIZE) {
       this.errorHint = "Option's name is too long";
 
-      console.log("QUESTION COMPONENT:");
       console.log("New option can not be added: name's length is over " + MAX_NAME_SIZE + " characters");
     } else {
       newOption.name = this.enteredOption;
@@ -94,7 +94,6 @@ export class QuestionComponent {
   }
 
   checkLimit(newOption: Option) {
-    console.log("QUESTION COMPONENT:");
     if (this.test.questions.find(item => item.id === this.question.id)!.options.length < MAX_NUMBER_OF_OPTIONS) {
       this.test.questions.find(item => item.id == this.question.id)?.options.push(newOption);
       console.log("New option with id " + newOption.id + " added");

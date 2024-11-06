@@ -51,11 +51,26 @@ export class EditorComponent {
           allQuestionsHaveCorrectAnswers = true;
           break;
         }
+
+        if (this.test.questions[i].options[j].name.length == 0) {
+          console.log("Test can not be saved: options can not be empty");
+          this.errorMessage = "Test can not be saved: options can not be empty";
+
+          return;
+        }
       }
+
       if (!allQuestionsHaveCorrectAnswers) {
         console.log("Test can not be saved: not all questions have correct answers.");
 
         this.errorMessage = "Test can not be saved: not all questions have correct answers.";
+        return;
+      }
+
+      if (this.test.questions[i].name == null || this.test.questions[i].name === "") {
+        console.log("Test can not be saved: questions can not be empty");
+
+        this.errorMessage = "Test can not be saved: questions can not be empty";
         return;
       }
     }

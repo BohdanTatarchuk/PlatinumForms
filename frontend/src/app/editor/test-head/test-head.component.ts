@@ -54,7 +54,7 @@ export class TestHeadComponent {
       console.log("New question with id " + newQuestion.id + " added");
     } else {
       console.log("New question can not be added: limit of questions is " + MAX_NUMBER_OF_QUESTIONS);
-      this.maxNumberOfQuestionsError = "Maximal number of questions is 50";
+      this.maxNumberOfQuestionsError = "Maximal number of questions is " + MAX_NUMBER_OF_QUESTIONS;
     }
   }
 }
