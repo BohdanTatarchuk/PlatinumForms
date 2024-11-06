@@ -33,6 +33,15 @@ export class EditorComponent {
   }
 
   onSaveTest() {
+    console.log("EDITOR: ");
+
+    if (this.test.questions.length == 0) {
+      console.log("Error: test can not be empty");
+
+      this.errorMessage = "Test can not be empty";
+      return;
+    }
+
     let allQuestionsHaveCorrectAnswers: boolean = false;
 
     for (let i = 0; i < this.test.questions.length; i++) {
@@ -44,7 +53,6 @@ export class EditorComponent {
         }
       }
       if (!allQuestionsHaveCorrectAnswers) {
-        console.log("EDITOR: ");
         console.log("Test can not be saved: not all questions have correct answers.");
 
         this.errorMessage = "Test can not be saved: not all questions have correct answers.";
@@ -52,6 +60,7 @@ export class EditorComponent {
       }
     }
 
+    console.log("Going to main page");
     this.router.navigate(['/main']);
   }
 
