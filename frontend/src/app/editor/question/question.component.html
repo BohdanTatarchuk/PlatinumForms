@@ -24,10 +24,9 @@
     @for (option of question.options; track option.id) {
       <input
         type="radio"
-        name="radio-button"
-        [(ngModel)]="option.correct"
-        [value]="option.id"
-        id="radio-button" >
+        [name]="'radio-button' + question.id"
+        (change)="onSelectOption(option)"
+        id="radio-{{ option.id }}">
       <input type="text"
              class="radio-button"
              [(ngModel)]="option.name"

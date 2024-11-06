@@ -6,6 +6,7 @@ import {Test} from './test.model';
 import {TestService} from '../services/test.service';
 import {Router} from '@angular/router';
 import {last} from 'rxjs';
+import {Question} from './question/question.model';
 
 @Component({
   selector: 'app-editor',
@@ -34,6 +35,11 @@ export class EditorComponent {
 
   onSaveTest() {
     console.log("EDITOR: ");
+
+    for (let i = 0; i < this.test.questions.length; i++) {
+      this.outputQuestion(this.test.questions[i]);
+    }
+
 
     if (this.test.questions.length == 0) {
       console.log("Error: test can not be empty");
@@ -86,5 +92,11 @@ export class EditorComponent {
     console.log("Test id to remove set: " + this.test.id);
 
     this.router.navigate(['/main']);
+  }
+
+  outputQuestion(question: Question) {
+    console.log("Question: " + question.name + "\n" +
+    "Id: " + question.id + "\n" +
+    "Options: " + JSON.stringify(question.options));
   }
 }

@@ -72,7 +72,7 @@ export class QuestionComponent {
     const newOption = {
       name: '',
       id: '',
-      correct: false
+      correct: true
     }
 
     if (this.enteredOption == undefined
@@ -101,6 +101,13 @@ export class QuestionComponent {
       console.log("New option can not be added: limit of options is " + MAX_NUMBER_OF_OPTIONS);
       this.maxNumberError = "Maximal number of options is 20";
     }
+  }
+
+  onSelectOption(selectedOption: Option) {
+    this.question.options.forEach(option => {
+      option.correct = option === selectedOption
+      console.log("Option " + option.name + " is correct " + option.correct);
+    });
   }
 }
 
