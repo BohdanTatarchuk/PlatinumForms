@@ -4,8 +4,6 @@ public class QuestionOption {
 
     private String text;
 
-    private String id;
-
     private boolean correct;
 
     public String getText() {

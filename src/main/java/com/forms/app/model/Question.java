@@ -7,9 +7,8 @@ import jakarta.persistence.*;
 public class Question {
 
     @Id
+    @Column(name = "question_id")
     private String id;
-
-    private String testId;
 
     private String questionText;
 
@@ -21,14 +20,6 @@ public class Question {
         this.id = id;
     }
 
-    public String getTestId() {
-        return testId;
-    }
-
-    public void setTestId(String testId) {
-        this.testId = testId;
-    }
-
     public String getQuestionText() {
         return questionText;
     }
@@ -37,9 +28,8 @@ public class Question {
         this.questionText = questionText;
     }
 
-    public Question(String id, String testId, String questionText) {
+    public Question(String id, String questionText) {
         this.id = id;
-        this.testId = testId;
         this.questionText = questionText;
     }
 

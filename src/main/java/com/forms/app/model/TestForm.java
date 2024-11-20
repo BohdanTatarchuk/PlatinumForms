@@ -2,6 +2,8 @@ package com.forms.app.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "TestForm")
 public class TestForm {
@@ -11,6 +13,7 @@ public class TestForm {
     private String description;
 
     @Id
+    @Column(name = "test_id")
     private String id;
 
     public String getName() {

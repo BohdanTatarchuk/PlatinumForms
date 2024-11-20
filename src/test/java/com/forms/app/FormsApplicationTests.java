@@ -36,7 +36,6 @@ class FormsApplicationTests {
     void createNewQuestion() {
         Question question = new Question(
                 "687awdv6vwszj",
-                "321487fzf79324",
                 "What is 2 + 2?"
         );
     }
