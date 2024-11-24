@@ -8,16 +8,16 @@ public class Question {
 
     @Id
     @Column(name = "question_id")
-    private String id;
+    private String question_id;
 
     private String questionText;
 
     public String getId() {
-        return id;
+        return question_id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.question_id = id;
     }
 
     public String getQuestionText() {
@@ -29,7 +29,7 @@ public class Question {
     }
 
     public Question(String id, String questionText) {
-        this.id = id;
+        this.question_id = id;
         this.questionText = questionText;
     }
 

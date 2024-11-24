@@ -1,10 +1,21 @@
 package com.forms.app.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "QuestionOption")
 public class QuestionOption {
+
+    @Id
+    private String option_id;
 
     private String text;
 
     private boolean correct;
+
+    public QuestionOption() {}
 
     public String getText() {
         return text;
@@ -15,11 +26,11 @@ public class QuestionOption {
     }
 
     public String getId() {
-        return id;
+        return option_id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.option_id = id;
     }
 
     public boolean isCorrect() {
@@ -32,7 +43,7 @@ public class QuestionOption {
 
     public QuestionOption(String text, String id, boolean correct) {
         this.text = text;
-        this.id = id;
+        this.option_id = id;
         this.correct = correct;
     }
 }

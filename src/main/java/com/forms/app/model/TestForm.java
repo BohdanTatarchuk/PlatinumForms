@@ -14,7 +14,7 @@ public class TestForm {
 
     @Id
     @Column(name = "test_id")
-    private String id;
+    private String test_id;
 
     public String getName() {
         return name;
@@ -25,11 +25,11 @@ public class TestForm {
     }
 
     public String getId() {
-        return id;
+        return test_id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.test_id = id;
     }
 
     public String getDescription() {
@@ -43,7 +43,7 @@ public class TestForm {
     public TestForm(String name, String description, String id) {
         this.name = name;
         this.description = description;
-        this.id = id;
+        this.test_id = id;
     }
 
     public TestForm(){}
