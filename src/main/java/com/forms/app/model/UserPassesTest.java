@@ -19,14 +19,16 @@ public class UserPassesTest {
     @JoinColumn(name = "test_id", referencedColumnName = "test_id")
     private TestForm testform;
 
-    public UserPassesTest(UserPassesTestId id, UserT user, TestForm testform) {
+    private float mark;
+
+    public UserPassesTest(UserPassesTestId id, UserT user, TestForm testform, int mark) {
         this.id = id;
         this.user = user;
         this.testform = testform;
+        this.mark = mark;
     }
 
-    public UserPassesTest() {
-    }
+    public UserPassesTest() {}
 
     public UserPassesTestId getId() {
         return id;
@@ -42,6 +44,14 @@ public class UserPassesTest {
 
     public void setUser(UserT user) {
         this.user = user;
+    }
+
+    public float getMark() {
+        return mark;
+    }
+
+    public void setMark(float mark) {
+        this.mark = mark;
     }
 
     public TestForm getTestform() {
