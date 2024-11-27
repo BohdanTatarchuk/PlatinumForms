@@ -5,6 +5,7 @@ import com.forms.app.model.QuestionContainsOptionId;
 import com.forms.app.model.TestContainsQuestion;
 import com.forms.app.model.TestContainsQuestionId;
 import com.forms.app.repository.TestContainsQuestionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -14,6 +15,7 @@ public class TestContainsQuestionService {
 
     private final TestContainsQuestionRepository testContainsQuestionRepository;
 
+    @Autowired
     public TestContainsQuestionService(TestContainsQuestionRepository testContainsQuestionRepository) {
         this.testContainsQuestionRepository = testContainsQuestionRepository;
     }

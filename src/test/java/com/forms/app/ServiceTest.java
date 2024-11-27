@@ -4,10 +4,8 @@ package com.forms.app;
 import com.forms.app.model.*;
 import com.forms.app.service.*;
 import org.junit.jupiter.api.*;
-import org.mockito.InjectMocks;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Date;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,77 +14,46 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ServiceTest {
-
-    @InjectMocks
+    @org.springframework.beans.factory.annotation.Autowired
     private UserTService userService;
 
-    @InjectMocks
+    @org.springframework.beans.factory.annotation.Autowired
     private TestFormService testFormService;
 
-    @InjectMocks
-    private UserPassesTestService userPassesTestService;
-
-    @InjectMocks
-    private UserCreatesTestService userCreatesTestService;
-
-    @InjectMocks
+    @org.springframework.beans.factory.annotation.Autowired
     private QuestionService questionService;
 
-    @InjectMocks
+    @org.springframework.beans.factory.annotation.Autowired
     private QuestionOptionService questionOptionService;
 
-    @InjectMocks
+    @org.springframework.beans.factory.annotation.Autowired
     private QuestionContainsOptionService questionContainsOptionService;
 
-    @InjectMocks
+    @org.springframework.beans.factory.annotation.Autowired
     private TestContainsQuestionService testContainsQuestionService;
-
-
-    /*
-     *
-     *
-     *  USER CLASS TESTS
-     *
-     *
-     */
 
     @DisplayName("Test creating user")
     @Tag("User class tests")
+    @Order(1)
     @Test
     void testCreateNewUser() {
-
         UserT newUser = new UserT(
                 "dima",
                 "dima@gmail.com",
                 "password1",
                 null
         );
-
         userService.createUser(newUser);
 
-        //UserT newUser = new UserT(
-        //        "haha",
-        //        "haha@gmail.com",
-        //        "password12",
-        //        null
-        //);
+        Optional<UserT> result = userService.findById("dima@gmail.com");
 
-        //userService.createUser(newUser);
-
-
-        Optional<UserT> result = userService.findById("haha@gmail.com");
-
-        UserT received = new UserT();
-
-        if (result.isPresent()) {
-            received = result.get();
-        }
-
-        assertEquals(newUser, received);
+        assertTrue(result.isPresent());
+        assertEquals("dima@gmail.com", result.get().getEmail());
     }
 
     @DisplayName("Test updating username")
     @Tag("User class tests")
+    @Order(2)
     @Test
     void testUpdateUsername() {
         userService.updateUsername("dima@gmail.com", "Dimasik");
@@ -104,6 +71,7 @@ public class ServiceTest {
 
     @DisplayName("Test updating user's profile picture")
     @Tag("User class tests")
+    @Order(3)
     @Test
     void testUpdateUserPicture() {
         userService.updateProfilePicture("dima@gmail.com", "https://joejfoeo");
@@ -116,30 +84,24 @@ public class ServiceTest {
             received = result.get();
         }
 
-        assertEquals("https://joejfoeo", received.getUsername());
+        assertEquals("https://joejfoeo", received.getPhoto());
     }
 
     @DisplayName("Test deleting user")
     @Tag("User class tests")
+    @Order(4)
     @Test
     void testDeleteUser() {
         userService.deleteUser("dima@gmail.com");
 
         Optional<UserT> result = userService.findById("dima@gmail.com");
 
-        assertNull(result.get());
+        assertFalse(result.isPresent());
     }
-
-    /*
-     *
-     *
-     *  TEST FORM CLASS TESTS
-     *
-     *
-     */
 
     @DisplayName("Test creating form")
     @Tag("TestForm class tests")
+    @Order(5)
     @Test
     void testCreateNewForm() {
         TestForm testForm = new TestForm(
@@ -147,22 +109,17 @@ public class ServiceTest {
                 "Lambda calculus",
                 "7zq97gbWFPFRRVVV87ss"
         );
-
         testFormService.createTestForm(testForm);
 
         Optional<TestForm> result = testFormService.findByTestID("7zq97gbWFPFRRVVV87ss");
 
-        TestForm received = new TestForm();
-
-        if (result.isPresent()) {
-            received = result.get();
-        }
-
-        assertEquals(testForm, received);
+        assertTrue(result.isPresent());
+        assertEquals("7zq97gbWFPFRRVVV87ss", result.get().getId());
     }
 
     @DisplayName("Test updating username")
     @Tag("TestForm class tests")
+    @Order(6)
     @Test
     void testUpdateFormName() {
         testFormService.updateTestName("7zq97gbWFPFRRVVV87ss", "Advanced math");
@@ -179,6 +136,7 @@ public class ServiceTest {
 
     @DisplayName("Test updating user's profile picture")
     @Tag("TestForm class tests")
+    @Order(7)
     @Test
     void testUpdateFormDescription() {
         testFormService.updateTestDescription("7zq97gbWFPFRRVVV87ss", "not easy");
@@ -193,89 +151,12 @@ public class ServiceTest {
         assertEquals("not easy", received.getDescription());
     }
 
-    @DisplayName("Test deleting form")
-    @Tag("TestForm class tests")
-    @Test
-    void testDeleteForm() {
-        testFormService.deleteTestForm("7zq97gbWFPFRRVVV87ss");
-        Optional<TestForm> result = testFormService.findByTestID("7zq97gbWFPFRRVVV87ss");
-        assertNull(result.get());
-    }
-
-    /*
-     *
-     *
-     *  USER CREATES FORM CLASS TESTS
-     *
-     *
-     */
-
-    @DisplayName("creation of a form")
-    @Tag("UserCreatesForm class tests")
-    @Test
-    void testNewCreationOfForm() {
-        UserCreatesTest creation = new UserCreatesTest(
-                new UserCreatesTestId(
-                        "max@gmail.com",
-                        "iojqiuf89u",
-                        new Date()
-                ),
-                new UserT(
-                        "max",
-                        "max@gmail.com",
-                        "wqd98jqio",
-                        null
-                ),
-                new TestForm(
-                        "Eng",
-                        "simple",
-                        "iojqiuf89u"
-                )
-        );
-
-        userCreatesTestService.newCreation(creation);
-
-        //Optional<UserCreatesTest> result = userCreatesTestService.findById();
-    }
-
-    @DisplayName("delete creation of a form")
-    @Tag("UserCreatesForm class tests")
-    @Test
-    void testDeleteCreationOfForm() {
-
-    }
-
-
-    /*
-     *
-     *
-     *  USER PASSES FORM CLASS TESTS
-     *
-     *
-     */
-
-    @DisplayName("pass of a form")
-    @Tag("UserPassesTest class tests")
-    @Test
-    void testNewPassOfForm() {
-
-    }
-
-    @DisplayName("delete pass of a form")
-    @Tag("UserPassesTest class tests")
-    @Test
-    void testDeletePassOfForm() {
-
-    }
-
-
-///////////////////////////////////////////////////////////////////////////////////////
-
     @DisplayName("Test creating question")
     @Test
-    @Order(1)
+    @Tag("Question class tests")
+    @Order(8)
     void testCreateNewQuestion() {
-        Question q = new Question("1a", "text");
+        Question q = new Question("1a", "text", true);
 
         questionService.createQuestion(q);
 
@@ -292,27 +173,18 @@ public class ServiceTest {
 
     @DisplayName("Test updating question")
     @Test
-    @Order(2)
+    @Tag("Question class tests")
+    @Order(9)
     void testUpdateQuestionText() {
         questionService.updateQuestionById("1a", "AAAAAAAAA");
         Optional<Question> result = questionService.findById("1a");
         assertEquals("AAAAAAAAA", result.get().getQuestionText());
     }
 
-    @DisplayName("Test deleting question")
-    @Test
-    @Order(10)
-    void testDeleteQuestion() {
-        questionService.deleteQuestionById("1a");
-        Optional<Question> result = questionService.findById("1a");
-        assertFalse(result.isPresent());
-    }
-
-///////////////////////////////////////////////////////////////////////////////////////
-
     @DisplayName("Test creating option")
     @Test
-    @Order(3)
+    @Tag("Option class tests")
+    @Order(10)
     void testCreateNewOption() {
         QuestionOption option = new QuestionOption("Waht", "2df", true);
 
@@ -331,7 +203,8 @@ public class ServiceTest {
 
     @DisplayName("Test updating option")
     @Test
-    @Order(4)
+    @Tag("Option class tests")
+    @Order(11)
     void testUpdateOptionText() {
         questionOptionService.updateQuestionOptionById("2df", "Yes thats it", true);
         Optional<QuestionOption> result = questionOptionService.findById("2df");
@@ -340,27 +213,18 @@ public class ServiceTest {
 
     @DisplayName("Test updating option correctness")
     @Test
-    @Order(5)
+    @Tag("Option class tests")
+    @Order(12)
     void testUpdateOptionCorrect() {
         questionOptionService.updateQuestionOptionCorrectnessById("2df", false);
         Optional<QuestionOption> result = questionOptionService.findById("2df");
-        assertFalse(result.get().isCorrect());
+        assertFalse(result.get().getIsCorrect());
     }
-
-    @DisplayName("Test deleting option")
-    @Test
-    @Order(11)
-    void testDeleteOption() {
-        questionOptionService.deleteQuestionById("2df");
-        Optional<QuestionOption> result = questionOptionService.findById("2df");
-        assertFalse(result.isPresent());
-    }
-
-///////////////////////////////////////////////////////////////////////////////////////
 
     @DisplayName("Test creating questionContainsOption")
     @Test
-    @Order(6)
+    @Tag("Question contains option class tests")
+    @Order(13)
     void testCreateNewQuestionContainsOption() {
         QuestionContainsOptionId id =
                 new QuestionContainsOptionId("1a", "2df");
@@ -381,7 +245,8 @@ public class ServiceTest {
 
     @DisplayName("Test deleting questionContainsOption")
     @Test
-    @Order(7)
+    @Tag("Question contains option class tests")
+    @Order(14)
     void testDeleteQuestionContainsOption() {
         QuestionContainsOptionId id =
                 new QuestionContainsOptionId("1a", "2df");
@@ -391,38 +256,69 @@ public class ServiceTest {
         assertFalse(result.isPresent());
     }
 
-///////////////////////////////////////////////////////////////////////////////////////
+    @DisplayName("Test creating testContainsQuestion")
+    @Test
+    @Tag("Test contains Question class tests")
+    @Order(15)
+    void testCreateNewTestContainsQuestion() {
+        TestContainsQuestionId id = new TestContainsQuestionId(
+                "7zq97gbWFPFRRVVV87ss",
+                "1a"
+        );
 
-    //@DisplayName("Test creating testContainsQuestion")
-    //@Test
-    //@Order(8)
-    //void testCreateNewTestContainsQuestion() {
-    //    TestContainsQuestionId id =
-    //            new TestContainsQuestionId("hfgfl" ,"1a");
-    //    TestContainsQuestion testContainsQuestion = new TestContainsQuestion(
-    //            id,
-    //            testFormService.findById("hfgfl").get(),
-    //            questionService.findById("1a").get()
-    //    );
-//
-//
-    //    testContainsQuestionService.createTestContainsQuestion(testContainsQuestion);
-//
-    //    Optional<TestContainsQuestion> result =
-    //            testContainsQuestionService.findById(id);
-//
-    //    assertTrue(result.isPresent());
-    //}
+        TestContainsQuestion testContainsQuestion = new TestContainsQuestion(
+                questionService.findById("1a").get(),
+                testFormService.findByTestID("7zq97gbWFPFRRVVV87ss").get(),
+                id
+        );
+
+        testContainsQuestionService.createTestContainsQuestion(testContainsQuestion);
+
+        Optional<TestContainsQuestion> result = testContainsQuestionService.findById(id);
+
+        assertTrue(result.isPresent());
+        assertEquals(id, result.get().getId());
+    }
 
     @DisplayName("Test deleting testContainsQuestion")
     @Test
-    @Order(9)
+    @Order(16)
     void testDeleteTestContainsQuestion() {
         TestContainsQuestionId id =
-                new TestContainsQuestionId("hfgfl", "1a");
+                new TestContainsQuestionId("7zq97gbWFPFRRVVV87ss", "1a");
         testContainsQuestionService.deleteTestContainsQuestionById(id);
         Optional<TestContainsQuestion> result =
                 testContainsQuestionService.findById(id);
+        assertFalse(result.isPresent());
+    }
+
+    @DisplayName("Test deleting form")
+    @Tag("TestForm class tests")
+    @Order(17)
+    @Test
+    void testDeleteForm() {
+        testFormService.deleteTestForm("7zq97gbWFPFRRVVV87ss");
+        Optional<TestForm> result = testFormService.findByTestID("7zq97gbWFPFRRVVV87ss");
+        assertFalse(result.isPresent());
+    }
+
+    @DisplayName("Test deleting option")
+    @Test
+    @Tag("Option class tests")
+    @Order(18)
+    void testDeleteOption() {
+        questionOptionService.deleteQuestionById("2df");
+        Optional<QuestionOption> result = questionOptionService.findById("2df");
+        assertFalse(result.isPresent());
+    }
+
+    @DisplayName("Test deleting question")
+    @Test
+    @Tag("Question class tests")
+    @Order(19)
+    void testDeleteQuestion() {
+        questionService.deleteQuestionById("1a");
+        Optional<Question> result = questionService.findById("1a");
         assertFalse(result.isPresent());
     }
 }

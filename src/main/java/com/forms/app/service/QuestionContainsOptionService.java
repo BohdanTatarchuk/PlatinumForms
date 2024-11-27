@@ -3,6 +3,7 @@ package com.forms.app.service;
 import com.forms.app.model.QuestionContainsOption;
 import com.forms.app.model.QuestionContainsOptionId;
 import com.forms.app.repository.QuestionContainsOptionRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -12,6 +13,7 @@ public class QuestionContainsOptionService {
 
     private final QuestionContainsOptionRepository questionContainsOptionRepository;
 
+    @Autowired
     public QuestionContainsOptionService(QuestionContainsOptionRepository questionContainsOptionRepository) {
         this.questionContainsOptionRepository = questionContainsOptionRepository;
     }

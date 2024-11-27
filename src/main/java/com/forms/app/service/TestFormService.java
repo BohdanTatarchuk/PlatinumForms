@@ -38,7 +38,7 @@ public class TestFormService {
         Optional<TestForm> testForm = testFormRepository.findById(testID);
 
         if (testForm.isPresent()) {
-            testForm.get().setName(new String(newDescription));
+            testForm.get().setDescription(newDescription);
             testFormRepository.save(testForm.get());
         }
     }

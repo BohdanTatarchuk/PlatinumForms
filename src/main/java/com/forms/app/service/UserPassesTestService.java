@@ -18,8 +18,8 @@ public class UserPassesTestService {
         this.repository = repository;
     }
 
-    public void findPassByID(UserPassesTestId id) {
-        //repository.findById(id);
+    public Optional<UserPassesTest> findPassByID(UserPassesTestId id) {
+        return repository.findById(id);
     }
 
     public void createNewPass(UserPassesTest pass) {
@@ -27,16 +27,15 @@ public class UserPassesTestService {
     }
 
     public void updateMark(UserPassesTestId id, float newMark){
-        /*Optional<UserPassesTest> pass = repository.findById(id);
+        Optional<UserPassesTest> pass = repository.findById(id);
 
         if(pass.isPresent()){
             pass.get().setMark(newMark);
+            repository.save(pass.get());
         }
-
-        repository.save(pass);*/
     }
 
     public void deletePass(UserPassesTestId id) {
-        //repository.delete(id);
+        repository.deleteById(id);
     }
 }

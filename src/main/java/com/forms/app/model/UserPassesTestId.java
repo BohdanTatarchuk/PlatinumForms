@@ -9,12 +9,9 @@ public class UserPassesTestId {
 
     private String test_id;
 
-    private float mark;
-
-    public UserPassesTestId(String email, String test_id, float mark) {
+    public UserPassesTestId(String email, String test_id) {
         this.email = email;
         this.test_id = test_id;
-        this.mark = mark;
     }
 
     public UserPassesTestId() {
@@ -34,13 +31,5 @@ public class UserPassesTestId {
 
     public void setTest_id(String test_id) {
         this.test_id = test_id;
-    }
-
-    public float getMark() {
-        return mark;
-    }
-
-    public void setMark(float mark) {
-        this.mark = mark;
     }
 }

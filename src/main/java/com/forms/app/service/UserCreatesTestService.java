@@ -6,6 +6,8 @@ import com.forms.app.repository.UserCreatesTestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserCreatesTestService {
 
@@ -21,10 +23,10 @@ public class UserCreatesTestService {
     }
 
     public void deleteCreation(UserCreatesTestId id) {
-        //userCreatesTestRepository.deleteById(id);
+        userCreatesTestRepository.deleteById(id);
     }
 
-    public void fíndCreationById(UserCreatesTestId id) {
-        //userCreatesTestRepository.findById(id);
+    public Optional<UserCreatesTest> findCreationById(UserCreatesTestId id) {
+        return userCreatesTestRepository.findById(id);
     }
 }

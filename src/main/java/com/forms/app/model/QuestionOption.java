@@ -33,7 +33,7 @@ public class QuestionOption {
         this.option_id = id;
     }
 
-    public boolean isCorrect() {
+    public boolean getIsCorrect() {
         return correct;
     }
 

@@ -19,16 +19,18 @@ public class UserPassesTest {
     @JoinColumn(name = "test_id", referencedColumnName = "test_id")
     private TestForm testform;
 
+    @Column(name = "mark")
     private float mark;
 
-    public UserPassesTest(UserPassesTestId id, UserT user, TestForm testform, int mark) {
+    public UserPassesTest(UserPassesTestId id, UserT user, TestForm testform, float mark) {
         this.id = id;
         this.user = user;
         this.testform = testform;
         this.mark = mark;
     }
 
-    public UserPassesTest() {}
+    public UserPassesTest() {
+    }
 
     public UserPassesTestId getId() {
         return id;

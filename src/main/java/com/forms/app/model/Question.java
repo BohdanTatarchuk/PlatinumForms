@@ -1,6 +1,9 @@
 package com.forms.app.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "Question")
@@ -11,6 +14,25 @@ public class Question {
     private String question_id;
 
     private String questionText;
+
+    private boolean isObligatory;
+
+    public Question(String id, String questionText, boolean isObligatory) {
+        this.question_id = id;
+        this.questionText = questionText;
+        this.isObligatory = isObligatory;
+    }
+
+    public Question() {
+    }
+
+    public boolean isObligatory() {
+        return isObligatory;
+    }
+
+    public void setObligatory(boolean obligatory) {
+        isObligatory = obligatory;
+    }
 
     public String getId() {
         return question_id;
@@ -27,11 +49,4 @@ public class Question {
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
     }
-
-    public Question(String id, String questionText) {
-        this.question_id = id;
-        this.questionText = questionText;
-    }
-
-    public Question(){}
 }
