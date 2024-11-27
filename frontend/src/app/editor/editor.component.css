@@ -17,7 +17,6 @@ input[type="submit"] {
   font-weight: bold;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  left: 50vh;
 }
 
 input[type="submit"]:hover {
@@ -26,16 +25,26 @@ input[type="submit"]:hover {
   cursor: pointer;
 }
 
-#buttons-pair {
-  position: absolute;
-  top: 28vh;
-  left: 52vw;
-
+#main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  height: 100vh;
 }
 
 input[type=submit] {
   margin-left: 10px;
   margin-right: 10px;
+}
+
+#buttons-pair {
+  margin-top: 20px;
+}
+
+#header {
+  margin-bottom: 20px;
 }
 
 .error {
