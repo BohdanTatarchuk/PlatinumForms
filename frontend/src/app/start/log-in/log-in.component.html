@@ -8,6 +8,6 @@
     <input type="submit" id="login_button" value="Login" (click)="data_check()" [disabled]="!loginForm.valid">
     <input type="submit" (click)="handleGoogleSignIn()" value="Login via Google">
     <p id="sing_up_text" (click)="navigateToRegistration()">Do not have an account yet? <a>Sign up</a></p>
-    <label for="password" id="password_invalid" *ngIf="wrong_password">{{ error_message }}</label>
+    <label for="password" id="password_invalid" *ngIf="wrong_password">{{ error_message }}</label><br>
   </form>
 </div>
