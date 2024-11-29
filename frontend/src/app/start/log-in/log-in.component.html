@@ -1,15 +1,13 @@
-<div class="square2">
-  <form #loginForm="ngForm">
+<div class="container">
+  <form #loginForm="ngForm" id="form">
     <p id="login_text">Login</p>
-    <label for="email">Email</label>
-    <label for="email" id="email_invalid" *ngIf="wrong_email">{{ email_message }}</label>
+    <label for="email" id="email_label">Email</label>
     <input type="text" id="email" name="email" [(ngModel)]="data.email" required>
-    <label for="password">Password</label>
-    <label for="password" id="password_invalid" *ngIf="wrong_password">{{ password_message }}</label>
-    <input type="text" id="password" name="password" [(ngModel)]="data.password" required>
-    <input type="submit" id="login_button" value="Login" (click)="data_check()" [disabled]="!loginForm.valid"><br>
-    <label id="or">Or</label>
-    <input type="submit" (click)="handleGoogleSignIn()" value="login via google">
-    <p id="sing_up_text" (click)="navigateToRegistration()">Do not have an account yet?<a>Sign up</a></p>
+    <label for="password" id="password_label">Password</label>
+    <input type="password" id="password" name="password" [(ngModel)]="data.password" required>
+    <input type="submit" id="login_button" value="Login" (click)="data_check()" [disabled]="!loginForm.valid">
+    <input type="submit" (click)="handleGoogleSignIn()" value="Login via Google">
+    <p id="sing_up_text" (click)="navigateToRegistration()">Do not have an account yet? <a>Sign up</a></p>
+    <label for="password" id="password_invalid" *ngIf="wrong_password">{{ error_message }}</label>
   </form>
 </div>

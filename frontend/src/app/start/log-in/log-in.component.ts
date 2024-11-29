@@ -21,13 +21,11 @@ export class LogInComponent {
 
   router = inject(Router)
 
-  constructor(public globalService: GlobalService) {
-  }
+  constructor(public globalService: GlobalService) {}
 
   public wrong_email: boolean = false;
   public wrong_password: boolean = false;
-  public email_message: string = "● Wrong email!";
-  public password_message: string = "● Wrong password!";
+  public error_message: string = "Wrong credentials, please try again.";
 
   data = {
     email: '',
@@ -68,15 +66,22 @@ export class LogInComponent {
   data_check() {
     this.wrong_email = false;
     this.wrong_password = false;
-    const info = this.users.find(user => user.email == this.data.email)
+
+    const info = this.users.find(user => user.email == this.data.email);
+
     if (info?.email == this.data.email && info?.password == this.data.password) {
       this.globalService.is_logged = true;
       this.globalService.email = this.data.email;
       this.globalService.username = info.username;
       this.globalService.tests = info.tests;
+
       this.router.navigate(['/main']);
-    } else if (info?.email == this.data.email && info?.password != this.data.password) this.wrong_password = true;
-    else this.wrong_email = true;
+    } else if (info?.email == this.data.email && info?.password != this.data.password) {
+      this.wrong_password = true;
+    } else {
+      this.wrong_email = true;
+    }
+
   }
 
   navigateToRegistration() {

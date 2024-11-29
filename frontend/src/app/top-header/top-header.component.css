@@ -9,11 +9,18 @@
   font-size: 30px;
 }
 
+:host {
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+
 .square1 {
   background-color: #593391;
   color: white;
   width: 100vw;
-  padding: 10px;
+  padding: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
