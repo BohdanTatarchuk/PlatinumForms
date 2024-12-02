@@ -1,15 +1,46 @@
-.dot {
-  height: 70px;
-  width: 70px;
-  position: absolute;
-  top: 155px;
-  right: 20px;
+@font-face {
+  font-family: montserratFont;
+  src: url(../../fonts/Montserrat-Bold.ttf);
+  font-weight: bold;
+}
+
+* {
+  font-family: montserratFont;
+}
+
+#rectangle {
+  min-width: 450px;
   background-color: #FFE100;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  display: inline-block;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+
+h2, h4 {
+  color: white;
+}
+
+h4 {
+  margin-top: 10px;
+}
+
+input[type="submit"] {
+  background-color: #ffffff;
+  color: #FFE100;
+  border: none;
+  width: 150px;
+  height: 30px;
+  margin-top: 15px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"]:hover {
+  background-color: #593391;
+  color: #ffffff;
   cursor: pointer;
-  margin-bottom: 20px;
-  background-size: cover;
-  background-position: center;
 }

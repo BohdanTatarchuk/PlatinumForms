@@ -1,0 +1,15 @@
+#main {
+  display: flex;
+  flex-direction: column;
+}
+
+#row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#row > * {
+  margin-top: 50px;
+  margin-left: 30px;
+  font-size: 20px;
+}

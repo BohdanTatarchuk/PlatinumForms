@@ -1,1 +1,11 @@
-<span (click)="navigate_to_profile()" class="dot" [style.backgroundImage]="'url(' + imageUrl + ')'"></span>
+<div id="rectangle">
+  <h2>Your profile</h2>
+  <h4>Username: {{ username }} </h4>
+  <h4>Email: {{ email }} </h4>
+
+  <input type="submit"
+         id="goToProfile"
+         (click)="navigate_to_profile()"
+         [style.backgroundImage]="'url(' + imageUrl + ')'"
+          value="Change profile">
+</div>
