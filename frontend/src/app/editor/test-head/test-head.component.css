@@ -8,13 +8,26 @@
   font-family: montserratFont;
 }
 
-.rectangle {
+#main {
+  display: flex;
+  flex-direction: row;
+}
+
+#filler {
+  width: 49px;
+  height: 49px;
+}
+
+#rectangle {
   width: 800px;
   background-color: #FFE100;
   margin: 10px;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
 }
 
 h1, h3 {
@@ -41,7 +54,7 @@ input[type="text"], textarea {
   scrollbar-width: none;
 }
 
-button {
+#buttonAdd {
   border: none;
   cursor: pointer;
   background: none;

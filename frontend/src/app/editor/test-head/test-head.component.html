@@ -1,4 +1,7 @@
-<div class="rectangle">
+<div id="main">
+  <div id="filler"></div>
+
+  <div id="rectangle">
     <input
       type="text"
       name="test-name"
@@ -15,13 +18,12 @@
       [(ngModel)]="test.description"
     ></textarea>
 
-  @if(maxNumberOfQuestionsError) {
-    <br> <label class="maxNumberError"> {{ maxNumberOfQuestionsError }} </label>
-  }
+    @if(maxNumberOfQuestionsError) {
+      <br> <label class="maxNumberError"> {{ maxNumberOfQuestionsError }} </label>
+    }
+  </div>
 
-  <button (click)="onAddQuestion()">
-    <img src="button1.svg" alt="">
+  <button (click)="onAddQuestion()" id="buttonAdd">
+    <img src="button1.svg">
   </button>
 </div>
-
-
