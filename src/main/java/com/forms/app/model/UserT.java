@@ -1,5 +1,6 @@
 package com.forms.app.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -7,11 +8,14 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "UserT")
 public class UserT {
+
+    @Column(length = 25)
     private String username;
 
     @Id
     private String email;
 
+    @Column(length = 25)
     private String password;
 
     private String photo;

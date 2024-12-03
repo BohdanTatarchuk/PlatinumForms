@@ -13,6 +13,7 @@ public class Question {
     @Column(name = "question_id")
     private String question_id;
 
+    @Column(length = 100)
     private String questionText;
 
     private boolean isObligatory;

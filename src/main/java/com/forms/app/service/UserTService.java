@@ -18,7 +18,8 @@ public class UserTService {
     }
 
     public void createUser(UserT user) {
-        userRepository.save(user);
+        if(checkPassword(user.getPassword())) userRepository.save(user);
+        else System.out.println("Somethjing is worng!!!!");
     }
 
     public Optional<UserT> findById(String email) {
@@ -45,5 +46,29 @@ public class UserTService {
 
     public void deleteUser(String email) {
         userRepository.deleteById(email);
+    }
+
+    public static boolean checkPassword(String password) {
+        if (password.length() < 8) {
+            return false;
+        }
+        if (password.length() > 25) {
+            return false;
+        }
+
+        boolean lowerChars = false;
+        boolean upperChars = false;
+        boolean specialChars = false;
+        boolean numbers = false;
+
+        for (int i = 0; i < password.length(); i++) {
+            char test = password.charAt(i);
+            if (Character.isLowerCase(test)) lowerChars = true;
+            if (Character.isUpperCase(test)) upperChars = true;
+            if (Character.isDigit(test)) numbers = true;
+            if (test >= 33 && test <= 47 || test >= 58 && test <= 64 || test >= 91 && test <= 96 || test >= 123 && test <= 126)
+                specialChars = true;
+        }
+        return lowerChars && upperChars && numbers && specialChars;
     }
 }

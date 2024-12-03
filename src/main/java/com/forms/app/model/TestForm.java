@@ -8,6 +8,7 @@ import java.util.List;
 @Table(name = "TestForm")
 public class TestForm {
 
+    @Column(length = 100)
     private String name;
 
     private String description;
