@@ -28,9 +28,9 @@ export class RegistrationWindowComponent {
   public correct_email: boolean = false;
   public correct_password: boolean = false;
   public correctly_repeated: boolean = false;
-  public email_message: string = "● Nonexistent email";
+  public email_message: string = "Nonexistent email";
   public password_message: string = "";
-  public repeated_password_message: string = "● Passwords do not match";
+  public repeated_password_message: string = "Passwords do not match";
 
   password_validation() {
     let hasLowerChars = false;
@@ -53,16 +53,16 @@ export class RegistrationWindowComponent {
     }
     this.correct_password = true;
     if (!hasLowerChars) {
-      this.password_message = "● No lowercase characters"
+      this.password_message = "No lowercase characters"
     }
     if (!hasUpperChars) {
-      this.password_message = "● No uppercase characters"
+      this.password_message = "No uppercase characters"
     }
     if (!hasNumbers) {
-      this.password_message = "● No numbers"
+      this.password_message = "No numbers"
     }
     if (!hasSpecialChars) {
-      this.password_message = "● No special characters"
+      this.password_message = "No special characters"
     }
     return false;
   }

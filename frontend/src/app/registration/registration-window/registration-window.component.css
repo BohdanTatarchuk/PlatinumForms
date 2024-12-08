@@ -8,65 +8,59 @@
   font-family: montserratFont;
 }
 
-html, body {
-  margin: 0;
-  align-items: center;
-  background-color: #ffffff;
-  font-family: Montserrat, sans-serif;
-  font-weight: normal;
-}
-
-.square2 {
+.container {
   background-color: #ffd700;
   padding: 30px;
-  height: 580px;
   max-width: 350px;
-  margin-top: 150px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-top: 50px;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+#form {
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+}
+
+form > * {
+  width: 100%;
+  margin-top: 10px;
+  font-weight: bold;
+  border-radius: 10px;
 }
 
 #reg_text {
+  font-size: 30px;
   text-align: center;
-  font-size: xx-large;
-  color: white;
-  font-weight: bold;
+  color: #ffffff;
 }
 
-input[type="text"] {
+input[type="text"], input[type="password"] {
   color: black;
-  width: 325px;
-  padding: 10px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  padding-left: 10px;
+  height: 35px;
   margin-bottom: 10px;
-  margin-top: 10px;
-  border-radius: 10px;
   border: none;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-#sign_up_button {
-  margin-left: 100px;
+input[type="submit"] {
   background-color: #ffffff;
   color: #FFE100;
   border: none;
-  padding: 10px;
-  width: 145px;
-  font-weight: bold;
-  border-radius: 10px;
+  height: 40px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-#sign_up_button:hover {
-  background-color: #593391;
-  color: #ffffff;
-  cursor: pointer;
 }
 
 form label {
   color: #ffffff;
-  font-weight: bold;
 }
 
 form a {
@@ -75,10 +69,25 @@ form a {
   font-weight: bold;
 }
 
-#email_invalid,
-#password_invalid,
-#repeated_password_invalid {
-  margin-left: 20px;
+#sing_up_text {
+  color: #ffffff;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #593391;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#login_button:hover {
+  background-color: #593391;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+#password_invalid, #email_invalid, #repeat_invalid {
   color: darkred;
   font-size: small;
 }
+

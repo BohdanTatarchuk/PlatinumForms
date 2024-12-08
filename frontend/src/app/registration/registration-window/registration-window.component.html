@@ -1,5 +1,5 @@
-<div class="square2">
-  <form #registrationForm="ngForm">
+<div class="container">
+  <form #registrationForm="ngForm" id="form">
     <p id="reg_text">Registration</p>
     <label for="email">Email</label>
     <label for="email" id="email_invalid" *ngIf="correct_email">{{ email_message }}</label>
@@ -8,12 +8,12 @@
     <input type="text" id="username" name="username" [(ngModel)]="info.username" required>
     <label for="password">Password</label>
     <label for="password" id="password_invalid" *ngIf="correct_password">{{ password_message }}</label>
-    <input type="text" id="password" name="password" [(ngModel)]="info.password" required>
+    <input type="password" id="password" name="password" [(ngModel)]="info.password" required>
     <label for="repeated_password">Repeat Password</label>
     <label for="repeated_password" id="repeated_password_invalid"
            *ngIf="correctly_repeated">{{ repeated_password_message }}</label>
-    <input type="text" id="repeated_password" name="repeated_password" [(ngModel)]="info.repeated_password" required>
+    <input type="password" id="repeated_password" name="repeated_password" [(ngModel)]="info.repeated_password" required>
     <input type="submit" id="sign_up_button" value="Sign up" (click)="user_validation()"
-           [disabled]="!registrationForm.valid"><br>
+           [disabled]="!registrationForm.valid">
   </form>
 </div>
