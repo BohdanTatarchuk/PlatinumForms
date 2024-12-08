@@ -5,10 +5,11 @@ import com.forms.app.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api/v1/questions/")
+@RequestMapping(path = "/questions")
 public class QuestionController {
 
     private final QuestionService service;
@@ -18,22 +19,27 @@ public class QuestionController {
         this.service = service;
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public Optional<Question> findById(@PathVariable("id") String id) {
         return service.findById(id);
     }
 
-    @PostMapping("save")
+    @GetMapping("/")
+    public List<Question> findAllQuestions() {
+        return service.findAllQuestions();
+    }
+
+    @PostMapping("/")
     public void save(@RequestBody Question question) {
         service.createQuestion(question);
     }
 
-    @PutMapping("updateText={id}")
-    public void updateQuestionById(@PathVariable("id") String id, @RequestBody String text) {
-        service.updateQuestionById(id, text);
+    @PutMapping("/{id}")
+    public void updateQuestionById(@PathVariable("id") String id, @RequestBody Question q) {
+        service.updateQuestion(id, q);
     }
 
-    @DeleteMapping("deleteById={id}")
+    @DeleteMapping("/{id}")
     public void deleteById(@PathVariable("id") String id) {
         service.deleteQuestionById(id);
     }

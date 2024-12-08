@@ -5,6 +5,7 @@ import com.forms.app.repository.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,14 +26,18 @@ public class QuestionService {
         return questionRepository.findById(id);
     }
 
-    public void updateQuestionById(String id, String text) {
+    public List<Question> findAllQuestions() {
+        return questionRepository.findAll();
+    }
+
+    public void updateQuestion(String id, Question q) {
         if (questionRepository.findById(id).isEmpty()) {
             System.out.println("Error: User with login " + id + " not found");
             return;
         }
 
         Question newQuestion = questionRepository.findById(id).get();
-        newQuestion.setQuestionText(text);
+        newQuestion.setQuestionText(q.getQuestionText());
         questionRepository.save(newQuestion);
     }
 

@@ -5,6 +5,7 @@ import com.forms.app.repository.UserTRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,42 +18,13 @@ public class UserTService {
         this.userRepository = userRepository;
     }
 
-    public void createUser(UserT user) {
-        if(checkPassword(user.getPassword())) userRepository.save(user);
-        else System.out.println("Somethjing is worng!!!!");
-    }
-
-    public Optional<UserT> findById(String email) {
-        return userRepository.findById(email);
-    }
-
-    public void updateUsername(String email, String newUsername) {
-        Optional<UserT> user = userRepository.findById(email);
-
-        if (user.isPresent()) {
-            user.get().setUsername(newUsername);
-            userRepository.save(user.get());
-        }
-    }
-
-    public void updateProfilePicture(String email, String newProfilePicture) {
-        Optional<UserT> user = userRepository.findById(email);
-
-        if (user.isPresent()) {
-            user.get().setPhoto(newProfilePicture);
-            userRepository.save(user.get());
-        }
-    }
-
-    public void deleteUser(String email) {
-        userRepository.deleteById(email);
-    }
-
     public static boolean checkPassword(String password) {
         if (password.length() < 8) {
+            System.out.println("Password is too short");
             return false;
         }
         if (password.length() > 25) {
+            System.out.println("Password is too long");
             return false;
         }
 
@@ -69,6 +41,50 @@ public class UserTService {
             if (test >= 33 && test <= 47 || test >= 58 && test <= 64 || test >= 91 && test <= 96 || test >= 123 && test <= 126)
                 specialChars = true;
         }
+
+        if (!lowerChars) {
+            System.out.println("No lower chars in password");
+        }
+
+        if (!numbers) {
+            System.out.println("No numbers in password");
+        }
+
+        if (!upperChars) {
+            System.out.println("No upper chars");
+        }
+
+        if (!specialChars) {
+            System.out.println("No special chars");
+        }
         return lowerChars && upperChars && numbers && specialChars;
+    }
+
+    public Optional<UserT> findById(String email) {
+        return userRepository.findById(email);
+    }
+
+    public void createUser(UserT user) {
+        if (checkPassword(user.getPassword())) {
+            userRepository.save(user);
+        }
+    }
+
+    public void updateUser(String email, UserT user) {
+        Optional<UserT> foundUser = userRepository.findById(email);
+
+        if (foundUser.isPresent()) {
+            foundUser.get().setPhoto(user.getPhoto());
+            foundUser.get().setUsername(user.getUsername());
+            userRepository.save(foundUser.get());
+        }
+    }
+
+    public void deleteUser(String email) {
+        userRepository.deleteById(email);
+    }
+
+    public List<UserT> findAllUsers() {
+        return userRepository.findAll();
     }
 }

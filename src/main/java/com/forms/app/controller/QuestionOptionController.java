@@ -5,10 +5,11 @@ import com.forms.app.service.QuestionOptionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api/v1/options/")
+@RequestMapping(path = "/options")
 public class QuestionOptionController {
 
     QuestionOptionService service;
@@ -18,32 +19,27 @@ public class QuestionOptionController {
         this.service = service;
     }
 
-    @GetMapping("{option_id}")
+    @GetMapping("/")
+    public List<QuestionOption> findAllOptions() {
+        return service.findAllOptions();
+    }
+
+    @GetMapping("/{option_id}")
     public Optional<QuestionOption> findById(@PathVariable("option_id") String optionId) {
         return service.findById(optionId);
     }
 
-    @PostMapping("save")
+    @PostMapping("/")
     public void save(@RequestBody QuestionOption option) {
         service.createOption(option);
     }
 
-    @PutMapping("updateText={option_id}")
-    public void updateOptionText(@PathVariable("option_id") String optionId, @RequestBody String text) {
-        service.updateQuestionOptionTextById(optionId, text);
+    @PutMapping("/{option_id}")
+    public void updateOption(@PathVariable("option_id") String optionId, @RequestBody QuestionOption option) {
+        service.updateQuestionOption(optionId, option);
     }
 
-    @PutMapping("updateCorrectness={option_id}")
-    public void updateOptionCorrectness(@PathVariable("option_id") String optionId, @RequestBody boolean correct) {
-        service.updateQuestionOptionCorrectnessById(optionId, correct);
-    }
-
-    @PutMapping("update={option_id}")
-    public void updateOption(@PathVariable("option_id") String optionId, @RequestParam("text") String text, @RequestParam("correct") boolean correct) {
-        service.updateQuestionOptionById(optionId, text, correct);
-    }
-
-    @DeleteMapping("deleteById={option_id}")
+    @DeleteMapping("/{option_id}")
     public void deleteById(@PathVariable("option_id") String optionId) {
         service.deleteQuestionById(optionId);
     }

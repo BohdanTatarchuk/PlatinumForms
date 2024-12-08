@@ -6,36 +6,41 @@ import com.forms.app.repository.UserPassesTestsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserPassesTestService {
 
-    public UserPassesTestsRepository repository;
+    private final UserPassesTestsRepository userPassesTestsRepository;
 
     @Autowired
-    public UserPassesTestService(UserPassesTestsRepository repository) {
-        this.repository = repository;
+    public UserPassesTestService(UserPassesTestsRepository userPassesTestsRepository) {
+        this.userPassesTestsRepository = userPassesTestsRepository;
     }
 
     public Optional<UserPassesTest> findPassByID(UserPassesTestId id) {
-        return repository.findById(id);
+        return userPassesTestsRepository.findById(id);
     }
 
     public void createNewPass(UserPassesTest pass) {
-        repository.save(pass);
+        userPassesTestsRepository.save(pass);
     }
 
     public void updateMark(UserPassesTestId id, float newMark){
-        Optional<UserPassesTest> pass = repository.findById(id);
+        Optional<UserPassesTest> pass = userPassesTestsRepository.findById(id);
 
         if(pass.isPresent()){
             pass.get().setMark(newMark);
-            repository.save(pass.get());
+            userPassesTestsRepository.save(pass.get());
         }
     }
 
     public void deletePass(UserPassesTestId id) {
-        repository.deleteById(id);
+        userPassesTestsRepository.deleteById(id);
+    }
+
+    public List<UserPassesTest> findAll() {
+        return userPassesTestsRepository.findAll();
     }
 }

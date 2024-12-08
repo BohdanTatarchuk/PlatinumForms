@@ -5,10 +5,11 @@ import com.forms.app.service.TestFormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api/v1/tests/")
+@RequestMapping(path = "/tests")
 public class TestFromController {
 
     private final TestFormService service;
@@ -18,27 +19,27 @@ public class TestFromController {
         this.service = service;
     }
 
-    @GetMapping("{testID}")
+    @GetMapping("/{testID}")
     public Optional<TestForm> findByTestID(@PathVariable("testID") String testID) {
         return service.findByTestID(testID);
     }
 
-    @PostMapping("save")
+    @GetMapping("/")
+    public List<TestForm> findByAllTests() {
+        return service.findAllTests();
+    }
+
+    @PostMapping("/")
     public void save(@RequestBody TestForm testForm) {
         service.createTestForm(testForm);
     }
 
-    @PutMapping("updateName={testID}")
-    public void updateTestName(@PathVariable("testID") String testID, @RequestBody String newTestName) {
-        service.updateTestName(testID, newTestName);
+    @PutMapping("/{testID}")
+    public void updateTest(@PathVariable("testID") String testID, @RequestBody TestForm testForm) {
+        service.updateTest(testID, testForm);
     }
 
-    @PutMapping("updateDescription={testID}")
-    public void updateTestDescription(@PathVariable("testID") String testID, @RequestBody String newDescription) {
-        service.updateTestDescription(testID, newDescription);
-    }
-
-    @DeleteMapping("deleteByTestID={testID}")
+    @DeleteMapping("/{testID}")
     public void deleteByTestID(@PathVariable("testID") String testID) {
         service.deleteTestForm(testID);
     }

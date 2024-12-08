@@ -5,6 +5,7 @@ import com.forms.app.repository.TestFormRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -25,21 +26,17 @@ public class TestFormService {
         return testFormRepository.findById(testID);
     }
 
-    public void updateTestName(String testID, String newTestName) {
-        Optional<TestForm> testForm = testFormRepository.findById(testID);
-
-        if (testForm.isPresent()) {
-            testForm.get().setName(newTestName);
-            testFormRepository.save(testForm.get());
-        }
+    public List<TestForm> findAllTests() {
+        return testFormRepository.findAll();
     }
 
-    public void updateTestDescription(String testID, String newDescription) {
-        Optional<TestForm> testForm = testFormRepository.findById(testID);
+    public void updateTest(String testID, TestForm testForm) {
+        Optional<TestForm> foundTestForm = testFormRepository.findById(testID);
 
-        if (testForm.isPresent()) {
-            testForm.get().setDescription(newDescription);
-            testFormRepository.save(testForm.get());
+        if (foundTestForm.isPresent()) {
+            foundTestForm.get().setDescription(testForm.getDescription());
+            foundTestForm.get().setName(testForm.getName());
+            testFormRepository.save(foundTestForm.get());
         }
     }
 

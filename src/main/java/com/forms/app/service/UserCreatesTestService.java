@@ -6,6 +6,7 @@ import com.forms.app.repository.UserCreatesTestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,5 +29,9 @@ public class UserCreatesTestService {
 
     public Optional<UserCreatesTest> findCreationById(UserCreatesTestId id) {
         return userCreatesTestRepository.findById(id);
+    }
+
+    public List<UserCreatesTest> findAll() {
+        return userCreatesTestRepository.findAll();
     }
 }

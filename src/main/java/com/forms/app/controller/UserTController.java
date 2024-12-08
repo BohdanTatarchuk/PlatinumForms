@@ -5,10 +5,11 @@ import com.forms.app.service.UserTService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(path = "/api/v1/users/")
+@RequestMapping(path = "/users")
 public class UserTController {
 
     private final UserTService service;
@@ -18,28 +19,28 @@ public class UserTController {
         this.service = service;
     }
 
-    @GetMapping("{email}")
+    @GetMapping("/")
+    public List<UserT> findAll() {
+        return service.findAllUsers();
+    }
+
+    @GetMapping("/{email}")
     public Optional<UserT> findByLogin(@PathVariable("email") String email) {
         return service.findById(email);
     }
 
-    @DeleteMapping("deleteByLogin={login}")
+    @DeleteMapping("/{login}")
     public void deleteByLogin(@PathVariable("login") String login) {
         service.deleteUser(login);
     }
 
-    @PostMapping("save")
+    @PostMapping("/")
     public void save(@RequestBody UserT user) {
         service.createUser(user);
     }
 
-    @PutMapping("updateProfilePicture={email}")
-    public void updateProfilePicture(@PathVariable("email") String email, @RequestBody String picture) {
-        service.updateProfilePicture(email, picture);
-    }
-
-    @PutMapping("updateUsername={email}")
-    public void updateUsername(@PathVariable("email") String email, @RequestBody String username) {
-        service.updateUsername(email, username);
+    @PutMapping("/{email}")
+    public void updateProfilePicture(@PathVariable("email") String email, @RequestBody UserT user) {
+        service.updateUser(email, user);
     }
 }
