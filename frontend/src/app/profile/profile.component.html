@@ -1,10 +1,16 @@
-<app-top-header/>
-<div class="center">
-  <div class="dot" [style.backgroundImage]="'url(' + imageUrl + ')'">
-    <input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)"/>
+<div id="main">
+  <app-top-header/>
+  <div id="container">
+    <div
+      class="dot"
+      [style.backgroundImage]="'url(' + imageUrl + ')'">
+      <input type="file" accept="image/png, image/jpeg" (change)="onFileSelected($event)"/>
+    </div>
+    <h1 id="username">Old username: {{ username }}</h1>
+    <input id="usernameField" type="text" placeholder="Type your new username..." [(ngModel)]="newUsername">
+    <h1 id="email">Email: {{email}}</h1>
+    <button (click)="logout()">Log out</button>
+    <button (click)="changeUsername()">Change username</button>
+    <h1 id="error">{{ this.emptyError }}</h1>
   </div>
-  <h1 id="username">{{username}}</h1>
-  <h1 id="email">{{email}}</h1>
-  <button id="logout_button" (click)="logout()">Log out</button>
 </div>
-
