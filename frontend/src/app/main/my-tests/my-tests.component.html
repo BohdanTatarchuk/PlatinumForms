@@ -1,14 +1,15 @@
 <div class="rectangle">
   <h2>My tests</h2>
-  <nav>
-    <ul>
-      @for (test of tests; track test.id) {
-        <app-my-test [test]="test" (select)="onSelectTest($event)"/>
-      }
-    </ul>
-  </nav>
+  <div id="testsList">
+    @for (test of tests; track test.id) {
+      <app-my-test [test]="test" (select)="onSelectTest($event)"/>
+    }
+  </div>
+
   <button (click)="onSelectNewTest()" id="newTest">
     <img class="button" src="button.svg" alt="add new test">
   </button>
+
+  <h3>{{ errorMaxAmount }}</h3>
 </div>
 

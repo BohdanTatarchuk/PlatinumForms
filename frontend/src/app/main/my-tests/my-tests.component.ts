@@ -5,6 +5,8 @@ import {Test} from '../../editor/test.model';
 import {GlobalService} from '../../services/global.service';
 import {TestService} from '../../services/test.service';
 
+const MAX_AMOUNT_OF_TESTS = 10;
+
 @Component({
   selector: 'app-my-tests',
   standalone: true,
@@ -21,6 +23,8 @@ export class MyTestsComponent {
   tests: any;
 
   router = inject(Router);
+
+  errorMaxAmount: string = "";
 
   ngOnInit() {
     this.tests = this.globalService.tests;
@@ -43,6 +47,14 @@ export class MyTestsComponent {
   }
 
   onSelectNewTest(): void {
+    if (this.globalService.tests!.length >= MAX_AMOUNT_OF_TESTS) {
+      console.log("Max amount of tests of " + MAX_AMOUNT_OF_TESTS + " surpassed");
+      this.errorMaxAmount = "Max amount of tests surpassed";
+      return;
+    } else {
+      this.errorMaxAmount = "";
+    }
+
     let emptyTest: Test = {
       name: "empty test",
       id: this.testService.generateQID(),
