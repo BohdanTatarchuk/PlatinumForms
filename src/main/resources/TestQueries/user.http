@@ -1,0 +1,46 @@
+GET http://localhost:8080/users/ HTTP/1.1
+
+###
+
+GET http://localhost:8080/users/asdasd HTTP/1.1
+
+###
+
+POST http://localhost:8080/users/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "Roman",
+  "email": "roma@gmail.com",
+  "password": "aA!12zhasedgcqQ@",
+  "photo": "C:/users/roman/pfp.png"
+}
+
+###
+
+PUT http://localhost:8080/users/roma@gmail.com HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "RomanFRRRRRRRRRRRRRR",
+  "email": "roma@gmail.com",
+  "password": "aA!12zhasedgcqQ@",
+  "photo": "C:/users/roman/pfp.png"
+}
+###
+
+PUT http://localhost:8080/users/roma@gmail.com HTTP/1.1
+Content-Type: application/json
+
+{
+  "username": "RomanFRRRRRRRRRRRRRR",
+  "email": "roma@gmail.com",
+  "password": "aA!12zhasedgcqQ@",
+  "photo": "C:/users/roman/pfpfornow.png"
+}
+
+###
+
+DELETE http://localhost:8080/users/roma@gmail.com HTTP/1.1
+
+###

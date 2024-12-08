@@ -1,0 +1,44 @@
+
+
+
+//OPTION
+GET http://localhost:8080/options/
+Content-Type: application/json
+
+###
+
+GET http://localhost:8080/options/12345
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/options/
+Content-Type: application/json
+
+{
+  "id": "12345",
+  "text": "Option 1",
+  "questionId": "67890"
+}
+
+###
+
+PUT http://localhost:8080/options/12345
+Content-Type: application/json
+
+{
+  "id": "12345",
+  "text": "Updated Option 1",
+  "questionId": "67890"
+}
+
+###
+
+DELETE http://localhost:8080/options/12345
+Content-Type: application/json
+
+###
+
+
+
+//QUESTIONS
