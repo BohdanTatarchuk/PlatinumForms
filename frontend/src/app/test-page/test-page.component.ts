@@ -28,7 +28,7 @@ export class TestPageComponent {
   constructor(private testService: TestService) {}
 
   test!: Test;
-  obligatory_message: string = "●All obligatory questions must be answered!";
+  obligatory_message: string = "All obligatory questions must be answered";
   overallMark: number = 0;
   checked: boolean = true;
   finished: boolean = false;

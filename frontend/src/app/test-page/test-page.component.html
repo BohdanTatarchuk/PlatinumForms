@@ -1,11 +1,14 @@
-<app-top-header></app-top-header>
-<app-test-head></app-test-head>
-@for (question of test.questions; track question.id) {
-  <app-test-question [question]="question" [saveTrigger]="saveTrigger"></app-test-question>
-}
-<label id="obligatory_check" *ngIf="!checked">{{obligatory_message}}</label>
-<label id="overallMark" *ngIf="finished">{{overallMark}}</label>
-<div id="button-container">
-  <button id="save_results" *ngIf="!finished" (click)="onSave()">Save results</button>
+<div id="container">
+  <app-top-header></app-top-header>
+  <app-test-head></app-test-head>
+  <div id="questions">
+    @for (question of test.questions; track question.id) {
+      <app-test-question [question]="question" [saveTrigger]="saveTrigger"></app-test-question>
+    }
+  </div>
+
+  <label id="overallMark" *ngIf="finished">{{overallMark}}</label>
+  <button id="saveResults" *ngIf="!finished" (click)="onSave()">Save results</button>
+  <label id="obligatoryCheck" *ngIf="!checked">{{obligatory_message}}</label>
 </div>
 
