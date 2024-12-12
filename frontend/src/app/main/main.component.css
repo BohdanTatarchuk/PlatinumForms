@@ -1,6 +1,20 @@
+@font-face {
+  font-family: montserratFont;
+  src: url(../fonts/Montserrat-Bold.ttf);
+  font-weight: bold;
+}
+
+* {
+  font-family: montserratFont;
+}
+
 #main {
   display: flex;
   flex-direction: column;
+}
+
+#header{
+  font-weight: bold;
 }
 
 #row {
