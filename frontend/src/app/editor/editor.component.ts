@@ -5,7 +5,6 @@ import {QuestionComponent} from "./question/question.component";
 import {Test} from './test.model';
 import {TestService} from '../services/test.service';
 import {Router} from '@angular/router';
-import {last} from 'rxjs';
 import {Question} from './question/question.model';
 
 @Component({
@@ -53,17 +52,17 @@ export class EditorComponent {
     for (let i = 0; i < this.test.questions.length; i++) {
       allQuestionsHaveCorrectAnswers = false;
       for (let j = 0; j < this.test.questions[i].options.length; j++) {
-        if (this.test.questions[i].options[j].correct) {
-          allQuestionsHaveCorrectAnswers = true;
-          break;
-        }
 
         if (this.test.questions[i].options[j].name.length == 0) {
           console.log("Test can not be saved: options can not be empty");
           this.errorMessage = "Test can not be saved: options can not be empty";
-
           return;
         }
+
+        if (this.test.questions[i].options[j].correct) {
+          allQuestionsHaveCorrectAnswers = true;
+        }
+
       }
 
       if (!allQuestionsHaveCorrectAnswers) {
