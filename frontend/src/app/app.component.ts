@@ -1,5 +1,5 @@
-import {Component, inject} from '@angular/core';
-import {Router, RouterOutlet} from '@angular/router';
+import {Component} from '@angular/core';
+import {RouterOutlet} from '@angular/router';
 import { TopHeaderComponent } from './top-header/top-header.component';
 import {MainComponent} from './main/main.component';
 import {ProfileComponent} from './profile/profile.component';

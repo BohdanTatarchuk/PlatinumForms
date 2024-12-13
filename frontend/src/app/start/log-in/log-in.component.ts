@@ -1,10 +1,15 @@
-import {Component, inject} from '@angular/core';
+import {Component, DestroyRef, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router, RouterOutlet} from '@angular/router';
 import {GlobalService} from '../../services/global.service';
-import {DUMMY_TESTS} from '../../main/my-tests/my-test/dummy-data';
 import {gapi, loadGapiInsideDOM} from 'gapi-script';
 import {NgIf} from '@angular/common';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {UserT} from '../../registration/registration-window/user.model';
+import {firstValueFrom, Observable} from 'rxjs';
+import {resolve} from '@angular/compiler-cli';
+
+const URL: string = 'http://localhost:8080';
 
 @Component({
   selector: 'app-log-in',
@@ -19,11 +24,13 @@ import {NgIf} from '@angular/common';
 })
 export class LogInComponent {
 
-  router = inject(Router)
+  router = inject(Router);
+  private httpClient = inject(HttpClient);
+  private destroyRef = inject(DestroyRef);
 
-  constructor(public globalService: GlobalService) {}
+  constructor(public globalService: GlobalService) {
+  }
 
-  public wrong_email: boolean = false;
   public wrong_password: boolean = false;
   public error_message: string = "Wrong credentials, please try again.";
 
@@ -49,43 +56,59 @@ export class LogInComponent {
     const googleUser = await auth2.signIn();
     const profile = googleUser.getBasicProfile();
 
-    this.globalService.is_logged = true;
-    this.globalService.email = profile.getEmail();
-    this.globalService.username = profile.getName();
-    this.globalService.photo = profile.getImageUrl();
+    console.log('Google profile:', profile.getName(), profile.getEmail(), profile.getImageUrl());
 
-    console.log(profile.getEmail());
-    console.log(profile.getName());
-    console.log(profile.getImageUrl());
-
-    this.router.navigate(['/main']);
-  }
-
-  users = DUMMY_TESTS;
-
-  data_check() {
-    this.wrong_email = false;
-    this.wrong_password = false;
-
-    const info = this.users.find(user => user.email == this.data.email);
-
-    if (info?.email == this.data.email && info?.password == this.data.password) {
-      this.globalService.is_logged = true;
-      this.globalService.email = this.data.email;
-      this.globalService.username = info.username;
-      this.globalService.tests = info.tests;
-
-      this.router.navigate(['/main']);
-    } else if (info?.email == this.data.email && info?.password != this.data.password) {
-      this.wrong_password = true;
-    } else {
-      this.wrong_email = true;
+    let user: UserT | null = null;
+    try {
+      user = await firstValueFrom(this.getUser(profile.getEmail()));
+      console.log('User retrieved from backend:', user);
+    } catch (error) {
+      console.error('Error fetching user:', error);
     }
 
+    if (!user) {
+      const newUser: UserT = {
+        username: profile.getName(),
+        email: profile.getEmail(),
+        photo: profile.getImageUrl(),
+        password: ""
+      };
+      this.createUser(newUser);
+    }
+
+    this.globalService.is_logged = true;
+    await this.router.navigate(['/main']);
+  }
+
+  data_check() {
+    this.getUser(this.data.email).subscribe({
+      next: (user) => {
+        console.log('User retrieved:', user);
+        if (user.password === this.data.password) {
+          this.globalService.is_logged = true;
+          this.router.navigate(['/main']);
+        } else {
+          this.error_message = "Wrong credentials, please try again.";
+          this.wrong_password = true;
+        }
+      }
+    });
   }
 
   navigateToRegistration() {
     this.router.navigate(['/registration']);
+  }
+
+  getUser(email: string): Observable<UserT> {
+    return this.httpClient.get<UserT>(URL + "/users/" + email);
+  }
+
+  createUser(user: UserT) {
+    const header = new HttpHeaders({'asd': 'd'});
+    console.log("createUser: " + user);
+    this.httpClient.post(URL + "/users/", user, {headers : header}).subscribe(res => {
+      console.log("POST: " + res);
+    });
   }
 
 }

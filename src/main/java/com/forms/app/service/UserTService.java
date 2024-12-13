@@ -65,9 +65,7 @@ public class UserTService {
     }
 
     public void createUser(UserT user) {
-        if (checkPassword(user.getPassword())) {
-            userRepository.save(user);
-        }
+        userRepository.save(user);
     }
 
     public void updateUser(String email, UserT user) {
