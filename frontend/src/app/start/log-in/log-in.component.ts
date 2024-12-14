@@ -81,7 +81,7 @@ export class LogInComponent {
   }
 
   data_check() {
-    this.getUser(this.data.email).subscribe({
+     this.getUser(this.data.email).subscribe({
       next: (user) => {
         console.log('User retrieved:', user);
         if (user.password === this.data.password) {
@@ -93,6 +93,7 @@ export class LogInComponent {
         }
       }
     });
+
   }
 
   navigateToRegistration() {
@@ -104,7 +105,7 @@ export class LogInComponent {
   }
 
   createUser(user: UserT) {
-    const header = new HttpHeaders({'asd': 'd'});
+    const header = new HttpHeaders({'Content-Type': 'application/json'});
     console.log("createUser: " + user);
     this.httpClient.post(URL + "/users/", user, {headers : header}).subscribe(res => {
       console.log("POST: " + res);
