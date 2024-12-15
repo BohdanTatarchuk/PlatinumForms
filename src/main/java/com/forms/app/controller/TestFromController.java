@@ -19,14 +19,14 @@ public class TestFromController {
         this.service = service;
     }
 
-    @GetMapping("/{testID}")
-    public Optional<TestForm> findByTestID(@PathVariable("testID") String testID) {
-        return service.findByTestID(testID);
+    @GetMapping("/{email}/{test_id}")
+    public Optional<TestForm> findTestByTestID(@PathVariable("email") String email, @PathVariable("test_id") String testID) {
+        return service.findByEmail(email, testID);
     }
 
-    @GetMapping("/")
-    public List<TestForm> findByAllTests() {
-        return service.findAllTests();
+    @GetMapping("/{email}")
+    public List<TestForm> findAllByEmail(@PathVariable("email") String email) {
+        return service.findAllByEmail(email);
     }
 
     @PostMapping("/")

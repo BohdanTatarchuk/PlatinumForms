@@ -22,12 +22,12 @@ public class TestFormService {
         testFormRepository.save(testForm);
     }
 
-    public Optional<TestForm> findByTestID(String testID) {
-        return testFormRepository.findById(testID);
+    public Optional<TestForm> findByEmail(String email, String testID) {
+        return testFormRepository.findByEmail(email, testID);
     }
 
-    public List<TestForm> findAllTests() {
-        return testFormRepository.findAll();
+    public List<TestForm> findAllByEmail(String email) {
+        return testFormRepository.findAllByEmail(email);
     }
 
     public void updateTest(String testID, TestForm testForm) {

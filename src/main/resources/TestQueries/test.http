@@ -1,0 +1,33 @@
+//TEST FORMS
+
+GET http://localhost:8080/tests/ HTTP/1.1
+
+###
+
+GET http://localhost:8080/tests/5678 HTTP/1.1
+
+###
+
+POST http://localhost:8080/tests/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Biology",
+  "description": "Nah nahn ahnhanh nahn ah",
+  "id": "2klsdfrngl1dfjkgh"
+}
+
+###
+
+PUT http://localhost:8080/tests/2klsdfrngl1dfjkgh HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Biology",
+  "description": "No now its normal ",
+  "id": "2klsdfrngl1dfjkgh"
+}
+
+###
+
+DELETE http://localhost:8080/tests/2klsdfrngl1dfjkgh HTTP/1.1

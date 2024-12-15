@@ -34,7 +34,7 @@ export class RegistrationWindowComponent {
   public correct_email: boolean = false;
   public correct_password: boolean = false;
   public correctly_repeated: boolean = false;
-  public email_message: string = "Nonexistent email";
+  public email_message: string = "Invalid email address";
   public password_message: string = "";
   public repeated_password_message: string = "Passwords do not match";
 
@@ -51,13 +51,24 @@ export class RegistrationWindowComponent {
       if (/[^a-zA-Z0-9]/.test(char)) hasSpecialChars = true;
     }
 
-    const messages = [];
-    if (!hasLowerChars) messages.push("No lowercase characters");
-    if (!hasUpperChars) messages.push("No uppercase characters");
-    if (!hasNumbers) messages.push("No numbers");
-    if (!hasSpecialChars) messages.push("No special characters");
+    let messages: string[] = [];
 
+    if (!hasLowerChars) {
+      messages.push("No lowercase characters");
+    }
+    if (!hasUpperChars) {
+      messages.push("No uppercase characters");
+    }
+    if (!hasNumbers) {
+      messages.push("No numbers");
+    }
+    if (!hasSpecialChars) {
+      messages.push("No special characters");
+    }
+
+    console.log(messages);
     this.password_message = messages.join(", ");
+    console.log(this.password_message);
     this.correct_password = messages.length === 0;
 
     return this.correct_password;
@@ -68,25 +79,26 @@ export class RegistrationWindowComponent {
     return !this.correctly_repeated;
   }
 
-  async email_validation(): Promise<boolean> {
+  async email_validation() {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     let emailExists = false;
     this.correct_email = emailPattern.test(this.info.email);
     this.getUser(this.info.email).subscribe({
       next: (user) => {
         console.log('User retrieved:', user);
-        emailExists = !user.email;
+        if (user != null) {
+          emailExists = true;
+        }
+        this.correct_email = this.correct_email && !emailExists;
       }
     })
-
-    return this.correct_email && !emailExists;
   }
 
-  constructor(public globalService: GlobalService) {
-  }
+  constructor(public globalService: GlobalService) {}
 
   async user_validation() {
-    if (await this.email_validation() && this.password_validation() && this.password_repetition()) {
+    await this.email_validation();
+    if (this.password_validation() && this.password_repetition() && this.correct_email) {
       this.globalService.is_logged = true;
       const newUser: UserT = {
         username: this.info.username,

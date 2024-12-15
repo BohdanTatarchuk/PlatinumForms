@@ -1,0 +1,45 @@
+//QUESTION CONTAINS OPTION
+
+POST http://localhost:8080/questionContainsOptions/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": {
+    "question_id": "1a",
+    "option_id": "2df"
+  },
+  "question": {
+    "questionText": "text",
+    "obligatory": true,
+    "id": "1a"
+  },
+  "option": {
+    "text": "Waht",
+    "isCorrect": true,
+    "id": "2df"
+  }
+}
+
+###
+
+GET http://localhost:8080/questionContainsOptions/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "question_id": "1a",
+  "option_id": "2df"
+}
+
+###
+
+GET http://localhost:8080/questionContainsOptions/all HTTP/1.1
+
+###
+
+DELETE http://localhost:8080/questionContainsOptions/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "question_id": "1a",
+  "option_id": "2df"
+}

@@ -38,7 +38,6 @@ public class QuestionOptionService {
         questionOptionRepository.save(newOption);
     }
 
-
     public void deleteQuestionById(String id) {
         questionOptionRepository.deleteById(id);
     }

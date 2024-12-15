@@ -1,9 +1,6 @@
 package com.forms.app.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Question")
@@ -15,6 +12,10 @@ public class Question {
 
     @Column(length = 100)
     private String questionText;
+
+    @ManyToOne
+    @JoinColumn(name = "test_id", referencedColumnName = "test_id")
+    private TestForm test;
 
     private boolean isObligatory;
 
@@ -33,6 +34,14 @@ public class Question {
 
     public void setObligatory(boolean obligatory) {
         isObligatory = obligatory;
+    }
+
+    public TestForm getTest() {
+        return test;
+    }
+
+    public void setTest(TestForm test) {
+        this.test = test;
     }
 
     public String getId() {

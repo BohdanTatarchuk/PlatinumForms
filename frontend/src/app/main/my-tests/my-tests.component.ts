@@ -74,4 +74,6 @@ export class MyTestsComponent {
     this.testService.setTest(emptyTest);
     this.router.navigate(['/editor']);
   }
+
+
 }

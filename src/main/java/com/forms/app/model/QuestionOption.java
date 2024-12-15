@@ -1,9 +1,6 @@
 package com.forms.app.model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "QuestionOption")
@@ -15,9 +12,22 @@ public class QuestionOption {
     @Column(length = 100)
     private String text;
 
+    @ManyToOne
+    @JoinColumn(name = "question_id", referencedColumnName = "question_id")
+    private Question question;
+
     private boolean correct;
 
     public QuestionOption() {}
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
+
 
     public String getText() {
         return text;

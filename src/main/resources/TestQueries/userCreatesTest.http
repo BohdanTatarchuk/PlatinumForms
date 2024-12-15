@@ -1,0 +1,48 @@
+POST http://localhost:8080/userCreatesTests/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "id": {
+    "email": "roma@gmail.com",
+    "test_id": "7zq97gbWFPFRRVVV87ss",
+    "createdOn": "2024-12-08T11:38:10.823+00:00"
+  },
+  "user": {
+    "username": "Roman",
+    "email": "roma@gmail.com",
+    "password": "aA!12zhasedgcqQ@",
+    "photo": "C:/users/roman/pfp.png"
+  },
+  "testform": {
+    "name": "Math 11A",
+    "description": "Lambda calculus",
+    "id": "7zq97gbWFPFRRVVV87ss"
+  }
+}
+
+###
+
+GET http://localhost:8080/userCreatesTests/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "roma@gmail.com",
+  "test_id": "7zq97gbWFPFRRVVV87ss",
+  "createdOn": "2024-12-08T11:38:10.823+00:00"
+}
+
+###
+
+GET http://localhost:8080/userCreatesTests/all HTTP/1.1
+
+###
+
+DELETE http://localhost:8080/userCreatesTests/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "roma@gmail.com",
+  "test_id": "7zq97gbWFPFRRVVV87ss",
+  "createdOn": "2024-12-08T11:38:10.823+00:00"
+}
+

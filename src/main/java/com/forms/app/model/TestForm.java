@@ -2,8 +2,6 @@ package com.forms.app.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "TestForm")
 public class TestForm {
@@ -16,6 +14,18 @@ public class TestForm {
     @Id
     @Column(name = "test_id")
     private String test_id;
+
+    @ManyToOne
+    @JoinColumn(name = "authorEmail", referencedColumnName = "email")
+    private UserT author;
+
+    public UserT getAuthorEmail() {
+        return author;
+    }
+
+    public void setAuthorEmail(UserT author) {
+        this.author = author;
+    }
 
     public String getName() {
         return name;
@@ -41,10 +51,11 @@ public class TestForm {
         this.description = description;
     }
 
-    public TestForm(String name, String description, String id) {
+    public TestForm(String name, String description, String id, UserT author) {
         this.name = name;
         this.description = description;
         this.test_id = id;
+        this.author = author;
     }
 
     public TestForm(){}

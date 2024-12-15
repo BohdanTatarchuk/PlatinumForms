@@ -1,4 +1,4 @@
-import {Component, DestroyRef, inject} from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router, RouterOutlet} from '@angular/router';
 import {GlobalService} from '../../services/global.service';
@@ -7,7 +7,6 @@ import {NgIf} from '@angular/common';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {UserT} from '../../registration/registration-window/user.model';
 import {firstValueFrom, Observable} from 'rxjs';
-import {resolve} from '@angular/compiler-cli';
 
 const URL: string = 'http://localhost:8080';
 
@@ -26,7 +25,6 @@ export class LogInComponent {
 
   router = inject(Router);
   private httpClient = inject(HttpClient);
-  private destroyRef = inject(DestroyRef);
 
   constructor(public globalService: GlobalService) {
   }
@@ -73,10 +71,12 @@ export class LogInComponent {
         photo: profile.getImageUrl(),
         password: ""
       };
+      sessionStorage.setItem('email', profile.getEmail());
+      sessionStorage.setItem('photo', profile.getImageUrl());
+      sessionStorage.setItem('username', profile.getName());
       this.createUser(newUser);
     }
 
-    this.globalService.is_logged = true;
     await this.router.navigate(['/main']);
   }
 
@@ -85,7 +85,9 @@ export class LogInComponent {
       next: (user) => {
         console.log('User retrieved:', user);
         if (user.password === this.data.password) {
-          this.globalService.is_logged = true;
+          sessionStorage.setItem('email', user.email);
+          sessionStorage.setItem('photo', user.photo);
+          sessionStorage.setItem('username', user.username);
           this.router.navigate(['/main']);
         } else {
           this.error_message = "Wrong credentials, please try again.";
@@ -93,7 +95,6 @@ export class LogInComponent {
         }
       }
     });
-
   }
 
   navigateToRegistration() {
