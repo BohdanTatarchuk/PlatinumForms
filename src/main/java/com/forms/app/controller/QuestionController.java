@@ -19,14 +19,14 @@ public class QuestionController {
         this.service = service;
     }
 
-    @GetMapping("/{id}")
-    public Optional<Question> findById(@PathVariable("id") String id) {
-        return service.findById(id);
+    @GetMapping("/{questionId}")
+    public Optional<Question> findById(@PathVariable("questionId") String questionId) {
+        return service.findOneSpecific(questionId);
     }
 
-    @GetMapping("/")
-    public List<Question> findAllQuestions() {
-        return service.findAllQuestions();
+    @GetMapping("/test/{testId}")
+    public List<Question> findAllQuestions(@PathVariable("testId") String testId) {
+        return service.findAllForTest(testId);
     }
 
     @PostMapping("/")
