@@ -41,7 +41,7 @@ public class UserTController {
     }
 
     @PutMapping("/{email}")
-    public void updateProfilePicture(@PathVariable("email") String email, @RequestBody UserT user) {
+    public void updateUserByEmail(@PathVariable("email") String email, @RequestBody UserT user) {
         service.updateUser(email, user);
     }
 }

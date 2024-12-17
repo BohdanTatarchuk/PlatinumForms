@@ -1,11 +1,14 @@
 import {Component, inject} from '@angular/core';
 import {MyTestComponent} from './my-test/my-test.component';
 import {Router} from '@angular/router';
-import {Test} from '../../editor/test.model';
+import {Test, TrueTest} from '../../editor/test.model';
 import {GlobalService} from '../../services/global.service';
 import {TestService} from '../../services/test.service';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 const MAX_AMOUNT_OF_TESTS = 10;
+const URL: string = 'http://localhost:8080';
 
 @Component({
   selector: 'app-my-tests',
@@ -20,26 +23,33 @@ const MAX_AMOUNT_OF_TESTS = 10;
 export class MyTestsComponent {
   constructor(public globalService: GlobalService, public testService: TestService) {}
 
-  tests: any;
+  tests: TrueTest[] | undefined;
 
+  private httpClient = inject(HttpClient);
   router = inject(Router);
 
   errorMaxAmount: string = "";
 
   ngOnInit() {
-    this.tests = this.globalService.tests;
-
-    const testIdToRemove = this.testService.getTestId();
-    if (testIdToRemove) {
-      console.log("-------------------MAIN---------------------");
-      console.log("Test id to remove got: " + testIdToRemove);
-      this.globalService.tests = this.globalService.tests!.filter((item: Test) => item.id !== testIdToRemove);
-      this.tests = this.globalService.tests;
-
-      for (let i = 0; i < this.tests.length; i++) {
-        console.log(this.tests[i].name + ", ");
+    this.getTests().subscribe({
+      next: (user) => {
+        console.log('User retrieved:', user);
+        this.tests = user;
       }
-    }
+    });
+
+
+    // const testIdToRemove = this.testService.getTestId();
+    // if (testIdToRemove) {
+    //   console.log("-------------------MAIN---------------------");
+    //   console.log("Test id to remove got: " + testIdToRemove);
+    //   this.globalService.tests = this.globalService.tests!.filter((item: Test) => item.id !== testIdToRemove);
+    //   this.tests = this.globalService.tests;
+    //
+    //    for (let i = 0; i < this.tests.length; i++) {
+    //     console.log(this.tests[i].name + ", ");
+    //   }
+    // }
   }
 
   onSelectTest(id: string): void {
@@ -75,5 +85,7 @@ export class MyTestsComponent {
     this.router.navigate(['/editor']);
   }
 
-
+   getTests(): Observable<TrueTest[]> {
+    return this.httpClient.get<TrueTest[]>(URL + "/tests/" + sessionStorage.getItem("email"));
+  }
 }

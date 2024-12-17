@@ -34,7 +34,7 @@ export class RegistrationWindowComponent {
   public correct_email: boolean = false;
   public correct_password: boolean = false;
   public correctly_repeated: boolean = false;
-  public email_message: string = "Invalid email address";
+  public email_message: string = "";
   public password_message: string = "";
   public repeated_password_message: string = "Passwords do not match";
 
@@ -53,6 +53,9 @@ export class RegistrationWindowComponent {
 
     let messages: string[] = [];
 
+    if (this.info.password.length < 8) {
+      messages.push("Password is too short")
+    }
     if (!hasLowerChars) {
       messages.push("No lowercase characters");
     }
@@ -82,14 +85,18 @@ export class RegistrationWindowComponent {
   async email_validation() {
     const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     let emailExists = false;
-    this.correct_email = emailPattern.test(this.info.email);
+    this.correct_email = !emailPattern.test(this.info.email);
+    this.email_message = "Invalid email address!";
+    console.log("emailPattern: " + this.correct_email);
     this.getUser(this.info.email).subscribe({
       next: (user) => {
         console.log('User retrieved:', user);
         if (user != null) {
           emailExists = true;
+          this.email_message = "Such a user already exists!"
+          this.correct_email = true;
+          console.log("emailExists: " + this.correct_email);
         }
-        this.correct_email = this.correct_email && !emailExists;
       }
     })
   }
@@ -98,7 +105,7 @@ export class RegistrationWindowComponent {
 
   async user_validation() {
     await this.email_validation();
-    if (this.password_validation() && this.password_repetition() && this.correct_email) {
+    if (this.password_validation() && this.password_repetition() && !this.correct_email) {
       this.globalService.is_logged = true;
       const newUser: UserT = {
         username: this.info.username,

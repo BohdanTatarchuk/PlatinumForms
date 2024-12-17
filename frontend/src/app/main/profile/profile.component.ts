@@ -13,16 +13,16 @@ import {User} from '../../registration/registration-window/user.model';
 export class ProfileComponent {
   constructor(public globalSercive: GlobalService) {}
 
-  username: string = "";
-  email: string = "";
-  imageUrl: string = "";
+  username: string | null = "";
+  email: string | null = "";
+  imageUrl: string | null = "";
 
   router = inject(Router)
 
   ngOnInit(){
-    this.imageUrl = this.globalSercive.photo;
-    this.username = this.globalSercive.username;
-    this.email = this.globalSercive.email;
+    this.imageUrl = sessionStorage.getItem("photo");
+    this.username = sessionStorage.getItem("username");
+    this.email = sessionStorage.getItem("email");
   }
 
   navigate_to_profile(){

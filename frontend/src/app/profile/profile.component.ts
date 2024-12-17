@@ -1,9 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {TopHeaderComponent} from '../top-header/top-header.component';
 import {GlobalService} from '../services/global.service';
-import {DUMMY_TESTS} from '../main/my-tests/my-test/dummy-data';
 import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {UserT} from '../registration/registration-window/user.model';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+const URL: string = 'http://localhost:8080';
 
 @Component({
   selector: 'app-profile',
@@ -19,39 +23,52 @@ export class ProfileComponent {
   constructor(public globalService: GlobalService) {}
 
   router = inject(Router)
+  private httpClient = inject(HttpClient);
 
-  imageUrl: string = "";
-  username: string | undefined ;
-  email: string = "";
-
+  imageUrl: string | null = "";
+  username: string | null = "";
+  email: string | null = "";
   newUsername: string = "";
   emptyError: string = "";
 
+  newUser: UserT = {
+    username: '',
+    email: '',
+    password: '',
+    photo: ''
+  };
+
+
   ngOnInit(){
-    this.email = this.globalService.email;
-    this.username = this.globalService.username;
-    this.imageUrl = this.globalService.photo;
+    this.imageUrl = sessionStorage.getItem("photo");
+    this.username = sessionStorage.getItem("username");
+    this.email = sessionStorage.getItem("email");
   }
 
-  onFileSelected(event: Event): void {
+  async onFileSelected(event: Event): Promise<void> {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files[0]) {
       const file = input.files[0];
       const reader = new FileReader();
       reader.onload = (e: any) => {
-        this.imageUrl = this.globalService.photo;
+        this.imageUrl = sessionStorage.getItem("photo");
         this.imageUrl = e.target.result;
-        this.globalService.photo = this.imageUrl;
+        if (typeof this.imageUrl === "string") {
+          sessionStorage.setItem("photo", this.imageUrl);
+          console.log("Photo :" + this.imageUrl);
+          this.updateUserPhoto(<string>this.imageUrl);
+        }
       };
       reader.readAsDataURL(file);
+
+
     }
   }
 
   logout() {
-    this.globalService.email = "";
-    this.globalService.photo = "";
-    this.globalService.username = "";
-    this.globalService.is_logged = false;
+    sessionStorage.setItem("photo", "");
+    sessionStorage.setItem("username", "");
+    sessionStorage.setItem("email", "");
     this.router.navigate(['/']);
   }
 
@@ -63,5 +80,33 @@ export class ProfileComponent {
     } else {
       this.emptyError = "Username can not be empty";
     }
+  }
+
+  updateUserPhoto(photo: string) {
+    const email = sessionStorage.getItem("email") as string;
+
+    this.getUser(email).subscribe({
+      next: (user) => {
+        console.log("User retrieved: ", user);
+
+        this.newUser = {
+          email: user.email,
+          photo: photo,
+          username: user.username,
+          password: user.password
+        };
+
+        this.httpClient.put<UserT>(`${URL}/users/${email}`, this.newUser).subscribe({
+          next: (info) => {
+            console.log("Update successful:", info);
+          }
+        });
+      }
+    });
+  }
+
+
+  getUser(email: string): Observable<UserT> {
+    return this.httpClient.get<UserT>(URL + "/users/" + email);
   }
 }
