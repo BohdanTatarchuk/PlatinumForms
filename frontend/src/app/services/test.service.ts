@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Test} from '../editor/test.model';
+import {Test, TrueTest} from '../editor/test.model';
 
 @Injectable({
   providedIn: 'root'

@@ -18,7 +18,7 @@ public class UserT {
     @Column(length = 25)
     private String password;
 
-    @Column(length = 10000)
+    @Column(length = 100000)
     private String photo;
 
     public String getEmail() {

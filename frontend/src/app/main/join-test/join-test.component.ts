@@ -4,7 +4,11 @@ import {FormsModule} from "@angular/forms";
 import {Router} from '@angular/router';
 import {DUMMY_TESTS} from '../my-tests/my-test/dummy-data';
 import {TestService} from '../../services/test.service';
-import {Test} from '../../editor/test.model';
+import {Test, TrueTest} from '../../editor/test.model';
+import {Observable} from 'rxjs';
+import {HttpClient} from '@angular/common/http';
+
+const URL: string = 'http://localhost:8080';
 
 @Component({
   selector: 'app-join-test',
@@ -21,22 +25,26 @@ export class JoinTestComponent {
   constructor(private testService: TestService ) {}
 
   router = inject(Router)
+  private httpClient = inject(HttpClient);
 
   code: string = '';
-  users = DUMMY_TESTS;
-  test!: Test;
+  test!: TrueTest;
 
   joinTest() {
-    let info = this.users.find(user => user.tests.find(test => test.id == this.code));
-    let actual_info = info?.tests.find(test => test.id == this.code);
-    console.log(actual_info);
-    if (actual_info) {
-      actual_info.mark = null;
-      for (let i = 0; i < actual_info.questions.length; i++) {
-        actual_info.questions[i].answered.length = 0;
+    let info : TrueTest;
+      this.getTest(this.code).subscribe({
+      next: (val) =>{
+        info = val;
+        if(val){
+          console.log("Value got: " + val);
+          //this.testService.setTest(val);
+          this.router.navigate(['/test-page']);
+        }
       }
-      this.testService.setTest(actual_info);
-      this.router.navigate(['/test-page']);
-    }
+    })
+  }
+
+  getTest(testId: string): Observable<TrueTest> {
+    return this.httpClient.get<TrueTest>(URL + "/tests/" + sessionStorage.getItem("email") + "/" + testId);
   }
 }

@@ -30,6 +30,7 @@ export class ProfileComponent {
   email: string | null = "";
   newUsername: string = "";
   emptyError: string = "";
+  newPassword: string = "";
 
   newUser: UserT = {
     username: '',
@@ -60,8 +61,6 @@ export class ProfileComponent {
         }
       };
       reader.readAsDataURL(file);
-
-
     }
   }
 
@@ -74,18 +73,17 @@ export class ProfileComponent {
 
   changeUsername() {
     if (this.newUsername) {
-      this.globalService.username = this.newUsername;
+      sessionStorage.setItem("username",this.newUsername);
       this.username = this.newUsername;
       this.emptyError = "";
+      this.updateUsername(this.newUsername);
     } else {
       this.emptyError = "Username can not be empty";
     }
   }
 
   updateUserPhoto(photo: string) {
-    const email = sessionStorage.getItem("email") as string;
-
-    this.getUser(email).subscribe({
+    this.getUser(<string>this.email).subscribe({
       next: (user) => {
         console.log("User retrieved: ", user);
 
@@ -96,9 +94,30 @@ export class ProfileComponent {
           password: user.password
         };
 
-        this.httpClient.put<UserT>(`${URL}/users/${email}`, this.newUser).subscribe({
+        this.httpClient.put<UserT>(`${URL}/users/${this.email}`, this.newUser).subscribe({
           next: (info) => {
-            console.log("Update successful:", info);
+            console.log("Info :", info);
+          }
+        });
+      }
+    });
+  }
+
+  updateUsername(username: string) {
+    this.getUser(<string>this.email).subscribe({
+      next: (user) => {
+        console.log("User retrieved: ", user);
+
+        this.newUser = {
+          email: user.email,
+          photo: user.photo,
+          username: username,
+          password: user.password
+        };
+
+        this.httpClient.put<UserT>(`${URL}/users/${this.email}`, this.newUser).subscribe({
+          next: (info) => {
+            console.log("Info :", info);
           }
         });
       }
@@ -108,5 +127,9 @@ export class ProfileComponent {
 
   getUser(email: string): Observable<UserT> {
     return this.httpClient.get<UserT>(URL + "/users/" + email);
+  }
+
+  changePassword() {
+
   }
 }
