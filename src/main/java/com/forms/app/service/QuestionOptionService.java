@@ -18,31 +18,31 @@ public class QuestionOptionService {
         this.questionOptionRepository = questionOptionRepository;
     }
 
-    public void createOption(QuestionOption option) {
+    public void saveOption(QuestionOption option) {
         questionOptionRepository.save(option);
     }
 
-    public Optional<QuestionOption> findById(String option_id) {
+    public Optional<QuestionOption> findOneSpecific(String option_id) {
         return questionOptionRepository.findById(option_id);
     }
 
-    public void updateQuestionOption(String option_id, QuestionOption option) {
-        if (questionOptionRepository.findById(option_id).isEmpty()) {
-            System.out.println("Error: User with login " + option_id + " not found");
+    public void updateOption(String optionId, QuestionOption option) {
+        if (questionOptionRepository.findById(optionId).isEmpty()) {
+            System.out.println("Error: option not found");
             return;
         }
 
-        QuestionOption newOption = questionOptionRepository.findById(option_id).get();
+        QuestionOption newOption = questionOptionRepository.findById(optionId).get();
         newOption.setText(option.getText());
         newOption.setCorrect(option.getIsCorrect());
         questionOptionRepository.save(newOption);
     }
 
-    public void deleteQuestionById(String id) {
-        questionOptionRepository.deleteById(id);
+    public List<QuestionOption> findAllForQuestion(String questionId) {
+        return questionOptionRepository.findAllForOneQuestion(questionId);
     }
 
-    public List<QuestionOption> findAllOptions() {
-        return questionOptionRepository.findAll();
+    public void deleteOption(String optionId) {
+        questionOptionRepository.deleteById(optionId);
     }
 }

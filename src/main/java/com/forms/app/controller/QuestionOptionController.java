@@ -19,28 +19,28 @@ public class QuestionOptionController {
         this.service = service;
     }
 
-    @GetMapping("/")
-    public List<QuestionOption> findAllOptions() {
-        return service.findAllOptions();
+    @GetMapping("/question/{questionId}")
+    public List<QuestionOption> findAllOptions(@PathVariable("questionId") String questionId) {
+        return service.findAllForQuestion(questionId);
     }
 
-    @GetMapping("/{option_id}")
-    public Optional<QuestionOption> findById(@PathVariable("option_id") String optionId) {
-        return service.findById(optionId);
+    @GetMapping("/{optionId}")
+    public Optional<QuestionOption> findById(@PathVariable("optionId") String optionId) {
+        return service.findOneSpecific(optionId);
     }
 
     @PostMapping("/")
     public void save(@RequestBody QuestionOption option) {
-        service.createOption(option);
+        service.saveOption(option);
     }
 
-    @PutMapping("/{option_id}")
-    public void updateOption(@PathVariable("option_id") String optionId, @RequestBody QuestionOption option) {
-        service.updateQuestionOption(optionId, option);
+    @PutMapping("/{optionId}")
+    public void updateOption(@PathVariable("optionId") String optionId, @RequestBody QuestionOption option) {
+        service.updateOption(optionId, option);
     }
 
     @DeleteMapping("/{option_id}")
     public void deleteById(@PathVariable("option_id") String optionId) {
-        service.deleteQuestionById(optionId);
+        service.deleteOption(optionId);
     }
 }

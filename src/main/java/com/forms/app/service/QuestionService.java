@@ -22,12 +22,12 @@ public class QuestionService {
         questionRepository.save(q);
     }
 
-    public Optional<Question> findById(String id) {
-        return questionRepository.findById(id);
+    public List<Question> findAllForTest(String testId) {
+        return questionRepository.findAllForOneTest(testId);
     }
 
-    public List<Question> findAllQuestions() {
-        return questionRepository.findAll();
+    public Optional<Question> findOneSpecific(String questionId) {
+        return questionRepository.findById(questionId);
     }
 
     public void updateQuestion(String id, Question q) {
