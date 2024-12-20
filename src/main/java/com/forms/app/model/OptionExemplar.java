@@ -5,18 +5,24 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "OptionExemplar")
 public class OptionExemplar {
-    @Column(name= "answered")
-    private boolean answered;
 
     @Id
+    @Column(name = "option_id")
+    private String optionId;
+
     @OneToOne
+    @MapsId
     @JoinColumn(name = "option_id", referencedColumnName = "option_id")
     private QuestionOption option;
+
+    @Column(name = "answered")
+    private boolean answered;
 
     public OptionExemplar() {}
 
     public OptionExemplar(QuestionOption option, boolean answered) {
         this.option = option;
+        this.optionId = option.getId();
         this.answered = answered;
     }
 
@@ -26,6 +32,7 @@ public class OptionExemplar {
 
     public void setOption(QuestionOption option) {
         this.option = option;
+        this.optionId = option.getId();
     }
 
     public boolean isAnswered() {
