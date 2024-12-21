@@ -11,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/userPassesTests")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserPassesTestsController {
 
     private final UserPassesTestService service;

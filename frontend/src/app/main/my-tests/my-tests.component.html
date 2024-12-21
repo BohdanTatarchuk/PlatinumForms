@@ -2,7 +2,7 @@
   <h2>My tests</h2>
   <div id="testsList">
     @for (test of tests; track test.id) {
-      <app-my-test [test]="test" (select)="onSelectTest($event)"/>
+      <app-my-test [test]="test"/>
     }
   </div>
 

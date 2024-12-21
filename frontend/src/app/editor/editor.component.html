@@ -3,7 +3,7 @@
   <app-test-head></app-test-head>
 
   <div id="questions">
-    @for (question of test.questions; track question.id) {
+    @for (question of data?.questions; track question.id) {
       <app-question [question]="question"></app-question>
     }
   </div>

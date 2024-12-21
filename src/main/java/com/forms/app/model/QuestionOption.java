@@ -28,7 +28,6 @@ public class QuestionOption {
         this.question = question;
     }
 
-
     public String getText() {
         return text;
     }

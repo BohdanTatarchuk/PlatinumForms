@@ -3,8 +3,8 @@
     <input type="text"
            id="question-name"
            name="question-name"
-           placeholder="{{ question.name }}"
-           [(ngModel)]="question.name"
+           placeholder="{{ question.text }}"
+           [(ngModel)]="question.text"
            required>
 
     <select id="type" [(ngModel)]="question.type" (change)="onSelectedType()">
@@ -12,7 +12,6 @@
       <option [ngValue]="1">Multiple Choice</option>
       <option [ngValue]="2">Free Answer</option>
     </select>
-
 
     <div id="obligatory-container">
       <label for="obligatory">Obligatory</label>
@@ -35,8 +34,8 @@
           id="radio-{{ option.id }}">
         <input type="text"
                class="radio-button"
-               [(ngModel)]="option.name"
-               placeholder="{{ option.name }}">
+               [(ngModel)]="option.text"
+               placeholder="{{ option.text }}">
         <button (click)="onDeleteOption(option.id)"
                 class="small_bin">
           <img src="bin.svg"
@@ -60,8 +59,8 @@
                id="checkbox">
         <input type="text"
                class="checkbox-text"
-               [(ngModel)]="option.name"
-               placeholder="{{ option.name }}">
+               [(ngModel)]="option.text"
+               placeholder="{{ option.text }}">
         <button (click)="onDeleteOption(option.id)"
                 class="small_bin">
           <img src="bin.svg"
@@ -87,7 +86,7 @@
     @for (option of question.options; track option.id) {
       <div id="option3">
         <div class="frame">
-          {{ option.name }}
+          {{ option.text }}
         </div>
 
         <button id="free-answer-bin"

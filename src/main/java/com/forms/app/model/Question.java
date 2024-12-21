@@ -1,5 +1,6 @@
 package com.forms.app.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,8 +14,11 @@ public class Question {
     @Column(length = 100)
     private String questionText;
 
+    private int questionType;
+
     @ManyToOne
     @JoinColumn(name = "test_id", referencedColumnName = "test_id")
+    @JsonIgnore
     private TestForm test;
 
     private boolean isObligatory;
@@ -26,6 +30,14 @@ public class Question {
     }
 
     public Question() {
+    }
+
+    public int getQuestionType() {
+        return questionType;
+    }
+
+    public void setQuestionType(int questionType) {
+        this.questionType = questionType;
     }
 
     public boolean isObligatory() {

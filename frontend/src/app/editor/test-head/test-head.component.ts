@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {TestService} from '../../services/test.service';
-import {Test} from '../test.model';
+import {TestWithQuestions} from '../test.model';
 
 const MAX_NUMBER_OF_QUESTIONS: number = 50;
 
@@ -18,16 +18,21 @@ const MAX_NUMBER_OF_QUESTIONS: number = 50;
 export class TestHeadComponent {
   constructor(private testService: TestService) {}
 
-  test!: Test;
+  test!: TestWithQuestions;
   maxNumberOfQuestionsError: string = "";
 
+  @Output() buttonClick = new EventEmitter<any>();
+
   ngOnInit() {
-    this.test = this.testService.getTest();
+    this.testService.test$.subscribe((test) => {
+      this.test = test!;
+    });
+    this.test = JSON.parse(sessionStorage.getItem("test")!);
 
     console.log(
       "Received tests in TestHeadComponent with the following data: "
       + this.test.id + ", "
-      + this.test.name
+      + this.test.name + ", QUESTIONS: " + this.test.questions
     );
   }
 
@@ -35,20 +40,21 @@ export class TestHeadComponent {
     if (this.test.id == undefined) {
       return;
     }
-
     const newQuestion = {
-      name: '',
-      id: '',
+      text: "",
+      id: this.testService.generateQID(),
       obligatory: false,
-      type: 0,
-      mark: 0,
       options: [],
-      answered: []
+      test_id: this.test.id,
+      type: 0,
+      test: {
+        name: this.test!.name,
+        description: this.test!.description,
+        id: this.test!.id,
+        authorEmail: this.test!.authorEmail
+      }
     }
 
-    newQuestion.id = this.testService.generateQID();
-
-    console.log("TEST HEAD COMPONENT:");
     if (this.test.questions.length < MAX_NUMBER_OF_QUESTIONS) {
       this.test.questions.push(newQuestion);
       console.log("New question with id " + newQuestion.id + " added");
@@ -56,5 +62,7 @@ export class TestHeadComponent {
       console.log("New question can not be added: limit of questions is " + MAX_NUMBER_OF_QUESTIONS);
       this.maxNumberOfQuestionsError = "Maximal number of questions is " + MAX_NUMBER_OF_QUESTIONS;
     }
+    this.testService.logTestWithQuestions(this.test);
+    this.testService.updateTest(this.test);
   }
 }

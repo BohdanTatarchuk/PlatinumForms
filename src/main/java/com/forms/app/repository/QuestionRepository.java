@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Repository
 public interface QuestionRepository extends JpaRepository<Question, String> {
-    @Query(value =  " SELECT question_id, is_obligatory, question_text, q.test_id " +
+    @Query(value =  " SELECT question_id, is_obligatory, question_text,question_type, q.test_id " +
                     " FROM test_form t" +
                     " INNER JOIN question q" +
                     " ON t.test_id = q.test_id" +

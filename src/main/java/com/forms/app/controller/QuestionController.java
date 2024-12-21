@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/questions")
+@CrossOrigin(origins = "http://localhost:4200")
 public class QuestionController {
 
     private final QuestionService service;

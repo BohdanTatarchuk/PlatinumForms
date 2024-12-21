@@ -52,9 +52,6 @@ export class MyTestsComponent {
     // }
   }
 
-  onSelectTest(id: string): void {
-    console.log("Selected test with id " + id);
-  }
 
   onSelectNewTest(): void {
     if (this.globalService.tests!.length >= MAX_AMOUNT_OF_TESTS) {

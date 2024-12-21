@@ -1,6 +1,7 @@
 package com.forms.app.controller;
 
 import com.forms.app.model.TestForm;
+import com.forms.app.model.TestWithQuestionsDTO;
 import com.forms.app.service.TestFormService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -31,13 +32,8 @@ public class TestFromController {
     }
 
     @PostMapping("/")
-    public void save(@RequestBody TestForm testForm) {
+    public void saveNewTest(@RequestBody TestWithQuestionsDTO testForm) {
         service.createTestForm(testForm);
-    }
-
-    @PutMapping("/{testID}")
-    public void updateTest(@PathVariable("testID") String testID, @RequestBody TestForm testForm) {
-        service.updateTest(testID, testForm);
     }
 
     @DeleteMapping("/{testID}")
