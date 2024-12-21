@@ -14,7 +14,7 @@ import {DUMMY_TESTS} from './my-tests/my-test/dummy-data';
     MyTestComponent,
     MyTestsComponent,
     ProfileComponent,
-    TopHeaderComponent
+    TopHeaderComponent,
   ],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'

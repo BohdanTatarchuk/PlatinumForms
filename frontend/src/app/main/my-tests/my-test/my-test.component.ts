@@ -2,11 +2,14 @@ import {Component, EventEmitter, inject, Input, Output} from '@angular/core';
 import { Router } from '@angular/router';
 import { TestService } from '../../../services/test.service';
 import { Test } from '../../../editor/test.model';
+import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-my-test',
   standalone: true,
-  imports: [],
+  imports: [
+    NgOptimizedImage
+  ],
   templateUrl: './my-test.component.html',
   styleUrl: './my-test.component.css'
 })
@@ -23,5 +26,10 @@ export class MyTestComponent {
     this.testService.setTest(this.test);
     this.select.emit(this.test.id);
     this.router.navigate(['/editor']);
+  }
+
+  copyTestID() {
+    let copyText = this.test.id;
+    navigator.clipboard.writeText(copyText);
   }
 }

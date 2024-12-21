@@ -97,3 +97,13 @@ label {
 #obligatory_sign {
   color: red;
 }
+
+@media (max-width: 500px) {
+  #question {
+    width: 300px;
+  }
+
+  input[type="text"] {
+    width: 280px;
+  }
+}

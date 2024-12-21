@@ -1,7 +1,7 @@
 export const DUMMY_TESTS = [
   {
     email: "rre@aaa.com",
-    username: "aaaaaAAAAA",
+    username: "Dev",
     password: "aaAA11!!",
     tests: [
       {

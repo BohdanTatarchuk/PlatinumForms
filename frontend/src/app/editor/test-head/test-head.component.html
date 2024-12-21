@@ -1,7 +1,4 @@
-<div id="main">
-  <div id="filler"></div>
-
-  <div id="rectangle">
+<div id="rectangle">
     <input
       type="text"
       name="test-name"
@@ -21,9 +18,7 @@
     @if(maxNumberOfQuestionsError) {
       <br> <label class="maxNumberError"> {{ maxNumberOfQuestionsError }} </label>
     }
+    <input type="submit" id="start" value="Add question" (click)="onAddQuestion()">
   </div>
 
-  <button (click)="onAddQuestion()" id="buttonAdd">
-    <img src="button1.svg">
-  </button>
-</div>
+

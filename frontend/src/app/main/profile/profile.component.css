@@ -8,15 +8,14 @@
   font-family: montserratFont;
 }
 
-#rectangle {
-  min-width: 450px;
+.container {
+  width: 450px;
   background-color: #FFE100;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   padding: 20px;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 50px;
 }
 
 h2, h4 {
@@ -43,4 +42,19 @@ input[type="submit"]:hover {
   background-color: #593391;
   color: #ffffff;
   cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  * {
+    overflow: hidden;
+    position: static;
+  }
+
+  .container {
+    width: 300px;
+  }
+
+  input[type="text"] {
+    width: 280px;
+  }
 }

@@ -1,6 +1,10 @@
 <div class="test" >
-  <button (click)="onSelectedTest()">
-    <h3 class="name"> {{ test.name }} </h3>
-    <h3 class="code"> {{ test.id }} </h3>
+  <button (click)="onSelectedTest()" id="testSelect">
+    <div id="info">
+      <h3 class="name"> {{ test.name }} </h3>
+      <h3 class="code"> Test ID: {{ test.id }} </h3>
+    </div>
+
   </button>
+  <button (click)="copyTestID()" id="copyButton"><img src="icon.svg" height="20" width="20"></button>
 </div>

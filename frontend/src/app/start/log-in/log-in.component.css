@@ -90,7 +90,7 @@ input[type="submit"]:hover {
   font-size: small;
 }
 
-@media screen and (max-width: 500px) {
+@media (max-width: 500px) {
   * {
     overflow: hidden;
     position: static;
@@ -98,8 +98,8 @@ input[type="submit"]:hover {
 
   .container {
     background-color: #ffd700;
-    padding: 30px;
-    max-width: 90%;
+    padding: 20px;
+    width: 300px;
     margin-top: 50px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);

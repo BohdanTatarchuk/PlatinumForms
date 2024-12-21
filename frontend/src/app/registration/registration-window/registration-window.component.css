@@ -91,3 +91,29 @@ input[type="submit"]:hover {
   font-size: small;
 }
 
+@media (max-width: 500px) {
+  * {
+    overflow: hidden;
+    position: static;
+  }
+
+  .container {
+    background-color: #ffd700;
+    padding: 20px;
+    width: 300px;
+    margin-top: 50px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+  }
+
+  #form {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+}
+

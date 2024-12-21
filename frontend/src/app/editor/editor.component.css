@@ -41,6 +41,7 @@ input[type=submit] {
 
 #buttons-pair {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #header {
@@ -49,5 +50,6 @@ input[type=submit] {
 
 .error {
   color: red;
-  margin: 10px 10px 50px;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }

@@ -8,16 +8,6 @@
   font-family: montserratFont;
 }
 
-#main {
-  display: flex;
-  flex-direction: row;
-}
-
-#filler {
-  width: 49px;
-  height: 49px;
-}
-
 #rectangle {
   width: 800px;
   background-color: #FFE100;
@@ -43,7 +33,7 @@ h3 {
 
 input[type="text"], textarea {
   color: rgba(0, 0, 0, 0.65);
-  width: 325px;
+  width: 780px;
   padding: 10px;
   border-radius: 10px;
   margin-right: 100px;
@@ -62,6 +52,37 @@ input[type="text"], textarea {
 
 .maxNumberError {
   color: red;
+}
+
+input[type="submit"] {
+  background-color: #ffffff;
+  color: #FFE100;
+  border: none;
+  height: 30px;
+  font-weight: bold;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="submit"]:hover {
+  background-color: #593391;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  * {
+    overflow: hidden;
+    position: static;
+  }
+
+  #rectangle {
+    width: 300px;
+  }
+
+  input[type="text"], textarea {
+    width: 280px;
+  }
 }
 
 

@@ -13,16 +13,16 @@
       <option [ngValue]="2">Free Answer</option>
     </select>
 
-
     <div id="obligatory-container">
       <label for="obligatory">Obligatory</label>
       <input type="checkbox" name="obligatory" id="obligatory" value="obligatory"
              [checked]="question.obligatory" [(ngModel)]="question.obligatory"/>
     </div>
 
-    <button (click)="onDeleteQuestion(question.id)" id="bin">
-      <img src="bin.svg" alt="bin" width="25px">
-    </button>
+    <input type="submit"
+           value="Delete question"
+           id="deleteQuestion"
+           (click)="onDeleteQuestion(question.id)">
   </div>
 
   @if (question.type == 0) {
@@ -100,7 +100,7 @@
         </button>
       </div>
     }
-    <label id="errorHint" > {{ errorHint }} </label>
-    <label id="maxNumberError"> {{ maxNumberError }} </label>
+    <label id="errorHint" class="error"> {{ errorHint }} </label>
+    <label id="maxNumberError" class="error"> {{ maxNumberError }} </label>
   }
 </div>

@@ -14,9 +14,6 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#testsList {
   margin-bottom: 50px;
 }
 
@@ -30,14 +27,36 @@ h2 {
   background: transparent;
 }
 
-.button {
+input[type="submit"] {
+  background-color: #ffffff;
+  color: #FFE100;
+  border: none;
+  width: 150px;
+  height: 30px;
+  margin-top: 20px;
+  font-weight: bold;
+  border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
+}
+
+input[type="submit"]:hover {
+  background-color: #593391;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 h3 {
   color: red;
   font-size: 20px;
+}
+
+@media (max-width: 500px) {
+  * {
+    overflow: hidden;
+    position: static;
+  }
+
+  .rectangle {
+    min-width: 300px;
+  }
 }
