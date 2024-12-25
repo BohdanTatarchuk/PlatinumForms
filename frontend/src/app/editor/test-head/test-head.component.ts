@@ -29,11 +29,8 @@ export class TestHeadComponent {
     });
     this.test = JSON.parse(sessionStorage.getItem("test")!);
 
-    console.log(
-      "Received tests in TestHeadComponent with the following data: "
-      + this.test.id + ", "
-      + this.test.name + ", QUESTIONS: " + this.test.questions
-    );
+    console.log("Received tests in TestHeadComponent with the following data: ");
+    this.testService.logTestWithQuestions(this.test!);
   }
 
   onAddQuestion(): void {

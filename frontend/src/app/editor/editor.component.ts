@@ -2,10 +2,9 @@ import {Component, inject} from '@angular/core';
 import {TestHeadComponent} from './test-head/test-head.component';
 import {TopHeaderComponent} from '../top-header/top-header.component';
 import {QuestionComponent} from "./question/question.component";
-import {TestWithQuestions, TrueTest} from './test.model';
+import {TestWithQuestions} from './test.model';
 import {TestService} from '../services/test.service';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 
 const URL: string = 'http://localhost:8080';
@@ -23,8 +22,7 @@ const URL: string = 'http://localhost:8080';
 })
 
 export class EditorComponent {
-  constructor(private testService: TestService) {
-  }
+  constructor(private testService: TestService) {}
 
   router = inject(Router);
   private httpClient = inject(HttpClient);
@@ -52,37 +50,28 @@ export class EditorComponent {
       return;
     }
 
-    // TODO
-    // for (let i = 0; i < this.data.questions.length; i++) {
-    //   let allQuestionsHaveCorrectAnswers = false;
-    //   for (let j = 0; j < this.data.questions[i].options.length; j++) {
-    //     // Check if any option has empty text
-    //     if (!this.data.questions[i].options[j].text) {
-    //       console.log("Test cannot be saved: options cannot be empty");
-    //       this.errorMessage = "Test cannot be saved: options cannot be empty";
-    //       return;
-    //     }
-    //
-    //     // At least one correct option is required
-    //     if (this.data.questions[i].options[j].correct) {
-    //       allQuestionsHaveCorrectAnswers = true;
-    //     }
-    //   }
-    //
-    //   // If no correct option exists for the question
-    //   if (allQuestionsHaveCorrectAnswers) {
-    //     console.log("Test cannot be saved: not all questions have correct answers.");
-    //     this.errorMessage = "Test cannot be saved: not all questions have correct answers.";
-    //     return;
-    //   }
-    //
-    //   // Check if question text is empty or null
-    //   if (!this.data.questions[i].text) {
-    //     console.log("Test cannot be saved: questions cannot be empty");
-    //     this.errorMessage = "Test cannot be saved: questions cannot be empty";
-    //     return;
-    //   }
-    // }
+    for (let i = 0; i < this.data.questions.length; i++) {
+      const questionHasCorrectAnswer = this.data.questions[i].options.some(option => option.correct);
+      let isObligatory = this.data.questions[i].obligatory;
+      if (!questionHasCorrectAnswer) {
+        console.log(`Test cannot be saved: Question ${i + 1} does not have any correct options.`);
+        this.errorMessage = `Test cannot be saved: Question ${i + 1} does not have any correct options.`;
+        return;
+      }
+
+      const optionWithEmptyText = this.data.questions[i].options.some(option => !option.text);
+      if (optionWithEmptyText) {
+        console.log(`Test cannot be saved: Options for question ${i + 1} cannot be empty.`);
+        this.errorMessage = `Test cannot be saved: Options for question ${i + 1} cannot be empty.`;
+        return;
+      }
+
+      if (!this.data.questions[i].text || !this.data.questions[i].text.trim()) {
+        console.log(`Test cannot be saved: Question ${i + 1} text cannot be empty.`);
+        this.errorMessage = `Test cannot be saved: Question ${i + 1} text cannot be empty.`;
+        return;
+      }
+    }
 
     try {
       await this.deleteTest(this.data.id);

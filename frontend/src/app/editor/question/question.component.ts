@@ -91,7 +91,7 @@ export class QuestionComponent {
     const newOption = {
       text: '',
       id: '',
-      correct: false,
+      correct: true,
       question: {
         questionText: this.question.text,
         questionType: this.question.type,

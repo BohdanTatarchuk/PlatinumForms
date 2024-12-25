@@ -1,11 +1,13 @@
 import {Component, inject} from '@angular/core';
 import {MyTestComponent} from './my-test/my-test.component';
 import {Router} from '@angular/router';
-import {Test, TrueTest} from '../../editor/test.model';
+import {Test, TestWithQuestions, TrueTest} from '../../editor/test.model';
 import {GlobalService} from '../../services/global.service';
 import {TestService} from '../../services/test.service';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
+import {UserT} from '../../registration/registration-window/user.model';
+import {QuestionWithOptions} from '../../editor/question/question.model';
 
 const MAX_AMOUNT_OF_TESTS = 10;
 const URL: string = 'http://localhost:8080';
@@ -21,9 +23,10 @@ const URL: string = 'http://localhost:8080';
 })
 
 export class MyTestsComponent {
-  constructor(public globalService: GlobalService, public testService: TestService) {}
+  constructor(public testService: TestService) {}
 
   tests: TrueTest[] | undefined;
+  author!: UserT;
 
   private httpClient = inject(HttpClient);
   router = inject(Router);
@@ -33,14 +36,21 @@ export class MyTestsComponent {
   async ngOnInit() {
     (await this.getTests()).subscribe({
       next: (tests) => {
-        console.log('Tests retrieved:', tests);
+        console.log('MAIN: Tests retrieved:', tests);
         this.tests = tests;
       }
     });
+
+    (await this.getAuthor()).subscribe({
+      next: (user) => {
+        console.log('MAIN: User retrieved:', user);
+        this.author = user;
+      }
+    })
   }
 
   onSelectNewTest(): void {
-    if (this.globalService.tests!.length >= MAX_AMOUNT_OF_TESTS) {
+    if (this.tests!.length >= MAX_AMOUNT_OF_TESTS) {
       console.log("Max amount of tests of " + MAX_AMOUNT_OF_TESTS + " surpassed");
       this.errorMaxAmount = "Max amount of tests surpassed";
       return;
@@ -48,27 +58,23 @@ export class MyTestsComponent {
       this.errorMaxAmount = "";
     }
 
-    let emptyTest: Test = {
-      name: "empty test",
-      id: this.testService.generateQID(),
+    let emptyTest: TestWithQuestions = {
+      name: "Empty test",
       description: "",
-      mark: null,
+      id: this.testService.generateQID(),
+      authorEmail: this.author,
       questions: []
     }
 
-    this.globalService.tests!.push(emptyTest);
-
-    console.log("---------------MAIN-----------------\n" +
-      "Test sent: "
-      + emptyTest.name + ", "
-      + emptyTest.description + ", "
-      + emptyTest.id);
-
-    this.testService.setTest(emptyTest);
+    sessionStorage.setItem("test", JSON.stringify(emptyTest));
     this.router.navigate(['/editor']);
   }
 
   async getTests(): Promise<Observable<TrueTest[]>> {
     return this.httpClient.get<TrueTest[]>(URL + "/tests/" + sessionStorage.getItem("email"));
+  }
+
+  async getAuthor(): Promise<Observable<UserT>> {
+    return this.httpClient.get<UserT>(URL + "/users/" + sessionStorage.getItem("email"));
   }
 }
