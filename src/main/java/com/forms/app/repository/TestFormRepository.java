@@ -16,11 +16,11 @@ public interface TestFormRepository extends JpaRepository<TestForm, String> {
                     " WHERE author_email = :email", nativeQuery = true)
     List<TestForm> findAllByEmail(@Param("email") String email);
 
-    @Query(value =  " SELECT * " +
+    /*@Query(value =  " SELECT * " +
                     " FROM test_form" +
                     " WHERE author_email = :email" +
                     " AND test_id = :test_id", nativeQuery = true)
-    Optional<TestForm> findByEmail(@Param("email") String email, @Param("test_id") String test_id);
+    Optional<TestForm> findByEmail(@Param("email") String email, @Param("test_id") String test_id);*/
 
     @Query(value = "SELECT deleteAll(:id)")
     void deleteTest(@Param("id")String id);

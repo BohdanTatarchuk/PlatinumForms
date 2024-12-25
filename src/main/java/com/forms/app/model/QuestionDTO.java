@@ -2,15 +2,15 @@ package com.forms.app.model;
 
 import java.util.List;
 
-public class QuestionWithOptionsDTO {
+public class QuestionDTO {
     private String text;
     private int type;
     private String id;
     private TestForm test;
     private boolean obligatory;
-    private List<TrueOptionDTO> options;
+    private List<QuestionOption> options;
 
-    public QuestionWithOptionsDTO(String text, int type, String id, TestForm test, boolean obligatory, List<TrueOptionDTO> options) {
+    public QuestionDTO(String text, int type, String id, TestForm test, boolean obligatory, List<QuestionOption> options) {
         this.text = text;
         this.type = type;
         this.id = id;
@@ -19,7 +19,7 @@ public class QuestionWithOptionsDTO {
         this.options = options;
     }
 
-    public QuestionWithOptionsDTO() {
+    public QuestionDTO() {
     }
 
     public String getText() {
@@ -62,11 +62,11 @@ public class QuestionWithOptionsDTO {
         this.obligatory = obligatory;
     }
 
-    public List<TrueOptionDTO> getOptions() {
+    public List<QuestionOption> getOptions() {
         return options;
     }
 
-    public void setOptions(List<TrueOptionDTO> options) {
+    public void setOptions(List<QuestionOption> options) {
         this.options = options;
     }
 }

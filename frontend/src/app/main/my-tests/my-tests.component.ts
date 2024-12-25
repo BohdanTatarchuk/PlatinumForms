@@ -30,28 +30,14 @@ export class MyTestsComponent {
 
   errorMaxAmount: string = "";
 
-  ngOnInit() {
-    this.getTests().subscribe({
-      next: (user) => {
-        console.log('User retrieved:', user);
-        this.tests = user;
+  async ngOnInit() {
+    (await this.getTests()).subscribe({
+      next: (tests) => {
+        console.log('Tests retrieved:', tests);
+        this.tests = tests;
       }
     });
-
-
-    // const testIdToRemove = this.testService.getTestId();
-    // if (testIdToRemove) {
-    //   console.log("-------------------MAIN---------------------");
-    //   console.log("Test id to remove got: " + testIdToRemove);
-    //   this.globalService.tests = this.globalService.tests!.filter((item: Test) => item.id !== testIdToRemove);
-    //   this.tests = this.globalService.tests;
-    //
-    //    for (let i = 0; i < this.tests.length; i++) {
-    //     console.log(this.tests[i].name + ", ");
-    //   }
-    // }
   }
-
 
   onSelectNewTest(): void {
     if (this.globalService.tests!.length >= MAX_AMOUNT_OF_TESTS) {
@@ -82,7 +68,7 @@ export class MyTestsComponent {
     this.router.navigate(['/editor']);
   }
 
-   getTests(): Observable<TrueTest[]> {
+  async getTests(): Promise<Observable<TrueTest[]>> {
     return this.httpClient.get<TrueTest[]>(URL + "/tests/" + sessionStorage.getItem("email"));
   }
 }

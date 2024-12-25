@@ -1,29 +1,28 @@
 package com.forms.app.controller;
 
 import com.forms.app.model.TestForm;
-import com.forms.app.model.TestWithQuestionsDTO;
-import com.forms.app.service.TestFormService;
+import com.forms.app.model.TestDTO;
+import com.forms.app.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(path = "/tests")
-public class TestFromController {
+public class TestController {
 
-    private final TestFormService service;
+    private final TestService service;
 
     @Autowired
-    public TestFromController(TestFormService service){
+    public TestController(TestService service){
         this.service = service;
     }
 
-    @GetMapping("/{email}/{test_id}")
-    public Optional<TestForm> findTestByTestID(@PathVariable("email") String email, @PathVariable("test_id") String testID) {
-        return service.findByEmail(email, testID);
+    @GetMapping("/test/{test_id}")
+    public TestDTO findTestByTestID(@PathVariable("test_id") String testID) {
+        return service.findTest(testID);
     }
 
     @GetMapping("/{email}")
@@ -32,7 +31,7 @@ public class TestFromController {
     }
 
     @PostMapping("/")
-    public void saveNewTest(@RequestBody TestWithQuestionsDTO testForm) {
+    public void saveNewTest(@RequestBody TestDTO testForm) {
         service.createTestForm(testForm);
     }
 

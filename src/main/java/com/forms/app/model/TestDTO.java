@@ -2,14 +2,14 @@ package com.forms.app.model;
 
 import java.util.List;
 
-public class TestWithQuestionsDTO {
+public class TestDTO {
     private String name;
     private String description;
     private String id;
     private UserT authorEmail;
-    private List<QuestionWithOptionsDTO> questions;
+    private List<QuestionDTO> questions;
 
-    public TestWithQuestionsDTO(String name, String description, String id, UserT authorEmail, List<QuestionWithOptionsDTO> questions) {
+    public TestDTO(String name, String description, String id, UserT authorEmail, List<QuestionDTO> questions) {
         this.name = name;
         this.description = description;
         this.id = id;
@@ -17,7 +17,7 @@ public class TestWithQuestionsDTO {
         this.questions = questions;
     }
 
-    public TestWithQuestionsDTO() {
+    public TestDTO() {
     }
 
     public String getName() {
@@ -52,11 +52,11 @@ public class TestWithQuestionsDTO {
         this.authorEmail = authorEmail;
     }
 
-    public List<QuestionWithOptionsDTO> getQuestions() {
+    public List<QuestionDTO> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(List<QuestionWithOptionsDTO> questions) {
+    public void setQuestions(List<QuestionDTO> questions) {
         this.questions = questions;
     }
 }
